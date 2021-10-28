@@ -36,9 +36,18 @@ const MainContextProvider = (props) => {
             type: "LOGIN_USER",
             payload: data,
           });
+          dispatch({
+            type: "FAILED_LOGIN",
+            payload: false,
+          });
         } catch (e) {
           console.log(e);
         }
+      } else {
+        dispatch({
+          type: "FAILED_LOGIN",
+          payload: true,
+        });
       }
     } catch (e) {
       console.log(e);

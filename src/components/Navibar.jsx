@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   Form,
@@ -8,9 +8,15 @@ import {
   Container,
   NavDropdown,
 } from "react-bootstrap";
+import SignUpModal from "./auth/SignUpModal";
+
 const Navibar = () => {
   // <img width="70px" src="https://www.logo.wine/a/logo/Reddit/Reddit-Logo.wine.svg" alt="logo" />
   //test
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -40,9 +46,12 @@ const Navibar = () => {
           <Button className="me-2" variant="primary">
             LogIn
           </Button>
-          <Button variant="outline-primary">SignUp</Button>
+          <Button variant="outline-primary" onClick={handleShow}>
+            SignUp
+          </Button>
         </Navbar.Collapse>
       </Container>
+      <SignUpModal handleClose={handleClose} show={show} />
     </Navbar>
   );
 };
