@@ -54,9 +54,14 @@ const MainContextProvider = (props) => {
         bool = user.password === password ? true : false;
       }
       if (bool) {
+
         dispatch({
           type: "LOGIN_USER",
           payload: user,
+        });
+        dispatch({
+          type: "FAILED_LOGIN",
+          payload: false,
         });
       } else {
         dispatch({

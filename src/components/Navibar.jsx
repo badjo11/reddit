@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   Form,
@@ -8,9 +8,13 @@ import {
   Container,
   NavDropdown,
 } from "react-bootstrap";
+import LogInModal from "./auth/LogInModal";
+
+
 const Navibar = () => {
-  // <img width="70px" src="https://www.logo.wine/a/logo/Reddit/Reddit-Logo.wine.svg" alt="logo" />
-  //test
+  const [showLogin, setShowLogin] = useState(false);
+  const handleCloseLogin = () => setShowLogin(false);
+  const handleShowLogin = () => setShowLogin(true);
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -29,20 +33,19 @@ const Navibar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           ></Nav>
-
           <FormControl
             type="search"
             placeholder="Search"
             className="me-2"
             aria-label="Search"
           />
-
-          <Button className="me-2" variant="primary">
+          <Button className="me-2" variant="primary" onClick={handleShowLogin}>
             LogIn
           </Button>
           <Button variant="outline-primary">SignUp</Button>
         </Navbar.Collapse>
       </Container>
+      <LogInModal handleCloseLogin={handleCloseLogin} showLogin={showLogin} />
     </Navbar>
   );
 };
