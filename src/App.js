@@ -5,6 +5,8 @@ function App() {
   return (
     <>
       <Navibar />
+      <Navibar />
+      <Navibar />
     </>
   );
 }
