@@ -38,7 +38,7 @@ const MainContextProvider = (props) => {
           });
           dispatch({
             type: "FAILED_LOGIN",
-            payload: false,
+            payload: null,
           });
         } catch (e) {
           console.log(e);
@@ -63,7 +63,6 @@ const MainContextProvider = (props) => {
         bool = user.password === password ? true : false;
       }
       if (bool) {
-
         dispatch({
           type: "LOGIN_USER",
           payload: user,
