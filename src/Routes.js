@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import MainContextProvider from "./contexts/MainContext";
 
 const Routes = () => {
+
   return (
     <MainContextProvider>
       <BrowserRouter>

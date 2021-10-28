@@ -3,6 +3,7 @@ import Navibar from "../components/Navibar";
 
 const MainPage = () => {
   useEffect(() => {}, []);
+
   return <Navibar />;
 };
 

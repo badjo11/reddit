@@ -1,5 +1,16 @@
 {
-  "users": [],
+  "users": [
+    {
+      "username": "atai",
+      "password": "atai",
+      "id": 1
+    },
+    {
+      "username": "atai2",
+      "password": "atao",
+      "id": 2
+    }
+  ],
   "posts": [],
   "comments": [],
   "likes": []
