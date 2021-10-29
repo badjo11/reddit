@@ -12,14 +12,18 @@ const SignUpModal = (props) => {
     setUser(userr);
   }
 
-  function handleSignup(e) {
-    e.preventDefault();
-    signUpUser(user.username, user.password);
+  function delaySignUp() {
     if (state.failedLogin) {
       props.handleClose();
     } else {
       console.log("failed");
     }
+  }
+
+  function handleSignup(e) {
+    e.preventDefault();
+    signUpUser(user.username, user.password);
+    setTimeout(delaySignUp(), 500);
   }
 
   return (
