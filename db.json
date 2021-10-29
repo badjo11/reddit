@@ -49,9 +49,25 @@
       "username": "ataippp",
       "password": "dsadawd",
       "id": 10
+    },
+    {
+      "username": "atai213",
+      "password": "dwadawda",
+      "id": 11
     }
   ],
-  "rooms": [],
+  "rooms": [
+    {
+      "roomtitle": "firstClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 0,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 1
+    }
+  ],
   "posts": [],
   "comments": [],
   "likes": []

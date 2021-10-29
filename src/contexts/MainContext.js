@@ -62,7 +62,6 @@ const MainContextProvider = (props) => {
       if (user) {
         bool = user.password === password ? true : false;
       }
-      console.log(bool);
       if (bool) {
         dispatch({
           type: "LOGIN_USER",

@@ -34,7 +34,10 @@ const RoomsContextProvider = (props) => {
     }
   };
 
-  const createRoom = async (room) => {
+  const createRoom = async (room, user, createdAt) => {
+    room["owner"] = user.username;
+    room["CreatedAt"] = createdAt;
+    console.log(room);
     try {
       let res = await axios(API);
       let rooms = res.data.find((rooms) => rooms.roomtitle === room.roomtitle);
