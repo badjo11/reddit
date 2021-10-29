@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Card, Button } from "react-bootstrap";
+import AddRoomModal from "./AddRoomModal";
+import { mainContext } from "../../contexts/MainContext.js";
 
 const AddRooms = () => {
+  const { state } = useContext(mainContext);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  function handleShow() {
+    if (state.user) {
+      setShow(true);
+    }
+  }
+
   return (
     <div className="createRoomCard">
       <Card
@@ -16,9 +28,12 @@ const AddRooms = () => {
             Your personal Reddit frontpage. Come here to check in with your
             favorite communities.
           </Card.Text>
-          <Button>Create Room</Button>
+          <Button variant="primary" onClick={handleShow}>
+            Create room
+          </Button>
         </Card.Body>
       </Card>
+      <AddRoomModal handleClose={handleClose} show={show} />
     </div>
   );
 };
