@@ -38,7 +38,7 @@ const MainContextProvider = (props) => {
           });
           dispatch({
             type: "FAILED_LOGIN",
-            payload: null,
+            payload: false,
           });
         } catch (e) {
           console.log(e);
@@ -62,6 +62,7 @@ const MainContextProvider = (props) => {
       if (user) {
         bool = user.password === password ? true : false;
       }
+      console.log(bool);
       if (bool) {
         dispatch({
           type: "LOGIN_USER",
@@ -82,6 +83,13 @@ const MainContextProvider = (props) => {
     }
   };
 
+  const setUser = (user) => {
+    dispatch({
+      type: "LOGIN_USER",
+      payload: user,
+    });
+  };
+
   const logoutUser = () => {
     dispatch({
       type: "LOGOUT_USER",
@@ -95,6 +103,7 @@ const MainContextProvider = (props) => {
         signUpUser,
         loginUser,
         logoutUser,
+        setUser,
         state,
       }}
     >

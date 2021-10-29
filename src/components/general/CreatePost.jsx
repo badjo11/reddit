@@ -5,7 +5,7 @@ import iMG from "../../images/userdef.png";
 const CreatePost = () => {
   return (
     <div className="createPostComp">
-      <img className="defImg" src={iMG}></img>
+      <img alt="fuckoff" className="defImg" src={iMG}></img>
       <input
         className="createPostInp"
         type="text"

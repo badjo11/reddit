@@ -3,27 +3,18 @@ import { Button, Modal, Form } from "react-bootstrap";
 import { mainContext } from "../../contexts/MainContext";
 
 const SignUpModal = (props) => {
-  const { signUpUser, state } = useContext(mainContext);
+  const { signUpUser } = useContext(mainContext);
   const [user, setUser] = useState({ username: "", password: "" });
-  console.log(state);
 
   function handleChange(e) {
     let userr = { ...user, [e.target.name]: e.target.value };
     setUser(userr);
   }
 
-  function delaySignUp() {
-    if (state.failedLogin) {
-      props.handleClose();
-    } else {
-      console.log("failed");
-    }
-  }
-
   function handleSignup(e) {
     e.preventDefault();
     signUpUser(user.username, user.password);
-    setTimeout(delaySignUp(), 500);
+    props.handleClose();
   }
 
   return (

@@ -1,12 +1,10 @@
 import React, { useState, useContext } from "react";
 import {
   Navbar,
-  Form,
   FormControl,
   Button,
   Nav,
   Container,
-  NavDropdown,
   Badge,
 } from "react-bootstrap";
 import SignUpModal from "./auth/SignUpModal";
@@ -14,7 +12,7 @@ import LogInModal from "./auth/LogInModal";
 import { mainContext } from "../contexts/MainContext";
 
 const Navibar = () => {
-  const { state, logoutUser } = useContext(mainContext);
+  const { state, logoutUser, setUser } = useContext(mainContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,17 +20,27 @@ const Navibar = () => {
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
   let button;
-  let text;
+
+  function logout() {
+    logoutUser();
+    localStorage.clear();
+  }
+
   if (state.user) {
     // console.log(state.user.username)
+    let struser = JSON.stringify(state.user);
+    localStorage.setItem("user", struser);
     button = (
       <>
-        <Navbar.Collapse className="justify-content-end me-2" style={{ maxWidth: "200px" }}>
+        <Navbar.Collapse
+          className="justify-content-end me-2"
+          style={{ maxWidth: "200px" }}
+        >
           <Navbar.Text>
             Signed in as: <Badge bg="secondary">{state.user.username}</Badge>
           </Navbar.Text>
         </Navbar.Collapse>
-        <Button className="me-2" variant="primary" onClick={() => logoutUser()}>
+        <Button className="me-2" variant="primary" onClick={() => logout()}>
           Logout
         </Button>
       </>
@@ -49,6 +57,16 @@ const Navibar = () => {
       </>
     );
   }
+
+  function setuser() {
+    let struser = localStorage.getItem("user");
+
+    if (struser) {
+      setUser(JSON.parse(struser));
+    }
+  }
+  React.useEffect(() => setuser(), []);
+
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>

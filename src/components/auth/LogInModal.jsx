@@ -3,7 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { mainContext } from "../../contexts/MainContext";
 
 const LogInModal = (props) => {
-  const { loginUser, logoutUser, state } = useContext(mainContext);
+  const { loginUser } = useContext(mainContext);
   const [user, setUser] = useState({ username: "", password: "" });
   // console.log(state)
   function handleChange(e) {
@@ -11,20 +11,12 @@ const LogInModal = (props) => {
     setUser(userr);
   }
 
-  function delayLogin() {
-    if (state.failedLogin) {
-      props.handleCloseLogin();
-    } else {
-      // alert("Net takogo usera")
-      console.log("No");
-    }
-  }
-
   function handleLogIn(e) {
     e.preventDefault();
     loginUser(user.username, user.password);
-    setTimeout(delayLogin(), 500);
+    props.handleCloseLogin();
   }
+
   return (
     <>
       <Modal
