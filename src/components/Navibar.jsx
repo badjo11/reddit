@@ -7,6 +7,7 @@ import {
   Nav,
   Container,
   NavDropdown,
+  Badge,
 } from "react-bootstrap";
 import SignUpModal from "./auth/SignUpModal";
 import LogInModal from "./auth/LogInModal";
@@ -21,11 +22,20 @@ const Navibar = () => {
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
   let button;
+  let text;
   if (state.user) {
+    // console.log(state.user.username)
     button = (
-      <Button className="me-2" variant="primary" onClick={() => logoutUser()}>
-        Logout
-      </Button>
+      <>
+        <Navbar.Collapse className="justify-content-end me-2" style={{ maxWidth: "200px" }}>
+          <Navbar.Text>
+            Signed in as: <Badge bg="secondary">{state.user.username}</Badge>
+          </Navbar.Text>
+        </Navbar.Collapse>
+        <Button className="me-2" variant="primary" onClick={() => logoutUser()}>
+          Logout
+        </Button>
+      </>
     );
   } else {
     button = (
@@ -60,8 +70,9 @@ const Navibar = () => {
           <FormControl
             type="search"
             placeholder="Search"
-            className="me-2"
+            className="mx-auto "
             aria-label="Search"
+            style={{ maxWidth: "700px", textAlign: "center" }}
           />
           {button}
         </Navbar.Collapse>
