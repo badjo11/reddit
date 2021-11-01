@@ -2,9 +2,12 @@ import React, { useReducer } from "react";
 import axios from "axios";
 export const roomsContext = React.createContext();
 const API = "http://localhost:8000/rooms/";
+const APIs = "http://localhost:8000/rooms";
 
 const INIT_STATE = {
   rooms: [],
+  rooms5: [],
+  specificRoom: {},
   room_exist: null,
 };
 
@@ -12,8 +15,12 @@ const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case "ADD_ROOMS":
       return { ...state, rooms: action.payload };
+    case "ROOMS_5":
+      return { ...state, rooms5: action.payload };
     case "ROOM_EXIST":
       return { ...state, room_exist: action.payload };
+    case "SPECIFIC_ROOM":
+      return { ...state, specificRoom: action.payload };
     default:
       return state;
   }
@@ -32,6 +39,30 @@ const RoomsContextProvider = (props) => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const get5rooms = async () => {
+    try {
+      let res = await axios(APIs + "?_page=1&_limit=5");
+      dispatch({
+        type: "ROOMS_5",
+        payload: res.data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getRoomByTitle = async (title) => {
+    try {
+      let apiii = APIs + "?roomtitle=" + title;
+      console.log(apiii);
+      let res = await axios.get(apiii);
+      dispatch({
+        type: "SPECIFIC_ROOM",
+        payload: res.data,
+      });
+    } catch (e) {}
   };
 
   const createRoom = async (room, user, createdAt) => {
@@ -68,7 +99,11 @@ const RoomsContextProvider = (props) => {
       value={{
         createRoom,
         getAllRooms,
-        state,
+        get5rooms,
+        getRoomByTitle,
+        rooms: state.rooms,
+        rooms5: state.rooms5,
+        specificRoom: state.specificRoom,
       }}
     >
       {props.children}
