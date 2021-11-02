@@ -41,7 +41,6 @@ const PostsContextProvider = (props) => {
             let tempApi = APIsposts + "?roomtitle=" + title
             // console.log(tempApi)
             let result = await axios(tempApi)
-            console.log(result.data)
             dispatch({
                 type: "ROOM_POSTS",
                 payload: result.data,
