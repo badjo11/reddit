@@ -1,13 +1,13 @@
 import React from "react";
-import AddRooms from "../../roomsComponents/AddRooms";
 import MainFeed from "./MainFeed";
 import "./mainps.css";
+import MainPSideB from "./MainPSideB";
 
 const MainPS = () => {
   return (
     <div className="mainPS">
       <MainFeed />
-      <AddRooms />
+      <MainPSideB />
     </div>
   );
 };

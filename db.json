@@ -66,6 +66,56 @@
       "owner": "atai213",
       "CreatedAt": "2021-10-29T11:59:10.667Z",
       "id": 1
+    },
+    {
+      "roomtitle": "secondClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 0,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 2
+    },
+    {
+      "roomtitle": "thirdClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 0,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 3
+    },
+    {
+      "roomtitle": "fourthClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 0,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 4
+    },
+    {
+      "roomtitle": "fifthClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 0,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 5
+    },
+    {
+      "roomtitle": "artar",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwadawd",
+      "memberCount": 0,
+      "owner": "atai",
+      "CreatedAt": "2021-11-01T10:07:54.852Z",
+      "id": 6
     }
   ],
   "posts": [],
