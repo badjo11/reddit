@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./roombody.css";
 import { Button, Card } from "react-bootstrap";
+import CreatePost from '../general/CreatePost'
+import { useParams } from "react-router-dom";
+import { postsContext } from "../../contexts/PostsContext";
+import PostList from "../general/PostList";
 
 const RoomBody = () => {
+  const { roomtitle } = useParams();
+  const { roomposts, getPostsByRoom } = useContext(postsContext)
+  // const [posts, setPosts] = useState([])
+  useEffect(() => {
+    getPostsByRoom(roomtitle)
+  }, [])
   return (
     <div className="bg-secondary">
       <div className="container d-flex">
@@ -24,6 +34,8 @@ const RoomBody = () => {
             />
             <p className="pt-4">Hot</p>
           </div>
+          <CreatePost roomtitle={roomtitle} />
+          <PostList />
         </div>
         <div className="rooms__body_sidebar">
           <Card style={{ width: "18rem" }}>

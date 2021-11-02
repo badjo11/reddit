@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import axios from "axios";
+import { APIusers } from '../helpers/config';
 export const mainContext = React.createContext();
-const API = "http://localhost:8000/users/";
 
 const INIT_STATE = {
   user: null,
@@ -27,11 +27,11 @@ const MainContextProvider = (props) => {
 
   const signUpUser = async (username, password) => {
     try {
-      let res = await axios(API);
+      let res = await axios(APIusers);
       let user = res.data.find((user) => user.username === username);
       if (user === undefined) {
         try {
-          let { data } = await axios.post(API, {
+          let { data } = await axios.post(APIusers, {
             username,
             password,
             rooms: [],
@@ -62,7 +62,7 @@ const MainContextProvider = (props) => {
     user["rooms"].push(roomId);
     console.log(user);
     try {
-      let res = await axios.put(API + user.id, user);
+      let res = await axios.put(APIusers + user.id, user);
       dispatch({
         type: "LOGIN_USER",
         payload: res.data,
@@ -74,7 +74,7 @@ const MainContextProvider = (props) => {
 
   const loginUser = async (username, password) => {
     try {
-      let res = await axios(API);
+      let res = await axios(APIusers);
       let user = res.data.find((user) => user.username === username);
       let bool = false;
       if (user) {
