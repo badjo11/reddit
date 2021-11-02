@@ -3,8 +3,18 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [1, 5, 3],
+      "rooms": [
+        1,
+        5,
+        3
+      ],
       "id": 1
+    },
+    {
+      "username": "qwe",
+      "password": "erwewrt",
+      "rooms": [],
+      "id": 2
     }
   ],
   "rooms": [
@@ -67,9 +77,52 @@
       "owner": "atai",
       "CreatedAt": "2021-11-01T10:07:54.852Z",
       "id": 6
+    },
+    {
+      "roomtitle": "tempoRoom",
+      "category": "gaming",
+      "about": "Template",
+      "avaURl": "qwe",
+      "memberCount": 0,
+      "owner": "qwe",
+      "CreatedAt": "2021-11-02T10:57:43.072Z",
+      "id": 7
     }
   ],
-  "posts": [],
+  "posts": [
+    {
+      "postName": "qwe",
+      "postText": "waetasgdfg",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-02T09:36:15.078Z",
+      "id": 1
+    },
+    {
+      "postName": "qwe",
+      "postText": "sfd",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-02T09:53:37.144Z",
+      "id": 2
+    },
+    {
+      "postName": "wer",
+      "postText": "ert",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-02T10:52:05.871Z",
+      "id": 3
+    },
+    {
+      "postName": "sdfs",
+      "postText": "sddfsdfsddfsdfsddfsdfsddfsdfsddfsdfsddfsdf",
+      "roomtitle": "temporoom",
+      "owner": "qwe",
+      "CreatedAt": "2021-11-02T10:58:07.808Z",
+      "id": 4
+    }
+  ],
   "comments": [],
   "likes": []
 }

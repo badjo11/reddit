@@ -1,8 +1,7 @@
 import React, { useReducer } from "react";
 import axios from "axios";
+import { APIrooms, APIsrooms } from '../helpers/config';
 export const roomsContext = React.createContext();
-const API = "http://localhost:8000/rooms/";
-const APIs = "http://localhost:8000/rooms";
 
 const INIT_STATE = {
   rooms: [],
@@ -31,7 +30,7 @@ const RoomsContextProvider = (props) => {
 
   const getAllRooms = async () => {
     try {
-      let { data } = await axios(API);
+      let { data } = await axios(APIrooms);
       dispatch({
         type: "ADD_ROOMS",
         payload: data,
@@ -43,7 +42,7 @@ const RoomsContextProvider = (props) => {
 
   const get5rooms = async () => {
     try {
-      let res = await axios(APIs + "?_page=1&_limit=5");
+      let res = await axios(APIsrooms + "?_page=1&_limit=5");
       dispatch({
         type: "ROOMS_5",
         payload: res.data,
@@ -55,14 +54,14 @@ const RoomsContextProvider = (props) => {
 
   const getRoomByTitle = async (title) => {
     try {
-      let apiii = APIs + "?roomtitle=" + title;
+      let apiii = APIsrooms + "?roomtitle=" + title;
       console.log(apiii);
       let res = await axios.get(apiii);
       dispatch({
         type: "SPECIFIC_ROOM",
         payload: res.data,
       });
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const createRoom = async (room, user, createdAt) => {
@@ -70,11 +69,11 @@ const RoomsContextProvider = (props) => {
     room["CreatedAt"] = createdAt;
     console.log(room);
     try {
-      let res = await axios(API);
+      let res = await axios(APIrooms);
       let rooms = res.data.find((rooms) => rooms.roomtitle === room.roomtitle);
       if (rooms === undefined) {
         try {
-          await axios.post(API, room);
+          await axios.post(APIrooms, room);
           getAllRooms();
           dispatch({
             type: "ROOM_EXIST",

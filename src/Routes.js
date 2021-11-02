@@ -4,18 +4,21 @@ import MainPage from "./pages/MainPage";
 import MainContextProvider from "./contexts/MainContext";
 import RoomsPage from "./pages/RoomsPage";
 import RoomsContextProvider from "./contexts/RoomsContext";
+import PostsContextProvider from "./contexts/PostsContext";
 
 const Routes = () => {
   return (
     <MainContextProvider>
       <RoomsContextProvider>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route exact path="/r/:roomtitle" component={RoomsPage} />
-            <Redirect to="/" />
-          </Switch>
-        </BrowserRouter>
+        <PostsContextProvider>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={MainPage} />
+              <Route exact path="/r/:roomtitle" component={RoomsPage} />
+              <Redirect to="/" />
+            </Switch>
+          </BrowserRouter>
+        </PostsContextProvider>
       </RoomsContextProvider>
     </MainContextProvider>
   );
