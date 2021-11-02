@@ -70,10 +70,9 @@ const Navibar = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">
-          {" "}
+        <Navbar.Brand href="/">
           <img
-            width="70px"
+            width="80px"
             src="https://www.logo.wine/a/logo/Reddit/Reddit-Logo.wine.svg"
             alt="logo"
           />

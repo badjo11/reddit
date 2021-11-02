@@ -31,7 +31,11 @@ const MainContextProvider = (props) => {
       let user = res.data.find((user) => user.username === username);
       if (user === undefined) {
         try {
-          let { data } = await axios.post(API, { username, password });
+          let { data } = await axios.post(API, {
+            username,
+            password,
+            rooms: [],
+          });
           dispatch({
             type: "LOGIN_USER",
             payload: data,
@@ -49,6 +53,20 @@ const MainContextProvider = (props) => {
           payload: true,
         });
       }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const userJoinRoom = async (user, roomId) => {
+    user["rooms"].push(roomId);
+    console.log(user);
+    try {
+      let res = await axios.put(API + user.id, user);
+      dispatch({
+        type: "LOGIN_USER",
+        payload: res.data,
+      });
     } catch (e) {
       console.log(e);
     }
@@ -103,6 +121,8 @@ const MainContextProvider = (props) => {
         loginUser,
         logoutUser,
         setUser,
+        userJoinRoom,
+        user: state.user,
         state,
       }}
     >

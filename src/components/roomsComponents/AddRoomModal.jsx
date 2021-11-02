@@ -13,6 +13,8 @@ const AddRoomModal = (props) => {
     memberCount: 0,
   });
 
+  console.log(room);
+
   function handleChange(e) {
     let userr = { ...room, [e.target.name]: e.target.value };
     setRoom(userr);
@@ -51,7 +53,9 @@ const AddRoomModal = (props) => {
                 name="category"
                 aria-label="Default select example"
               >
-                <option value="default">select your categoty</option>
+                <option disabled defaultValue>
+                  select your categoty
+                </option>
                 <option value="storts">sports</option>
                 <option value="gaming">gaming</option>
                 <option value="news">news</option>

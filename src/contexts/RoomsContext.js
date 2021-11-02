@@ -7,7 +7,7 @@ const APIs = "http://localhost:8000/rooms";
 const INIT_STATE = {
   rooms: [],
   rooms5: [],
-  specificRoom: {},
+  specificRoom: null,
   room_exist: null,
 };
 

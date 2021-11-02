@@ -1,15 +1,60 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./roomheader.css";
 import { Button } from "react-bootstrap";
 import { roomsContext } from "../../contexts/RoomsContext";
+import { mainContext } from "../../contexts/MainContext";
 import { useParams } from "react-router-dom";
 
 const RoomHeader = () => {
   const { specificRoom, getRoomByTitle } = useContext(roomsContext);
+  const { userJoinRoom, user } = useContext(mainContext);
   const { roomtitle } = useParams();
+  const [room, setRoom] = useState({ joined: false });
+  function userJoinedQM() {
+    let usr = localStorage.getItem("user");
+    usr = JSON.parse(usr);
+    if (specificRoom) {
+      for (let i = 0; i < usr["rooms"].length; i++) {
+        if (usr["rooms"][i] === specificRoom[0].id) {
+          setRoom({ joined: true });
+        }
+      }
+    }
+  }
 
   useEffect(() => getRoomByTitle(roomtitle), []);
-  console.log(specificRoom);
+  useEffect(() => userJoinedQM(), [specificRoom]);
+
+  let joinedRender;
+  if (room.joined === true) {
+    joinedRender = (
+      <Button
+        disabled={true}
+        onClick={handleJoin}
+        className="join-btn"
+        variant="warning"
+      >
+        Joined
+      </Button>
+    );
+  } else {
+    joinedRender = (
+      <Button onClick={handleJoin} className="join-btn" variant="warning">
+        Join
+      </Button>
+    );
+  }
+
+  function updateUser() {
+    let struser = JSON.stringify(user);
+    localStorage.setItem("user", struser);
+  }
+
+  function handleJoin() {
+    userJoinRoom(user, specificRoom[0].id);
+    setRoom({ joined: true });
+    setTimeout(() => updateUser(), 200);
+  }
 
   return (
     <>
@@ -25,10 +70,11 @@ const RoomHeader = () => {
           {/* <p className="ps-4">Posts</p> */}
         </div>
         <div className="room__body_title">
-          <h1>
-            {roomtitle} <Button variant="warning">Join</Button>
-          </h1>
-          <p className="text-muted">link of room</p>
+          <div>
+            <h3 className="roomtitlesign">{roomtitle}</h3>
+            {joinedRender}
+          </div>
+          <p className="">{"/r/" + roomtitle}</p>
         </div>
       </div>
     </>

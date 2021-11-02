@@ -1,7 +1,16 @@
 .rooms_header {
-    width: 100%;
-    height: 300px;
-    background-image: url("https://www.teahub.io/photos/full/260-2607761_painting.jpg");
-    /* background-image: url(); */
-    background-color: #cccccc;
+  width: 100%;
+  height: 300px;
+  background-image: url("https://www.teahub.io/photos/full/260-2607761_painting.jpg");
+  /* background-image: url(); */
+  background-color: #cccccc;
+}
+
+.join-link {
+  margin-left: 50px;
+}
+
+.roomtitlesign {
+  display: inline-block;
+  padding-right: 25px;
 }

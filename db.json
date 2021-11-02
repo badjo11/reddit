@@ -3,57 +3,8 @@
     {
       "username": "atai",
       "password": "atai",
+      "rooms": [1, 5, 3],
       "id": 1
-    },
-    {
-      "username": "atai2",
-      "password": "atao",
-      "id": 2
-    },
-    {
-      "username": "atai1",
-      "password": "dwddwd",
-      "id": 3
-    },
-    {
-      "username": "atai23",
-      "password": "dwad",
-      "id": 4
-    },
-    {
-      "username": "atai24121",
-      "password": "213",
-      "id": 5
-    },
-    {
-      "username": "atai23121",
-      "password": "3213123",
-      "id": 6
-    },
-    {
-      "username": "qweqweqweqweqweqweqweqweqweqw",
-      "password": "123",
-      "id": 7
-    },
-    {
-      "username": "Badjo",
-      "password": "123",
-      "id": 8
-    },
-    {
-      "username": "atai2323",
-      "password": "dawdaw",
-      "id": 9
-    },
-    {
-      "username": "ataippp",
-      "password": "dsadawd",
-      "id": 10
-    },
-    {
-      "username": "atai213",
-      "password": "dwadawda",
-      "id": 11
     }
   ],
   "rooms": [
