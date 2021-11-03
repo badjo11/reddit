@@ -4,14 +4,19 @@
       "username": "atai",
       "password": "atai",
       "rooms": [
-        1,
-        2
+        1
       ],
       "roomTitles": [
-        "firstClean",
-        "secondClean"
+        "firstClean"
       ],
       "id": 1
+    },
+    {
+      "username": "atai1",
+      "password": "atai",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 2
     }
   ],
   "rooms": [
@@ -148,6 +153,15 @@
       "CreatedAt": "2021-11-03T11:19:28.764Z",
       "CreatedAtMs": 1635938368764,
       "id": 16
+    },
+    {
+      "postName": "dawdwa",
+      "postText": "dwadawd",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-03T12:31:25.237Z",
+      "CreatedAtMs": 1635942685238,
+      "id": 17
     }
   ],
   "comments": [

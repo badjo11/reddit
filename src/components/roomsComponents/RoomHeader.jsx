@@ -6,8 +6,13 @@ import { mainContext } from "../../contexts/MainContext";
 import { useParams } from "react-router-dom";
 
 const RoomHeader = () => {
-  const { specificRoom, getRoomByTitle } = useContext(roomsContext);
-  const { userJoinRoom, user } = useContext(mainContext);
+  const {
+    specificRoom,
+    getRoomByTitle,
+    addMemberToARoom,
+    removeMemberFromARoom,
+  } = useContext(roomsContext);
+  const { userLeavesRoom, userJoinRoom, user } = useContext(mainContext);
   const { roomtitle } = useParams();
   const [room, setRoom] = useState({ joined: false });
   function userJoinedQM() {
@@ -30,12 +35,7 @@ const RoomHeader = () => {
   let joinedRender;
   if (room.joined === true) {
     joinedRender = (
-      <Button
-        disabled={true}
-        onClick={handleJoin}
-        className="join-btn"
-        variant="warning"
-      >
+      <Button onClick={handleLeave} className="join-btn" variant="warning">
         Joined
       </Button>
     );
@@ -55,6 +55,14 @@ const RoomHeader = () => {
   function handleJoin() {
     userJoinRoom(user, specificRoom[0].id, roomtitle);
     setRoom({ joined: true });
+    addMemberToARoom(specificRoom[0].id, specificRoom[0].memberCount);
+    setTimeout(() => updateUser(), 200);
+  }
+
+  function handleLeave() {
+    userLeavesRoom(user, specificRoom[0].id, roomtitle);
+    setRoom({ joined: false });
+    removeMemberFromARoom(specificRoom[0].id, specificRoom[0].memberCount);
     setTimeout(() => updateUser(), 200);
   }
 

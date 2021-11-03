@@ -52,6 +52,30 @@ const RoomsContextProvider = (props) => {
     }
   };
 
+  const addMemberToARoom = async (id, count) => {
+    count = count + 1;
+    try {
+      let res = await axios.patch(APIrooms + id, {
+        memberCount: count,
+      });
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const removeMemberFromARoom = async (id, count) => {
+    count = count - 1;
+    try {
+      let res = await axios.patch(APIrooms + id, {
+        memberCount: count,
+      });
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const getRoomByTitle = async (title) => {
     try {
       let apiii = APIsrooms + "?roomtitle=" + title;
@@ -107,6 +131,8 @@ const RoomsContextProvider = (props) => {
         getAllRooms,
         get5rooms,
         getRoomByTitle,
+        addMemberToARoom,
+        removeMemberFromARoom,
         rooms: state.rooms,
         rooms5: state.rooms5,
         specificRoom: state.specificRoom,

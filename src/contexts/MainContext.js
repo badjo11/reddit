@@ -74,6 +74,23 @@ const MainContextProvider = (props) => {
     }
   };
 
+  const userLeavesRoom = async (user, roomId, roomTitle) => {
+    user["rooms"] = user["rooms"].filter((item) => item !== roomId);
+    user["roomTitles"] = user["roomTitles"].filter(
+      (item) => item !== roomTitle
+    );
+    console.log(user);
+    try {
+      let res = await axios.put(APIusers + user.id, user);
+      dispatch({
+        type: "LOGIN_USER",
+        payload: res.data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const getRoomTitlesForUser = async (username) => {
     try {
       let res = await APIusers;
@@ -130,6 +147,7 @@ const MainContextProvider = (props) => {
         logoutUser,
         setUser,
         userJoinRoom,
+        userLeavesRoom,
         user: state.user,
         state,
       }}
