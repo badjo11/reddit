@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Navibar from "../components/Navibar";
 import MainPS from "../components/pageScructure/mainPage/MainPS";
 
 const MainPage = () => {
@@ -7,7 +6,6 @@ const MainPage = () => {
 
   return (
     <>
-      <Navibar />
       <MainPS />
     </>
   );
