@@ -6,6 +6,7 @@ export const postsContext = React.createContext();
 const INIT_STATE = {
   posts: [],
   roomposts: [],
+  specificPost: null,
   mainFeedPosts: [],
 };
 const reducer = (state = INIT_STATE, action) => {
@@ -17,6 +18,10 @@ const reducer = (state = INIT_STATE, action) => {
         ...state,
         mainFeedPosts: state.mainFeedPosts.concat(action.payload),
       };
+    case "SPECIFIC_POST":
+      return {
+        ...state, specificPost: action.payload
+      }
     default:
       return state;
   }
@@ -37,7 +42,17 @@ const PostsContextProvider = (props) => {
       console.log(e);
     }
   };
-
+  const getSpecificPost = async (id) => {
+    try {
+      let res = await axios(APIposts + id)
+      dispatch({
+        type: "SPECIFIC_POST",
+        payload: res.data,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
   const getPostsForMainUserFeed = async (titles) => {
     titles.forEach(async (title) => {
       try {
@@ -47,7 +62,7 @@ const PostsContextProvider = (props) => {
           type: "MAIN_FEED_POSTS",
           payload: result.data,
         });
-      } catch (e) {}
+      } catch (e) { }
     });
   };
 
@@ -71,6 +86,8 @@ const PostsContextProvider = (props) => {
         createPost,
         getPostsByRoom,
         getPostsForMainUserFeed,
+        getSpecificPost,
+        specificPost: state.specificPost,
         roomposts: state.roomposts,
         mainFeedPosts: state.mainFeedPosts,
       }}

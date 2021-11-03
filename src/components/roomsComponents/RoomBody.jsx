@@ -26,7 +26,7 @@ const RoomBody = () => {
     );
   } else {
     return (
-      <div className="bg-light">
+      <div style={{ backgroundColor: '#DAE0E6' }}>
         <div className="container d-flex">
           <div className="rooms__body_posts">
             {/* <div className="rooms__body_posts-rank d-flex">
