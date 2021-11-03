@@ -131,8 +131,24 @@
       "owner": "atai",
       "CreatedAt": "2021-11-03T06:17:18.514Z",
       "id": 7
+    },
+    {
+      "postName": "dawd",
+      "postText": "dwad",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-03T07:54:29.103Z",
+      "id": 8
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment": "lalalalala",
+      "owner": "atai",
+      "postId": 8,
+      "likesWeight": 10,
+      "id": 1
+    }
+  ],
   "likes": []
 }

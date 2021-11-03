@@ -18,35 +18,40 @@ const reducer = (state = INIT_STATE, action) => {
 const CommentsContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  //   const createComment = async (post, user, createdAt, roomtitle) => {
-  //     post["roomtitle"] = roomtitle;
-  //     post["owner"] = user.username;
-  //     post["CreatedAt"] = createdAt;
-  //     try {
-  //       await axios.post(APIposts, post);
-  //       getPostsByRoom(roomtitle);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
+  const createComment = async (commentContent, user, createdAt, postId) => {
+    let comment = {
+      comment: commentContent,
+      owner: user,
+      createdAt,
+      postId,
+      likesWeight: 0,
+    };
+    try {
+      let res = await axios.post(APIComments, comment);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  //   const getPostsByRoom = async (title) => {
-  //     try {
-  //       let tempApi = APIsposts + "?roomtitle=" + title;
-  //       // console.log(tempApi)
-  //       let result = await axios(tempApi);
-  //       dispatch({
-  //         type: "ROOM_POSTS",
-  //         payload: result.data,
-  //       });
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
+  const getCommentsForRoom = async (postId) => {
+    try {
+      let tempApi = APIComments + "?postId=" + postId;
+      // console.log(tempApi)
+      let result = await axios(tempApi);
+      dispatch({
+        type: "COMMENTS_FOR_POST",
+        payload: result.data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <commentsContext.Provider
       value={{
+        createComment,
+        getCommentsForRoom,
         commentsForPost: state.commentsForPost,
       }}
     >

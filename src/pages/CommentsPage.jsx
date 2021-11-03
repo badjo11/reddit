@@ -1,7 +1,12 @@
 import React from "react";
+import CommentsBody from "../components/comments/CommentsBody";
 
 const CommentsPage = () => {
-  return <>text</>;
+  return (
+    <>
+      <CommentsBody />
+    </>
+  );
 };
 
 export default CommentsPage;

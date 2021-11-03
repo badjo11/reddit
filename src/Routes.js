@@ -18,7 +18,11 @@ const Routes = () => {
             <Switch>
               <Route exact path="/" component={MainPage} />
               <Route exact path="/r/:roomtitle" component={RoomsPage} />
-              <Route exact path="/r/:roomtitle/:id" component={CommentsPage} />
+              <Route
+                exact
+                path="/r/:roomtitle/comments/:id"
+                component={CommentsPage}
+              />
               <Redirect to="/" />
             </Switch>
           </BrowserRouter>
