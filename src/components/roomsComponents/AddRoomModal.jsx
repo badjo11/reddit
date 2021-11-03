@@ -13,8 +13,6 @@ const AddRoomModal = (props) => {
     memberCount: 0,
   });
 
-  console.log(room);
-
   function handleChange(e) {
     let userr = { ...room, [e.target.name]: e.target.value };
     setRoom(userr);
