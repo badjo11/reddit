@@ -3,14 +3,15 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [1, 5, 3, 2],
+      "rooms": [
+        1,
+        2
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean"
+      ],
       "id": 1
-    },
-    {
-      "username": "asd",
-      "password": "asd",
-      "rooms": [2, 1, 3, 4],
-      "id": 2
     }
   ],
   "rooms": [
@@ -111,6 +112,42 @@
       "CreatedAt": "2021-11-03T08:28:26.353Z",
       "CreatedAtMs": 1635928106353,
       "id": 12
+    },
+    {
+      "postName": "SecondROOM",
+      "postText": "dad",
+      "roomtitle": "secondClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-03T10:33:03.399Z",
+      "CreatedAtMs": 1635935583399,
+      "id": 13
+    },
+    {
+      "postName": "FirstROOM",
+      "postText": "hahaha",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-03T10:33:18.022Z",
+      "CreatedAtMs": 1635935598022,
+      "id": 14
+    },
+    {
+      "postName": "dawd",
+      "postText": "dawdawd",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-03T11:18:32.901Z",
+      "CreatedAtMs": 1635938312901,
+      "id": 15
+    },
+    {
+      "postName": "Bael",
+      "postText": "KOT",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-03T11:19:28.764Z",
+      "CreatedAtMs": 1635938368764,
+      "id": 16
     }
   ],
   "comments": [

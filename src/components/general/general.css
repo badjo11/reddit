@@ -22,7 +22,7 @@
   margin-bottom: 5px;
 }
 
-.reatePostInp::placeholder {
+.createPostInp::placeholder {
   text-align: center;
   margin-left: 30px;
 }

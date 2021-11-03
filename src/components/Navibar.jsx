@@ -33,7 +33,7 @@ const Navibar = () => {
     button = (
       <>
         <Navbar.Collapse
-          className="justify-content-end me-2"
+          className="justify-content-end me-2 navbar"
           style={{ maxWidth: "200px" }}
         >
           <Navbar.Text>
@@ -68,7 +68,7 @@ const Navibar = () => {
   React.useEffect(() => setuser(), []);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="nav" bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand href="/">
           <img

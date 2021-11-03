@@ -53,7 +53,7 @@ const RoomHeader = () => {
   }
 
   function handleJoin() {
-    userJoinRoom(user, specificRoom[0].id);
+    userJoinRoom(user, specificRoom[0].id, roomtitle);
     setRoom({ joined: true });
     setTimeout(() => updateUser(), 200);
   }

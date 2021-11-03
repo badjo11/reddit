@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import { APIrooms, APIsrooms } from '../helpers/config';
+import { APIrooms, APIsrooms } from "../helpers/config";
 export const roomsContext = React.createContext();
 
 const INIT_STATE = {
@@ -57,11 +57,18 @@ const RoomsContextProvider = (props) => {
       let apiii = APIsrooms + "?roomtitle=" + title;
       console.log(apiii);
       let res = await axios.get(apiii);
-      dispatch({
-        type: "SPECIFIC_ROOM",
-        payload: res.data,
-      });
-    } catch (e) { }
+      if (res.data.length > 0) {
+        dispatch({
+          type: "SPECIFIC_ROOM",
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: "SPECIFIC_ROOM",
+          payload: "error",
+        });
+      }
+    } catch (e) {}
   };
 
   const createRoom = async (room, user, createdAt) => {

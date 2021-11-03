@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import { APIusers } from '../helpers/config';
+import { APIusers } from "../helpers/config";
 export const mainContext = React.createContext();
 
 const INIT_STATE = {
@@ -35,6 +35,7 @@ const MainContextProvider = (props) => {
             username,
             password,
             rooms: [],
+            roomTitles: [],
           });
           dispatch({
             type: "LOGIN_USER",
@@ -58,8 +59,9 @@ const MainContextProvider = (props) => {
     }
   };
 
-  const userJoinRoom = async (user, roomId) => {
+  const userJoinRoom = async (user, roomId, roomTitle) => {
     user["rooms"].push(roomId);
+    user["roomTitles"].push(roomTitle);
     console.log(user);
     try {
       let res = await axios.put(APIusers + user.id, user);
@@ -70,6 +72,12 @@ const MainContextProvider = (props) => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const getRoomTitlesForUser = async (username) => {
+    try {
+      let res = await APIusers;
+    } catch (e) {}
   };
 
   const loginUser = async (username, password) => {
