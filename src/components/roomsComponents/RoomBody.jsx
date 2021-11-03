@@ -46,12 +46,16 @@ const RoomBody = () => {
             <Card.Header style={{ backgroundColor: "#313638", color: "white" }} as="h3">About comunity</Card.Header>
             <Card.Body>
               <Card.Title>{roomtitle}</Card.Title>
+              <Card.Text>
+                {specificRoom ? ((specificRoom[0].about)) : ("About community")}
+              </Card.Text>
+              <Card.Text>
+                {specificRoom ? ((specificRoom[0].memberCount)) : ("0")} members
+              </Card.Text>
               <Card.Text style={{ fontSize: "12px" }} >
-                Created by <span style={{ color: "blueviolet" }}>{specificRoom ? (specificRoom[0].owner) : ("title")}</span>
+                Created by <span style={{ color: "blueviolet" }}>{specificRoom ? (specificRoom[0].owner) : ("title")}</span> on <span style={{ color: "blueviolet" }}>{specificRoom ? ((specificRoom[0].CreatedAt).match(/.{10}/)) : ("time")}</span>
               </Card.Text>
-              <Card.Text style={{ fontSize: "14px" }} >
-                Created on <span style={{ color: "blueviolet" }}>{specificRoom ? ((specificRoom[0].CreatedAt).match(/.{10}/)) : ("time")}</span>
-              </Card.Text>
+              <CreatePost roomtitle={roomtitle} />
             </Card.Body>
           </Card>
         </div>

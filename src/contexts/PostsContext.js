@@ -23,6 +23,7 @@ const PostsContextProvider = (props) => {
     post["roomtitle"] = roomtitle;
     post["owner"] = user.username;
     post["CreatedAt"] = createdAt;
+
     try {
       await axios.post(APIposts, post);
       getPostsByRoom(roomtitle);

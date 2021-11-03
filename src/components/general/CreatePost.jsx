@@ -27,9 +27,9 @@ const CreatePost = ({ roomtitle }) => {
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
     let time = new Date();
+    console.log(time)
     createPost(post, user, time, roomtitle);
     handleClose()
-
   }
 
 
