@@ -28,7 +28,9 @@ const CreatePost = ({ roomtitle }) => {
     user = JSON.parse(user);
     let time = new Date();
     console.log(time)
-    createPost(post, user, time, roomtitle);
+    let timeMls = Date.now()
+    // console.log(timeMls)
+    createPost(post, user, time, roomtitle, timeMls);
     handleClose()
   }
 

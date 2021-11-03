@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 
 function timeSince(date) {
-
   let seconds = Math.floor((new Date() - date) / 1000);
 
   let interval = seconds / 31536000;
-
   if (interval > 1) {
     return Math.floor(interval) + " years";
   }
@@ -28,46 +26,41 @@ function timeSince(date) {
   }
   return Math.floor(seconds) + " seconds";
 }
-function differBetweenTwoDates(createdTime) {
-  let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-  console.log(months.indexOf('Nov') + 1)
-  // console.log(createdTime)
-  // console.log(Date())
-  let timeNow = []
-  let timeCreated
-}
 const Post = ({ item }) => {
+  const [timeLeft, setTimeLeft] = useState(0)
 
-  let aDay = 24 * 60 * 60 * 1000;
-  differBetweenTwoDates(item.CreatedAt)
-  // console.log(timeSince(new Date(Date.now() - aDay)));
-  // console.log(timeSince(new Date(Date.now() - aDay * 2)));
+  useEffect(() => {
+    setTimeLeft(timeSince((item.CreatedAtMs)))
+  }, [])
 
 
   return (
-    <Card key={item.id} style={{ width: "95%", marginTop: "10px" }}>
-      <Card.Body>
-        <Card.Subtitle style={{ fontSize: "12px" }} className="mb-2 text-muted">
-          Posted by: {item.owner} at {item.CreatedAt.match(/.{10}/)}{" "}
-          {item.CreatedAt[11]}
-          {item.CreatedAt[12]}
-          {item.CreatedAt[13]}
-          {item.CreatedAt[14]}
-          {item.CreatedAt[15]}
-        </Card.Subtitle>
-        <Card.Title>{item.postName}</Card.Title>
+    <Card.Link key={item.id + "card"} href={"/comments/" + item.id}>
+      <Card key={item.id} style={{ width: "95%", marginTop: "10px" }}>
+        <Card.Body>
+          <Card.Subtitle style={{ fontSize: "12px" }} className="mb-2 text-muted">
+            Posted by: {item.owner} at {item.CreatedAt.match(/.{10}/)}{" "}
+            {item.CreatedAt[11]}
+            {item.CreatedAt[12]}
+            {item.CreatedAt[13]}
+            {item.CreatedAt[14]}
+            {item.CreatedAt[15]}
+            {' '}{timeLeft} ago
+          </Card.Subtitle>
+          <Card.Title>{item.postName}</Card.Title>
 
-        <Card.Text>{item.postText}</Card.Text>
-      </Card.Body>
-      <Card.Footer>
-        <Button variant="danger">
-          <img
-            width="20px"
-            src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png"
-          />
-        </Button>
-      </Card.Footer>
-    </Card>
+          <Card.Text>{item.postText}</Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <Button variant="danger">
+            <img
+              width="20px"
+              src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png"
+            />
+          </Button>
+        </Card.Footer>
+      </Card>
+    </Card.Link>
   );
 };
 

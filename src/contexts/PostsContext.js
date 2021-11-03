@@ -19,11 +19,11 @@ const reducer = (state = INIT_STATE, action) => {
 const PostsContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createPost = async (post, user, createdAt, roomtitle) => {
+  const createPost = async (post, user, createdAt, roomtitle, timeMls) => {
     post["roomtitle"] = roomtitle;
     post["owner"] = user.username;
     post["CreatedAt"] = createdAt;
-
+    post["CreatedAtMs"] = timeMls
     try {
       await axios.post(APIposts, post);
       getPostsByRoom(roomtitle);
