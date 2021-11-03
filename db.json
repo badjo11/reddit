@@ -11,9 +11,14 @@
       "id": 1
     },
     {
-      "username": "qwe",
-      "password": "erwewrt",
-      "rooms": [],
+      "username": "asd",
+      "password": "asd",
+      "rooms": [
+        2,
+        1,
+        3,
+        4
+      ],
       "id": 2
     }
   ],
@@ -77,16 +82,6 @@
       "owner": "atai",
       "CreatedAt": "2021-11-01T10:07:54.852Z",
       "id": 6
-    },
-    {
-      "roomtitle": "tempoRoom",
-      "category": "gaming",
-      "about": "Template",
-      "avaURl": "qwe",
-      "memberCount": 0,
-      "owner": "qwe",
-      "CreatedAt": "2021-11-02T10:57:43.072Z",
-      "id": 7
     }
   ],
   "posts": [
@@ -113,14 +108,6 @@
       "owner": "atai",
       "CreatedAt": "2021-11-02T10:52:05.871Z",
       "id": 3
-    },
-    {
-      "postName": "sdfs",
-      "postText": "sddfsdfsddfsdfsddfsdfsddfsdfsddfsdfsddfsdf",
-      "roomtitle": "temporoom",
-      "owner": "qwe",
-      "CreatedAt": "2021-11-02T10:58:07.808Z",
-      "id": 4
     }
   ],
   "comments": [],

@@ -14,7 +14,6 @@ const CreatePost = ({ roomtitle }) => {
     postText: "",
   })
 
-  console.log(post)
 
   function handleChange(e) {
     let tempPost = { ...post, [e.target.name]: e.target.value }

@@ -5,14 +5,18 @@ import CreatePost from '../general/CreatePost'
 import { useParams } from "react-router-dom";
 import { postsContext } from "../../contexts/PostsContext";
 import PostList from "../general/PostList";
+import { roomsContext } from "../../contexts/RoomsContext";
 
 const RoomBody = () => {
   const { roomtitle } = useParams();
   const { roomposts, getPostsByRoom } = useContext(postsContext)
+  const { specificRoom } = useContext(roomsContext)
+  // console.log(specificRoom.roomtitle)
   // const [posts, setPosts] = useState([])
   useEffect(() => {
     getPostsByRoom(roomtitle)
   }, [])
+
   return (
     <div className="bg-secondary">
       <div className="container d-flex">
@@ -39,14 +43,15 @@ const RoomBody = () => {
         </div>
         <div className="rooms__body_sidebar">
           <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Header style={{ backgroundColor: "#313638", color: "white" }} as="h3">About comunity</Card.Header>
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+              <Card.Title>{roomtitle}</Card.Title>
+              <Card.Text style={{ fontSize: "12px" }} >
+                Created by <span style={{ color: "blueviolet" }}>{specificRoom ? (specificRoom[0].owner) : ("title")}</span>
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              <Card.Text style={{ fontSize: "14px" }} >
+                Created on <span style={{ color: "blueviolet" }}>{specificRoom ? ((specificRoom[0].CreatedAt).match(/.{10}/)) : ("time")}</span>
+              </Card.Text>
             </Card.Body>
           </Card>
         </div>
