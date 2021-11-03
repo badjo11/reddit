@@ -14,9 +14,11 @@ const RoomHeader = () => {
     let usr = localStorage.getItem("user");
     usr = JSON.parse(usr);
     if (specificRoom) {
-      for (let i = 0; i < usr["rooms"].length; i++) {
-        if (usr["rooms"][i] === specificRoom[0].id) {
-          setRoom({ joined: true });
+      if (usr) {
+        for (let i = 0; i < usr["rooms"].length; i++) {
+          if (usr["rooms"][i] === specificRoom[0].id) {
+            setRoom({ joined: true });
+          }
         }
       }
     }
