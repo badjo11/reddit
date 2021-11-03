@@ -12,7 +12,7 @@ const PostList = () => {
   return (
     <div>
       {roomposts.map((item) => (
-        <Post key={item.id} item={item} />
+        <Post key={item.id} item={item} roomtitle={roomtitle} />
       ))}
     </div>
   );

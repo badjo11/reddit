@@ -26,26 +26,30 @@ function timeSince(date) {
   }
   return Math.floor(seconds) + " seconds";
 }
-const Post = ({ item }) => {
-  const [timeLeft, setTimeLeft] = useState(0)
+const Post = ({ item, roomtitle }) => {
+  const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
-    setTimeLeft(timeSince((item.CreatedAtMs)))
-  }, [])
-
+    setTimeLeft(timeSince(item.CreatedAtMs));
+  }, []);
 
   return (
-    <Card.Link key={item.id + "card"} href={"/comments/" + item.id}>
+    <Card.Link
+      key={item.id + "card"}
+      href={"/r/" + roomtitle + "/comments/" + item.id}
+    >
       <Card key={item.id} style={{ width: "95%", marginTop: "10px" }}>
         <Card.Body>
-          <Card.Subtitle style={{ fontSize: "12px" }} className="mb-2 text-muted">
+          <Card.Subtitle
+            style={{ fontSize: "12px" }}
+            className="mb-2 text-muted"
+          >
             Posted by: {item.owner} at {item.CreatedAt.match(/.{10}/)}{" "}
             {item.CreatedAt[11]}
             {item.CreatedAt[12]}
             {item.CreatedAt[13]}
             {item.CreatedAt[14]}
-            {item.CreatedAt[15]}
-            {' '}{timeLeft} ago
+            {item.CreatedAt[15]} {timeLeft} ago
           </Card.Subtitle>
           <Card.Title>{item.postName}</Card.Title>
 
