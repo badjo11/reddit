@@ -5,23 +5,19 @@ import * as yup from 'yup'
 import { Formik } from 'formik'
 const SignUpModal = (props) => {
   const { signUpUser } = useContext(mainContext);
-  const [user, setUser] = useState({ username: "", password: "" });
+
   const schema = yup.object().shape({
-    name: yup.string().min(2).max(30).required('Required'),
-    lastName: yup.string().min(2).max(30).required('Required'),
-    phoneNumber: yup.string().min(9).max(30).required('Required'),
+    username: yup.string().min(2).max(30).required('Required'),
     gender: yup.string().min(4).max(6).required('Required'),
     email: yup.string().email().min(3).max(255).required('Required'),
     password: yup.string().matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/).min(8).max(24).required('Required'),
+    passwordConfirmation: yup.string()
+      .oneOf([yup.ref('password'), null], 'Passwords must match').required('Required')
   })
-  function handleChange(e) {
-    let userr = { ...user, [e.target.name]: e.target.value };
-    setUser(userr);
-  }
 
-  function handleSignup(e) {
-    e.preventDefault();
-    signUpUser(user.username, user.password);
+  function handleSignup(data) {
+    // e.preventDefault();
+    signUpUser(data.username, data.password, data.email, data.gender);
     props.handleClose();
   }
 
@@ -34,18 +30,36 @@ const SignUpModal = (props) => {
         <Modal.Body>
           <Formik
             validationSchema={schema}
-            onSubmit={(data) => console.log(data)}
+            onSubmit={(data) => {
+              // console.log(data)
+              handleSignup(data)
+            }}
             initialValues={{
-              name: "",
-              lastName: "",
-              phoneNumber: "",
+              username: "",
               gender: "",
               email: "",
               password: "",
+              passwordConfirmation: "",
             }}
           >
             {({ handleSubmit, handleChange, values, touched, errors }) => (
               <Form style={{ width: '70%' }} className="bg-light p-4" onSubmit={handleSubmit}>
+
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Your username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter your user name"
+                    name="username"
+                    onChange={handleChange}
+                    isValid={!errors.username && touched.username}
+                    isInvalid={!!errors.username}
+                    value={values.username}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.username}
+                  </Form.Control.Feedback>
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control
@@ -59,52 +73,6 @@ const SignUpModal = (props) => {
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.email}
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-
-                  <Form.Label>Your name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter your name"
-                    name="name"
-                    onChange={handleChange}
-                    isValid={!errors.name && touched.name}
-                    isInvalid={!!errors.name}
-                    value={values.name}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.name}
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Your last name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter your last name"
-                    name="lastName"
-                    onChange={handleChange}
-                    isValid={!errors.lastName && touched.lastName}
-                    isInvalid={!!errors.lastName}
-                    value={values.lastName}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.lastName}
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Your phone number</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter your phone number"
-                    name="phoneNumber"
-                    onChange={handleChange}
-                    isValid={!errors.phoneNumber && touched.phoneNumber}
-                    isInvalid={!!errors.phoneNumber}
-                    value={values.phoneNumber}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.phoneNumber}
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -139,6 +107,22 @@ const SignUpModal = (props) => {
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.password}
+                  </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label>Repeat a password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Repeat a password"
+                    name="passwordConfirmation"
+                    onChange={handleChange}
+                    isValid={!errors.passwordConfirmation && touched.passwordConfirmation}
+                    isInvalid={!!errors.passwordConfirmation}
+                    value={values.passwordConfirmation}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.passwordConfirmation}
                   </Form.Control.Feedback>
                 </Form.Group>
 

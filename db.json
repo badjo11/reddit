@@ -30,6 +30,69 @@
       "rooms": [],
       "roomTitles": [],
       "id": 3
+    },
+    {
+      "username": "wer",
+      "password": "qweqw123",
+      "email": "qweqw@qwe.ewr",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 4
+    },
+    {
+      "username": "badjo",
+      "password": "qweqwe123",
+      "email": "beknazaromurbek@gmail.com",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 5
+    },
+    {
+      "username": "qweqwe",
+      "password": "qweqwe123",
+      "email": "123@qwe.rwe",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 6
+    },
+    {
+      "username": "qwe",
+      "password": "qweqwe123",
+      "email": "qwe@qwe.wer",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 7
+    },
+    {
+      "username": "sdffvcxvzx",
+      "password": "asdasd123",
+      "email": "qwe@qwe.qwe",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 8
+    },
+    {
+      "username": "123",
+      "password": "qweasd123",
+      "email": "qwe@qwe.qwe",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 9
+    },
+    {
+      "username": "fdg",
+      "password": "qweqweasd123",
+      "email": "passwordConfirmation@awe.wer",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 10
     }
   ],
   "rooms": [
