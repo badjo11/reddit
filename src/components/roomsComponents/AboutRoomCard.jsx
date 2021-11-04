@@ -21,9 +21,7 @@ const AboutRoomCard = (props) => {
         <Card.Text>
           {specificRoom ? specificRoom[0].about : "About community"}
         </Card.Text>
-        <Card.Text>
-          {specificRoom ? specificRoom[0].memberCount : "0"} members
-        </Card.Text>
+        <Card.Text>{memberCount ? memberCount : "0"} members</Card.Text>
         <Card.Text style={{ fontSize: "12px" }}>
           Created by{" "}
           <span style={{ color: "blueviolet" }}>
