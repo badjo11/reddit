@@ -8,6 +8,7 @@ const INIT_STATE = {
   rooms5: [],
   specificRoom: null,
   room_exist: null,
+  memberCount: 0,
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -20,6 +21,8 @@ const reducer = (state = INIT_STATE, action) => {
       return { ...state, room_exist: action.payload };
     case "SPECIFIC_ROOM":
       return { ...state, specificRoom: action.payload };
+    case "MEMBER_COUNT":
+      return { ...state, memberCount: action.payload };
     default:
       return state;
   }
@@ -53,24 +56,28 @@ const RoomsContextProvider = (props) => {
   };
 
   const addMemberToARoom = async (id, count) => {
-    count = count + 1;
     try {
       let res = await axios.patch(APIrooms + id, {
         memberCount: count,
       });
-      console.log(res);
+      dispatch({
+        type: "MEMBER_COUNT",
+        payload: res.data.memberCount,
+      });
     } catch (e) {
       console.log(e);
     }
   };
 
   const removeMemberFromARoom = async (id, count) => {
-    count = count - 1;
     try {
       let res = await axios.patch(APIrooms + id, {
         memberCount: count,
       });
-      console.log(res);
+      dispatch({
+        type: "MEMBER_COUNT",
+        payload: res.data.memberCount,
+      });
     } catch (e) {
       console.log(e);
     }
@@ -85,6 +92,10 @@ const RoomsContextProvider = (props) => {
         dispatch({
           type: "SPECIFIC_ROOM",
           payload: res.data,
+        });
+        dispatch({
+          type: "MEMBER_COUNT",
+          payload: res.data[0].memberCount,
         });
       } else {
         dispatch({
@@ -133,6 +144,7 @@ const RoomsContextProvider = (props) => {
         getRoomByTitle,
         addMemberToARoom,
         removeMemberFromARoom,
+        memberCount: state.memberCount,
         rooms: state.rooms,
         rooms5: state.rooms5,
         specificRoom: state.specificRoom,

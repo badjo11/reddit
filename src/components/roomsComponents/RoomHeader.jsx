@@ -11,6 +11,7 @@ const RoomHeader = () => {
     getRoomByTitle,
     addMemberToARoom,
     removeMemberFromARoom,
+    memberCount,
   } = useContext(roomsContext);
   const { userLeavesRoom, userJoinRoom, user } = useContext(mainContext);
   const { roomtitle } = useParams();
@@ -55,14 +56,17 @@ const RoomHeader = () => {
   function handleJoin() {
     userJoinRoom(user, specificRoom[0].id, roomtitle);
     setRoom({ joined: true });
-    addMemberToARoom(specificRoom[0].id, specificRoom[0].memberCount);
+    addMemberToARoom(specificRoom[0].id, memberCount + 1);
+    console.log(memberCount, memberCount + 1, "memberCount ++");
+
     setTimeout(() => updateUser(), 200);
   }
 
   function handleLeave() {
     userLeavesRoom(user, specificRoom[0].id, roomtitle);
     setRoom({ joined: false });
-    removeMemberFromARoom(specificRoom[0].id, specificRoom[0].memberCount);
+    removeMemberFromARoom(specificRoom[0].id, memberCount - 1);
+    console.log(memberCount, memberCount - 1, "memberCount --");
     setTimeout(() => updateUser(), 200);
   }
 

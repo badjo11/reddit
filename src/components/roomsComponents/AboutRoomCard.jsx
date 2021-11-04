@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { roomsContext } from "../../contexts/RoomsContext";
 import CreatePost from "../general/CreatePost";
 
 const AboutRoomCard = (props) => {
-  const { specificRoom } = useContext(roomsContext);
+  const { specificRoom, memberCount } = useContext(roomsContext);
+
+  useEffect(() => {}, [memberCount]);
 
   return (
     <Card style={{ width: "18rem" }}>

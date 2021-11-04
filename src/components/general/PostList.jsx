@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 const PostList = (props) => {
   const { roomposts, mainFeedPosts } = useContext(postsContext);
   const { roomtitle } = useParams();
-  console.log(mainFeedPosts);
 
   useEffect(() => null, [roomposts]);
 
