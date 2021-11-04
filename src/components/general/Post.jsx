@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Card } from "react-bootstrap";
 import upvote from "../../images/upvote.png";
 import downvote from "../../images/downvote.png";
+import { postsContext } from "../../contexts/PostsContext";
+import { votesContext } from "../../contexts/VoteContext";
+import { mainContext } from "../../contexts/MainContext";
 
 function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -29,21 +32,37 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
-const Post = ({ item, roomtitle }) => {
+const Post = ({ item, roomtitle, roomTitles }) => {
   const [timeLeft, setTimeLeft] = useState(0);
+  const { downVoteAPost, upVoteAPost } = useContext(postsContext);
+  const {
+    createAVoteForAPost,
+    updateAVoteForAPost,
+    getVotesForUserPosts,
+    votesForUser,
+  } = useContext(votesContext);
+  const { user } = useContext(mainContext);
 
   useEffect(() => {
     setTimeLeft(timeSince(item.CreatedAtMs));
   }, []);
 
-  console.log(item);
+  console.log(votesForUser);
 
   function handleUpVote(e) {
     e.preventDefault();
+    if (user) {
+      upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle);
+      createAVoteForAPost(1, user.username, item.id);
+    }
   }
 
   function handleDownVote(e) {
     e.preventDefault();
+    if (user) {
+      downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle);
+      createAVoteForAPost(-1, user.username, item.id);
+    }
   }
 
   return (

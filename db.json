@@ -122,7 +122,7 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T10:37:01.515Z",
       "CreatedAtMs": 1636022221515,
-      "voteWeight": 0,
+      "voteWeight": 1,
       "id": 20
     },
     {
@@ -132,7 +132,7 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T10:37:26.349Z",
       "CreatedAtMs": 1636022246349,
-      "voteWeight": 0,
+      "voteWeight": 4,
       "id": 21
     },
     {
@@ -142,8 +142,18 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T10:37:38.311Z",
       "CreatedAtMs": 1636022258311,
-      "voteWeight": 0,
+      "voteWeight": 4,
       "id": 22
+    },
+    {
+      "postName": "test",
+      "postText": "test",
+      "roomtitle": "thirdClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-04T13:22:59.334Z",
+      "CreatedAtMs": 1636032179334,
+      "voteWeight": 5,
+      "id": 23
     }
   ],
   "comments": [
@@ -155,5 +165,237 @@
       "id": 1
     }
   ],
-  "votes": []
+  "votes": [
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636035771160,
+      "roomId": 23,
+      "id": 1
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636035783611,
+      "roomId": 23,
+      "id": 2
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636035784766,
+      "roomId": 23,
+      "id": 3
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636035929572,
+      "roomId": 23,
+      "id": 4
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636035930176,
+      "roomId": 23,
+      "id": 5
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636035930943,
+      "roomId": 23,
+      "id": 6
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636035931349,
+      "roomId": 23,
+      "id": 7
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636035932131,
+      "roomId": 23,
+      "id": 8
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636035932345,
+      "roomId": 23,
+      "id": 9
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636035994384,
+      "roomId": 23,
+      "id": 10
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636035994889,
+      "roomId": 23,
+      "id": 11
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636035997948,
+      "roomId": 22,
+      "id": 12
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636035998815,
+      "roomId": 21,
+      "id": 13
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636035999816,
+      "roomId": 21,
+      "id": 14
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636036000509,
+      "roomId": 21,
+      "id": 15
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636036008725,
+      "roomId": 21,
+      "id": 16
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636036010109,
+      "roomId": 21,
+      "id": 17
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636036011461,
+      "roomId": 21,
+      "id": 18
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636036012536,
+      "roomId": 21,
+      "id": 19
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636036017409,
+      "roomId": 22,
+      "id": 20
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636036018971,
+      "roomId": 21,
+      "id": 21
+    },
+    {
+      "value": -1,
+      "owner": 1,
+      "createdAt": 1636036020035,
+      "roomId": 21,
+      "id": 22
+    },
+    {
+      "value": 1,
+      "owner": 1,
+      "createdAt": 1636036021379,
+      "roomId": 21,
+      "id": 23
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636038544498,
+      "roomId": 21,
+      "id": 24
+    },
+    {
+      "value": -1,
+      "owner": "atai",
+      "createdAt": 1636038546317,
+      "roomId": 18,
+      "id": 25
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636038550328,
+      "roomId": 20,
+      "id": 26
+    },
+    {
+      "value": -1,
+      "owner": "atai",
+      "createdAt": 1636038551983,
+      "roomId": 20,
+      "id": 27
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636038552855,
+      "roomId": 20,
+      "id": 28
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636038553816,
+      "roomId": 18,
+      "id": 29
+    },
+    {
+      "value": -1,
+      "owner": "atai",
+      "createdAt": 1636038556006,
+      "roomId": 18,
+      "id": 30
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636038557664,
+      "roomId": 18,
+      "id": 31
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636038561477,
+      "roomId": 22,
+      "id": 32
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636038563014,
+      "roomId": 21,
+      "id": 33
+    }
+  ]
 }

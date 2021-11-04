@@ -18,18 +18,43 @@ const reducer = (state = INIT_STATE, action) => {
 const VotesContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createAVoteForAPost = async (value, username, roomId) => {};
+  const createAVoteForAPost = async (value, username, roomId) => {
+    let time = Date.now();
+    let vote = {
+      value: value,
+      owner: username,
+      createdAt: time,
+      roomId,
+    };
+    try {
+      let res = await axios.post(APIvotes, vote);
+      getVotesForUserPosts(username);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const updateAVoteForAPost = async (value, username, roomId) => {};
 
-  const createAVoteForAComment = async () => {};
+  //const createAVoteForAComment = async () => {};
 
-  const getVotesForUserPosts = async () => {};
+  const getVotesForUserPosts = async (username) => {
+    try {
+      let res = await axios(APIvotes + "?roomtitle=" + username);
+      dispatch({
+        type: "GET_VOTES_FOR_USER",
+        payload: res.data,
+      });
+    } catch (e) {}
+  };
 
   return (
     <votesContext.Provider
       value={{
         votesForUser: state.votesForUser,
+        createAVoteForAPost,
+        updateAVoteForAPost,
+        getVotesForUserPosts,
       }}
     >
       {props.children}

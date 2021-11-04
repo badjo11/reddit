@@ -36,7 +36,7 @@ const PostsContextProvider = (props) => {
     post["owner"] = user.username;
     post["CreatedAt"] = createdAt;
     post["CreatedAtMs"] = timeMls;
-    post["likesWeight"] = 0;
+    post["voteWeight"] = 0;
     try {
       await axios.post(APIposts, post);
       getPostsByRoom(roomtitle);
@@ -84,17 +84,32 @@ const PostsContextProvider = (props) => {
     }
   };
 
-  const upVoteAPost = async (postId, weight) => {
+  const upVoteAPost = async (postId, weight, roomTitles, roomTitle) => {
+    console.log(postId, weight, roomTitles, roomTitle);
     try {
-      let res = await axios.patch(APIposts + postId, { voteWeight: weight });
+      let res = await axios.patch(APIposts + postId, {
+        voteWeight: weight + 1,
+      });
+      if (roomTitles) {
+        getPostsForMainUserFeed(roomTitles);
+      } else {
+        getPostsByRoom(roomTitle);
+      }
     } catch (e) {
       console.log(e);
     }
   };
 
-  const downVoteAPost = async (postId, weight) => {
+  const downVoteAPost = async (postId, weight, roomTitles, roomTitle) => {
     try {
-      let res = await axios.patch(APIposts + postId, { voteWeight: weight });
+      let res = await axios.patch(APIposts + postId, {
+        voteWeight: weight - 1,
+      });
+      if (roomTitles) {
+        getPostsForMainUserFeed(roomTitles);
+      } else {
+        getPostsByRoom(roomTitle);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -107,6 +122,8 @@ const PostsContextProvider = (props) => {
         getPostsByRoom,
         getPostsForMainUserFeed,
         getSpecificPost,
+        upVoteAPost,
+        downVoteAPost,
         specificPost: state.specificPost,
         roomposts: state.roomposts,
         mainFeedPosts: state.mainFeedPosts,
