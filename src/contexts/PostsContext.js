@@ -86,7 +86,7 @@ const PostsContextProvider = (props) => {
 
   const upVoteAPost = async (postId, weight) => {
     try {
-      let res = await axios.patch(APIposts + postId, { likesWeight: weight });
+      let res = await axios.patch(APIposts + postId, { voteWeight: weight });
     } catch (e) {
       console.log(e);
     }
@@ -94,7 +94,7 @@ const PostsContextProvider = (props) => {
 
   const downVoteAPost = async (postId, weight) => {
     try {
-      let res = await axios.patch(APIposts + postId, { likesWeight: weight });
+      let res = await axios.patch(APIposts + postId, { voteWeight: weight });
     } catch (e) {
       console.log(e);
     }

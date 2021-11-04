@@ -51,7 +51,7 @@ const Post = ({ item, roomtitle }) => {
         <a href="" onClick={(e) => handleUpVote(e)}>
           <img alt="fuckoff" className="upvoteIMG" src={upvote}></img>
         </a>
-        <h3 className="VoteWeightNum">{item.likesWeight}</h3>
+        <h3 className="VoteWeightNum">{item.voteWeight}</h3>
         <a href="" onClick={(e) => handleDownVote(e)}>
           <img alt="fuckoff" className="downvoteIMG" src={downvote}></img>
         </a>
