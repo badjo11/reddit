@@ -13,7 +13,7 @@ const SubheaderComments = () => {
   // }, [specificRoom])
   return (
     <div className="commentsSubHeader">
-      <h2>{hz.roomtitle}</h2>
+      <h2 >{hz.roomtitle}</h2>
       <Link to={'/r/' + hz.roomtitle}><button style={{ border: 0, backgroundColor: "darkgray" }} >X</button></Link>
     </div>
   );

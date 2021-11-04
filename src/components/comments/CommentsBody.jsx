@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { postsContext } from "../../contexts/PostsContext";
 import Post from "../general/Post";
 import "./comments.css";
+import CommentsView from "./CommentsView";
+import CreateComment from "./CreateComment";
 import SubheaderComments from "./SubheaderComments";
 
 const CommentsBody = () => {
@@ -17,11 +19,22 @@ const CommentsBody = () => {
   } else {
     post = (<div>suka</div>)
   }
-
+  let commentView
+  if (specificPost) {
+    commentView =
+      <>
+        <CreateComment specificPost={specificPost} />
+        <CommentsView specificPost={specificPost} />
+      </>
+  } else {
+    <></>
+  }
   return (
     <div className="roomBody">
       <SubheaderComments />
       {post}
+      {commentView}
+
     </div>
   );
 };

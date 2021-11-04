@@ -8,27 +8,30 @@ import PostsContextProvider from "./contexts/PostsContext";
 import Navibar from "./components/Navibar";
 import CommentsPage from "./pages/CommentsPage";
 import VotesContextProvider from "./contexts/VoteContext";
+import CommentsContextProvider from "./contexts/CommentsContext";
 
 const Routes = () => {
   return (
     <MainContextProvider>
       <RoomsContextProvider>
         <PostsContextProvider>
-          <VotesContextProvider>
-            <BrowserRouter>
-              <Navibar />
-              <Switch>
-                <Route exact path="/" component={MainPage} />
-                <Route exact path="/r/:roomtitle" component={RoomsPage} />
-                <Route
-                  exact
-                  path="/r/:roomtitle/comments/:id"
-                  component={CommentsPage}
-                />
-                <Redirect to="/" />
-              </Switch>
-            </BrowserRouter>
-          </VotesContextProvider>
+          <CommentsContextProvider>
+            <VotesContextProvider>
+              <BrowserRouter>
+                <Navibar />
+                <Switch>
+                  <Route exact path="/" component={MainPage} />
+                  <Route exact path="/r/:roomtitle" component={RoomsPage} />
+                  <Route
+                    exact
+                    path="/r/:roomtitle/comments/:id"
+                    component={CommentsPage}
+                  />
+                  <Redirect to="/" />
+                </Switch>
+              </BrowserRouter>
+            </VotesContextProvider>
+          </CommentsContextProvider>
         </PostsContextProvider>
       </RoomsContextProvider>
     </MainContextProvider>

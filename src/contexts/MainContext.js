@@ -25,7 +25,7 @@ const reducer = (state = INIT_STATE, action) => {
 const MainContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const signUpUser = async (username, password) => {
+  const signUpUser = async (username, password, email, gender) => {
     try {
       let res = await axios(APIusers);
       let user = res.data.find((user) => user.username === username);
@@ -34,6 +34,8 @@ const MainContextProvider = (props) => {
           let { data } = await axios.post(APIusers, {
             username,
             password,
+            email,
+            gender,
             rooms: [],
             roomTitles: [],
           });

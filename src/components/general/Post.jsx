@@ -6,7 +6,7 @@ import { postsContext } from "../../contexts/PostsContext";
 import { votesContext } from "../../contexts/VoteContext";
 import { mainContext } from "../../contexts/MainContext";
 
-function timeSince(date) {
+export function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
 
   let interval = seconds / 31536000;
