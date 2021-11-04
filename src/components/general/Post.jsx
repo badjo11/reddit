@@ -30,7 +30,7 @@ function timeSince(date) {
 
 const Post = ({ item, roomtitle }) => {
   const [timeLeft, setTimeLeft] = useState(0);
-  console.log(item)
+  // console.log(item)
   useEffect(() => {
     setTimeLeft(timeSince(item.CreatedAtMs));
   }, []);
