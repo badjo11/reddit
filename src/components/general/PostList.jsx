@@ -11,20 +11,18 @@ const PostList = (props) => {
   const { user } = useContext(mainContext);
   const { roomtitle } = useParams();
 
-  // let user1 = localStorage.getItem("user");
-  // user1 = JSON.parse(user1);
   useEffect(() => {
     getVotesForUserPosts(props.usr);
   }, []);
 
-  console.log(user);
   useEffect(() => null, [roomposts]);
+  let count = 0;
 
   if (props.feedFor === "roomfeed") {
     return (
       <div>
         {roomposts.reverse().map((item) => (
-          <Post key={item.id} item={item} roomtitle={roomtitle} />
+          <Post key={item.id + count + 1} item={item} roomtitle={roomtitle} />
         ))}
       </div>
     );
@@ -33,7 +31,7 @@ const PostList = (props) => {
       <div>
         {mainFeedPosts.reverse().map((item) => (
           <Post
-            key={item.id}
+            key={item.id + count + 1}
             item={item}
             roomTitles={props.roomTitles}
             roomtitle={roomtitle}

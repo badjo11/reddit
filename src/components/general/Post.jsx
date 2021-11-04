@@ -47,8 +47,6 @@ const Post = ({ item, roomtitle, roomTitles }) => {
     setTimeLeft(timeSince(item.CreatedAtMs));
   }, []);
 
-  console.log(votesForUser);
-
   function handleUpVote(e) {
     e.preventDefault();
     if (user) {

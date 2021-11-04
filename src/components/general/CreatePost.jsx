@@ -5,7 +5,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { postsContext } from "../../contexts/PostsContext";
 
 const CreatePost = ({ roomtitle }) => {
-  const { createPost, getPostsByRoom } = useContext(postsContext);
+  const { createPost } = useContext(postsContext);
   const [show, setShow] = useState(false);
   // const { roomtitle } = useParams();
 

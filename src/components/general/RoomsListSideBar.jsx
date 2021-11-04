@@ -6,7 +6,6 @@ const RoomsListSideBar = () => {
   const { get5rooms, rooms5 } = useContext(roomsContext);
 
   useEffect(() => get5rooms(), []);
-  console.log(rooms5);
 
   return (
     <Card className="toproomlistsidebar sidebaritem" style={{ width: "18rem" }}>

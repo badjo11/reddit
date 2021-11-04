@@ -18,6 +18,11 @@ const reducer = (state = INIT_STATE, action) => {
         ...state,
         mainFeedPosts: state.mainFeedPosts.concat(action.payload),
       };
+    case "MAIN_FEED_POSTS_WIPE_CLEAN":
+      return {
+        ...state,
+        mainFeedPosts: [],
+      };
     case "SPECIFIC_POST":
       return {
         ...state,
@@ -58,6 +63,10 @@ const PostsContextProvider = (props) => {
   };
 
   const getPostsForMainUserFeed = async (titles) => {
+    dispatch({
+      type: "MAIN_FEED_POSTS_WIPE_CLEAN",
+      payload: [],
+    });
     titles.forEach(async (title) => {
       try {
         let tempApi = APIsposts + "?roomtitle=" + title + "&_limit=10";

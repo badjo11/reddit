@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Navbar,
   FormControl,
@@ -58,14 +58,13 @@ const Navibar = () => {
     );
   }
 
+  let struser = localStorage.getItem("user");
   function setuser() {
-    let struser = localStorage.getItem("user");
-
     if (struser) {
       setUser(JSON.parse(struser));
     }
   }
-  React.useEffect(() => setuser(), []);
+  useEffect(() => setuser(), [struser]);
 
   return (
     <Navbar className="nav" bg="light" expand="lg">

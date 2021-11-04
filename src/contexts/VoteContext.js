@@ -39,8 +39,9 @@ const VotesContextProvider = (props) => {
   //const createAVoteForAComment = async () => {};
 
   const getVotesForUserPosts = async (username) => {
+    console.log(username);
     try {
-      let res = await axios(APIvotes + "?roomtitle=" + username);
+      let res = await axios(APIvotes + "?owner=" + username);
       dispatch({
         type: "GET_VOTES_FOR_USER",
         payload: res.data,

@@ -1,19 +1,26 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import { mainContext } from "../../contexts/MainContext";
-import * as yup from 'yup'
-import { Formik } from 'formik'
+import * as yup from "yup";
+import { Formik } from "formik";
 const SignUpModal = (props) => {
   const { signUpUser } = useContext(mainContext);
 
   const schema = yup.object().shape({
-    username: yup.string().min(2).max(30).required('Required'),
-    gender: yup.string().min(4).max(6).required('Required'),
-    email: yup.string().email().min(3).max(255).required('Required'),
-    password: yup.string().matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/).min(8).max(24).required('Required'),
-    passwordConfirmation: yup.string()
-      .oneOf([yup.ref('password'), null], 'Passwords must match').required('Required')
-  })
+    username: yup.string().min(2).max(30).required("Required"),
+    gender: yup.string().min(4).max(6).required("Required"),
+    email: yup.string().email().min(3).max(255).required("Required"),
+    password: yup
+      .string()
+      .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
+      .min(8)
+      .max(24)
+      .required("Required"),
+    passwordConfirmation: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match")
+      .required("Required"),
+  });
 
   function handleSignup(data) {
     // e.preventDefault();
@@ -32,7 +39,7 @@ const SignUpModal = (props) => {
             validationSchema={schema}
             onSubmit={(data) => {
               // console.log(data)
-              handleSignup(data)
+              handleSignup(data);
             }}
             initialValues={{
               username: "",
@@ -43,8 +50,11 @@ const SignUpModal = (props) => {
             }}
           >
             {({ handleSubmit, handleChange, values, touched, errors }) => (
-              <Form style={{ width: '70%' }} className="bg-light p-4" onSubmit={handleSubmit}>
-
+              <Form
+                style={{ width: "70%" }}
+                className="bg-light p-4"
+                onSubmit={handleSubmit}
+              >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Your username</Form.Label>
                   <Form.Control
@@ -117,7 +127,10 @@ const SignUpModal = (props) => {
                     placeholder="Repeat a password"
                     name="passwordConfirmation"
                     onChange={handleChange}
-                    isValid={!errors.passwordConfirmation && touched.passwordConfirmation}
+                    isValid={
+                      !errors.passwordConfirmation &&
+                      touched.passwordConfirmation
+                    }
                     isInvalid={!!errors.passwordConfirmation}
                     value={values.passwordConfirmation}
                   />
@@ -131,7 +144,6 @@ const SignUpModal = (props) => {
                 </Button>
               </Form>
             )}
-
           </Formik>
         </Modal.Body>
       </Modal>
