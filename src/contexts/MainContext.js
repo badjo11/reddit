@@ -91,12 +91,6 @@ const MainContextProvider = (props) => {
     }
   };
 
-  const getRoomTitlesForUser = async (username) => {
-    try {
-      let res = await APIusers;
-    } catch (e) {}
-  };
-
   const loginUser = async (username, password) => {
     try {
       let res = await axios(APIusers);

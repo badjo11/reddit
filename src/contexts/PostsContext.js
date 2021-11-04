@@ -20,8 +20,9 @@ const reducer = (state = INIT_STATE, action) => {
       };
     case "SPECIFIC_POST":
       return {
-        ...state, specificPost: action.payload
-      }
+        ...state,
+        specificPost: action.payload,
+      };
     default:
       return state;
   }
@@ -35,6 +36,7 @@ const PostsContextProvider = (props) => {
     post["owner"] = user.username;
     post["CreatedAt"] = createdAt;
     post["CreatedAtMs"] = timeMls;
+    post["likesWeight"] = 0;
     try {
       await axios.post(APIposts, post);
       getPostsByRoom(roomtitle);
@@ -42,17 +44,19 @@ const PostsContextProvider = (props) => {
       console.log(e);
     }
   };
+
   const getSpecificPost = async (id) => {
     try {
-      let res = await axios(APIposts + id)
+      let res = await axios(APIposts + id);
       dispatch({
         type: "SPECIFIC_POST",
         payload: res.data,
-      })
+      });
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
+
   const getPostsForMainUserFeed = async (titles) => {
     titles.forEach(async (title) => {
       try {
@@ -62,7 +66,7 @@ const PostsContextProvider = (props) => {
           type: "MAIN_FEED_POSTS",
           payload: result.data,
         });
-      } catch (e) { }
+      } catch (e) {}
     });
   };
 
@@ -75,6 +79,22 @@ const PostsContextProvider = (props) => {
         type: "ROOM_POSTS",
         payload: result.data,
       });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const upVoteAPost = async (postId, weight) => {
+    try {
+      let res = await axios.patch(APIposts + postId, { voteWeight: weight });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const downVoteAPost = async (postId, weight) => {
+    try {
+      let res = await axios.patch(APIposts + postId, { voteWeight: weight });
     } catch (e) {
       console.log(e);
     }

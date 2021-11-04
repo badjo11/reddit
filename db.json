@@ -14,8 +14,14 @@
     {
       "username": "atai1",
       "password": "atai",
-      "rooms": [],
-      "roomTitles": [],
+      "rooms": [
+        1,
+        2
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean"
+      ],
       "id": 2
     },
     {
@@ -32,7 +38,7 @@
       "category": "storts",
       "about": "dwad",
       "avaURl": "dwad",
-      "memberCount": 3,
+      "memberCount": 1,
       "owner": "atai213",
       "CreatedAt": "2021-10-29T11:59:10.667Z",
       "id": 1
@@ -42,7 +48,7 @@
       "category": "storts",
       "about": "dwad",
       "avaURl": "dwad",
-      "memberCount": 0,
+      "memberCount": 1,
       "owner": "atai213",
       "CreatedAt": "2021-10-29T11:59:10.667Z",
       "id": 2
@@ -90,85 +96,54 @@
   ],
   "posts": [
     {
-      "postName": "123",
-      "postText": "123",
+      "postName": "Real post - Beknazar Rabotai SK",
+      "postText": "BTC TO THE MOON!!!",
       "roomtitle": "firstClean",
-      "owner": "asd",
-      "CreatedAt": "2021-11-03T08:07:34.790Z",
-      "CreatedAtMs": 1635926854790,
-      "id": 9
+      "owner": "atai1",
+      "CreatedAt": "2021-11-04T09:53:11.593Z",
+      "CreatedAtMs": 1636019591593,
+      "voteWeight": 4,
+      "id": 18
     },
     {
-      "postName": "qwe",
-      "postText": "qwe",
-      "roomtitle": "firstClean",
-      "owner": "asd",
-      "CreatedAt": "2021-11-03T08:22:20.792Z",
-      "CreatedAtMs": 1635927740793,
-      "id": 10
-    },
-    {
-      "postName": "qwe",
-      "postText": "qwe",
-      "roomtitle": "firstClean",
-      "owner": "asd",
-      "CreatedAt": "2021-11-03T08:27:20.032Z",
-      "CreatedAtMs": 1635928040033,
-      "id": 11
-    },
-    {
-      "postName": "qwe",
-      "postText": "qwe",
+      "postName": "ETH TO THE MOOOOOOON!!!!",
+      "postText": "",
       "roomtitle": "secondClean",
-      "owner": "asd",
-      "CreatedAt": "2021-11-03T08:28:26.353Z",
-      "CreatedAtMs": 1635928106353,
-      "id": 12
+      "owner": "atai1",
+      "CreatedAt": "2021-11-04T09:55:05.452Z",
+      "CreatedAtMs": 1636019705452,
+      "voteWeight": 3,
+      "id": 19
+    },
+    {
+      "postName": "Nurik Kot ele",
+      "postText": "hzhz",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-04T10:37:01.515Z",
+      "CreatedAtMs": 1636022221515,
+      "voteWeight": 0,
+      "id": 20
+    },
+    {
+      "postName": "first room post",
+      "postText": "",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-04T10:37:26.349Z",
+      "CreatedAtMs": 1636022246349,
+      "voteWeight": 0,
+      "id": 21
     },
     {
       "postName": "SecondROOM",
-      "postText": "dad",
+      "postText": "post",
       "roomtitle": "secondClean",
       "owner": "atai",
-      "CreatedAt": "2021-11-03T10:33:03.399Z",
-      "CreatedAtMs": 1635935583399,
-      "id": 13
-    },
-    {
-      "postName": "FirstROOM",
-      "postText": "hahaha",
-      "roomtitle": "firstClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-03T10:33:18.022Z",
-      "CreatedAtMs": 1635935598022,
-      "id": 14
-    },
-    {
-      "postName": "dawd",
-      "postText": "dawdawd",
-      "roomtitle": "firstClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-03T11:18:32.901Z",
-      "CreatedAtMs": 1635938312901,
-      "id": 15
-    },
-    {
-      "postName": "Bael",
-      "postText": "KOT",
-      "roomtitle": "firstClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-03T11:19:28.764Z",
-      "CreatedAtMs": 1635938368764,
-      "id": 16
-    },
-    {
-      "postName": "dawdwa",
-      "postText": "dwadawd",
-      "roomtitle": "firstClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-03T12:31:25.237Z",
-      "CreatedAtMs": 1635942685238,
-      "id": 17
+      "CreatedAt": "2021-11-04T10:37:38.311Z",
+      "CreatedAtMs": 1636022258311,
+      "voteWeight": 0,
+      "id": 22
     }
   ],
   "comments": [
@@ -176,9 +151,9 @@
       "comment": "lalalalala",
       "owner": "atai",
       "postId": 8,
-      "likesWeight": 10,
+      "voteWeight": 10,
       "id": 1
     }
   ],
-  "likes": []
+  "votes": []
 }

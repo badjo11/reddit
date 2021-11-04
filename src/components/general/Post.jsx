@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import upvote from "../../images/upvote.png";
+import downvote from "../../images/downvote.png";
 
 function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -27,46 +29,64 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
-
 const Post = ({ item, roomtitle }) => {
   const [timeLeft, setTimeLeft] = useState(0);
+<<<<<<< HEAD
   // console.log(item)
+=======
+>>>>>>> 12cb3332eb54ae861abe5c53b4fcf80cd7bf3016
   useEffect(() => {
     setTimeLeft(timeSince(item.CreatedAtMs));
   }, []);
 
-  return (
-    <Card.Link
-      key={item.id + "card"}
-      href={"/r/" + roomtitle + "/comments/" + item.id}
-    >
-      <Card key={item.id} style={{ width: "95%", marginTop: "10px" }}>
-        <Card.Body>
-          <Card.Subtitle
-            style={{ fontSize: "12px" }}
-            className="mb-2 text-muted"
-          >
-            Posted by: {item.owner} at {item.CreatedAt.match(/.{10}/)}{" "}
-            {item.CreatedAt[11]}
-            {item.CreatedAt[12]}
-            {item.CreatedAt[13]}
-            {item.CreatedAt[14]}
-            {item.CreatedAt[15]} {timeLeft} ago
-          </Card.Subtitle>
-          <Card.Title>{item.postName}</Card.Title>
+  console.log(item);
 
-          <Card.Text>{item.postText}</Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <Button variant="danger">
-            <img
-              width="20px"
-              src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png"
-            />
-          </Button>
-        </Card.Footer>
-      </Card>
-    </Card.Link>
+  function handleUpVote(e) {
+    e.preventDefault();
+  }
+
+  function handleDownVote(e) {
+    e.preventDefault();
+  }
+
+  return (
+    <div className="postCard">
+      <div className="likedislike">
+        <a href="" onClick={(e) => handleUpVote(e)}>
+          <img alt="fuckoff" className="upvoteIMG" src={upvote}></img>
+        </a>
+        <h3 className="VoteWeightNum">{item.voteWeight}</h3>
+        <a href="" onClick={(e) => handleDownVote(e)}>
+          <img alt="fuckoff" className="downvoteIMG" src={downvote}></img>
+        </a>
+      </div>
+      <Card.Link
+        className="mainPostCard"
+        key={item.id + "card"}
+        href={"/r/" + item.roomtitle + "/comments/" + item.id}
+      >
+        <Card key={item.id} style={{ width: "95%", marginTop: "10px" }}>
+          <Card.Body>
+            <Card.Subtitle
+              style={{ fontSize: "12px" }}
+              className="mb-2 text-muted"
+            >
+              Posted by: {item.owner} at {item.CreatedAt.match(/.{10}/)}{" "}
+              {item.CreatedAt[11]}
+              {item.CreatedAt[12]}
+              {item.CreatedAt[13]}
+              {item.CreatedAt[14]}
+              {item.CreatedAt[15]} {timeLeft} ago
+            </Card.Subtitle>
+            <Card.Title style={{ paddingTop: "5px", paddingBottom: "5px" }}>
+              {item.postName}
+            </Card.Title>
+            <Card.Text>{item.postText}</Card.Text>
+          </Card.Body>
+          <Card.Footer></Card.Footer>
+        </Card>
+      </Card.Link>
+    </div>
   );
 };
 
