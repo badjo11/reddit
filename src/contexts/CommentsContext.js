@@ -18,16 +18,19 @@ const reducer = (state = INIT_STATE, action) => {
 const CommentsContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createComment = async (commentContent, user, createdAt, postId) => {
+  const createComment = async (commentContent, user, createdAt, postId, createdAtMs) => {
     let comment = {
       comment: commentContent,
       owner: user,
       createdAt,
+      createdAtMs,
       postId,
-      likesWeight: 0,
+      votesWeight: 0,
     };
+
     try {
       let res = await axios.post(APIComments, comment);
+      getCommentsForRoom(postId)
     } catch (e) {
       console.log(e);
     }

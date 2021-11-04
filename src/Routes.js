@@ -7,25 +7,28 @@ import RoomsContextProvider from "./contexts/RoomsContext";
 import PostsContextProvider from "./contexts/PostsContext";
 import Navibar from "./components/Navibar";
 import CommentsPage from "./pages/CommentsPage";
+import CommentsContextProvider from "./contexts/CommentsContext";
 
 const Routes = () => {
   return (
     <MainContextProvider>
       <RoomsContextProvider>
         <PostsContextProvider>
-          <BrowserRouter>
-            <Navibar />
-            <Switch>
-              <Route exact path="/" component={MainPage} />
-              <Route exact path="/r/:roomtitle" component={RoomsPage} />
-              <Route
-                exact
-                path="/r/:roomtitle/comments/:id"
-                component={CommentsPage}
-              />
-              <Redirect to="/" />
-            </Switch>
-          </BrowserRouter>
+          <CommentsContextProvider>
+            <BrowserRouter>
+              <Navibar />
+              <Switch>
+                <Route exact path="/" component={MainPage} />
+                <Route exact path="/r/:roomtitle" component={RoomsPage} />
+                <Route
+                  exact
+                  path="/r/:roomtitle/comments/:id"
+                  component={CommentsPage}
+                />
+                <Redirect to="/" />
+              </Switch>
+            </BrowserRouter>
+          </CommentsContextProvider>
         </PostsContextProvider>
       </RoomsContextProvider>
     </MainContextProvider>

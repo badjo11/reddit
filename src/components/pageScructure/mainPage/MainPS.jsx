@@ -10,9 +10,9 @@ const MainPS = () => {
   const { state } = useContext(mainContext);
 
   let roomTitles;
-  if (state.user) {
-    let user = localStorage.getItem("user");
-    user = JSON.parse(user);
+  let user = localStorage.getItem("user");
+  user = JSON.parse(user);
+  if (user) {
     roomTitles = user.roomTitles;
   } else {
     roomTitles = ["firstClean", "secondClean"];

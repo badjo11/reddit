@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import upvote from "../../images/upvote.png";
 import downvote from "../../images/downvote.png";
 
-function timeSince(date) {
+export function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
 
   let interval = seconds / 31536000;
