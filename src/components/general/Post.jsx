@@ -42,16 +42,43 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
     setTimeLeft(timeSince(item.CreatedAtMs));
   }, []);
 
+  let vote = <h3 className="VoteWeightNum">{item.voteWeight}</h3>;
+  if (user) {
+    let index = votesForUser.findIndex((post) => post.postId === item.id);
+    let voteWeight = votesForUser[index].value;
+    if (voteWeight === -1) {
+      vote = (
+        <h3 style={{ color: "purple" }} className="VoteWeightNum">
+          {item.voteWeight}
+        </h3>
+      );
+    } else if (voteWeight === 1) {
+      vote = (
+        <h3 style={{ color: "orange" }} className="VoteWeightNum">
+          {item.voteWeight}
+        </h3>
+      );
+    }
+  }
+
   function handleUpVote(e) {
     e.preventDefault();
     if (user) {
-      console.log(votesForUser);
       let index = votesForUser.findIndex((post) => post.postId === item.id);
-      console.log(index, "hhaha");
       if (index > -1) {
-        updateAVoteForAPost();
+        let voteWeight = votesForUser[index].value;
+        if (voteWeight === 0) {
+          updateAVoteForAPost(votesForUser[index].id, 1, user.username);
+          upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
+        } else if (voteWeight === -1) {
+          updateAVoteForAPost(votesForUser[index].id, 1, user.username);
+          upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 2);
+        } else {
+          updateAVoteForAPost(votesForUser[index].id, 0, user.username);
+          downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
+        }
       } else {
-        upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle);
+        upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
         createAVoteForAPost(1, user.username, item.id);
       }
     }
@@ -60,15 +87,27 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   function handleDownVote(e) {
     e.preventDefault();
     if (user) {
-      console.log(votesForUser);
       let index = votesForUser.findIndex((post) => post.postId === item.id);
-      console.log(index, "hhaha");
       if (index > -1) {
+        let voteWeight = votesForUser[index].value;
+        if (voteWeight === 0) {
+          updateAVoteForAPost(votesForUser[index].id, -1, user.username);
+          downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
+        } else if (voteWeight === 1) {
+          updateAVoteForAPost(votesForUser[index].id, -1, user.username);
+          downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 2);
+        } else {
+          updateAVoteForAPost(votesForUser[index].id, 0, user.username);
+          upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
+        }
       } else {
-        downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle);
+        downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
         createAVoteForAPost(-1, user.username, item.id);
       }
     }
+  }
+
+  if (user) {
   }
 
   return (
@@ -77,7 +116,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
         <a href="" onClick={(e) => handleUpVote(e)}>
           <img alt="fuckoff" className="upvoteIMG" src={upvote}></img>
         </a>
-        <h3 className="VoteWeightNum">{item.voteWeight}</h3>
+        {vote}
         <a href="" onClick={(e) => handleDownVote(e)}>
           <img alt="fuckoff" className="downvoteIMG" src={downvote}></img>
         </a>

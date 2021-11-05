@@ -93,11 +93,11 @@ const PostsContextProvider = (props) => {
     }
   };
 
-  const upVoteAPost = async (postId, weight, roomTitles, roomTitle) => {
-    console.log(postId, weight, roomTitles, roomTitle);
+  const upVoteAPost = async (postId, weight, roomTitles, roomTitle, value) => {
+    console.log(postId, weight, roomTitles, roomTitle, value);
     try {
       let res = await axios.patch(APIposts + postId, {
-        voteWeight: weight + 1,
+        voteWeight: weight + value,
       });
       if (roomTitles) {
         getPostsForMainUserFeed(roomTitles);
@@ -109,10 +109,16 @@ const PostsContextProvider = (props) => {
     }
   };
 
-  const downVoteAPost = async (postId, weight, roomTitles, roomTitle) => {
+  const downVoteAPost = async (
+    postId,
+    weight,
+    roomTitles,
+    roomTitle,
+    value
+  ) => {
     try {
       let res = await axios.patch(APIposts + postId, {
-        voteWeight: weight - 1,
+        voteWeight: weight - value,
       });
       if (roomTitles) {
         getPostsForMainUserFeed(roomTitles);
