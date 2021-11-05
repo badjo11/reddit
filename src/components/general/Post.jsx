@@ -40,9 +40,35 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   const { createAVoteForAPost, updateAVoteForAPost } = useContext(votesContext);
   const { user } = useContext(mainContext);
 
+
+  const { deletePost } = useContext(postsContext)
+  // console.log(item)
+  function deletedPost() {
+    deletePost(item.id, roomtitle)
+  }
+  let user1 = localStorage.getItem("user")
+  user1 = JSON.parse(user1)
+  let delbtn
+  if (user1) {
+    if (user1.username === item.owner) {
+      delbtn = <div className="dropdown">
+        <button className="dropbtn">...</button>
+        <div className="dropdown-content">
+          <button onClick={deletedPost}>Delete</button>
+
+        </div>
+      </div>
+    }
+
+  }
+
   useEffect(() => {
     setTimeLeft(timeSince(item.CreatedAtMs));
   }, []);
+  // console.log(val)
+
+
+
 
   let vote = <h3 className="VoteWeightNum">{item.voteWeight}</h3>;
   // if (user) {
@@ -112,7 +138,10 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   }
 
   if (user) {
+
   }
+
+
 
   return (
     <div className="postCard">
@@ -164,12 +193,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
             alt=""
           />
           {/* <img className="points" width="15px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Simple_icon_ellipsis.svg/1280px-Simple_icon_ellipsis.svg.png" alt="" />*/}
-          <div className="dropdown">
-            <button className="dropbtn">...</button>
-            <div className="dropdown-content">
-              <a href="#">Delete</a>
-            </div>
-          </div>
+          {delbtn}
         </Card.Footer>
       </Card>
     </div>

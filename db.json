@@ -1,0 +1,141 @@
+{
+  "users": [
+    {
+      "username": "atai",
+      "password": "atai",
+      "rooms": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "thirdClean",
+        "fourthClean"
+      ],
+      "id": 1
+    },
+    {
+      "username": "atai1",
+      "password": "atai",
+      "rooms": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "fourthClean",
+        "fifthClean"
+      ],
+      "id": 2
+    },
+    {
+      "username": "asd",
+      "password": "asd",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 3
+    }
+  ],
+  "rooms": [
+    {
+      "roomtitle": "firstClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 2,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 1
+    },
+    {
+      "roomtitle": "secondClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 2,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 2
+    },
+    {
+      "roomtitle": "thirdClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 1,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 3
+    },
+    {
+      "roomtitle": "fourthClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 1,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 4
+    },
+    {
+      "roomtitle": "fifthClean",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwad",
+      "memberCount": 1,
+      "owner": "atai213",
+      "CreatedAt": "2021-10-29T11:59:10.667Z",
+      "id": 5
+    },
+    {
+      "roomtitle": "artar",
+      "category": "storts",
+      "about": "dwad",
+      "avaURl": "dwadawd",
+      "memberCount": 0,
+      "owner": "atai",
+      "CreatedAt": "2021-11-01T10:07:54.852Z",
+      "id": 6
+    }
+  ],
+  "posts": [
+    {
+      "postName": "ETH TO THE MOOOOOOON!!!!",
+      "postText": "",
+      "roomtitle": "secondClean",
+      "owner": "atai1",
+      "CreatedAt": "2021-11-04T09:55:05.452Z",
+      "CreatedAtMs": 1636019705452,
+      "voteWeight": 6,
+      "id": 19
+    },
+    {
+      "postName": "Nurik Kot ele",
+      "postText": "hzhz",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-04T10:37:01.515Z",
+      "CreatedAtMs": 1636022221515,
+      "voteWeight": 3,
+      "id": 20
+    },
+    {
+      "postName": "fifth",
+      "postText": "qwe",
+      "roomtitle": "fifthClean",
+      "owner": "atai1",
+      "CreatedAt": "2021-11-05T08:45:52.417Z",
+      "CreatedAtMs": 1636101952418,
+      "voteWeight": 0,
+      "id": 26
+    }
+  ],
+  "comments": [],
+  "votes": []
+}
