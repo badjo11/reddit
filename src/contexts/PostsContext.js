@@ -75,7 +75,7 @@ const PostsContextProvider = (props) => {
           type: "MAIN_FEED_POSTS",
           payload: result.data,
         });
-      } catch (e) {}
+      } catch (e) { }
     });
   };
 
@@ -130,6 +130,17 @@ const PostsContextProvider = (props) => {
     }
   };
 
+  const deletePost = async (id, roomtitle) => {
+    try {
+      let tempApi = APIposts + id;
+      await axios.delete(tempApi)
+      getPostsByRoom(roomtitle);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
   return (
     <postsContext.Provider
       value={{
@@ -139,6 +150,7 @@ const PostsContextProvider = (props) => {
         getSpecificPost,
         upVoteAPost,
         downVoteAPost,
+        deletePost,
         specificPost: state.specificPost,
         roomposts: state.roomposts,
         mainFeedPosts: state.mainFeedPosts,

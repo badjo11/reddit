@@ -9,6 +9,7 @@ import Navibar from "./components/Navibar";
 import CommentsPage from "./pages/CommentsPage";
 import VotesContextProvider from "./contexts/VoteContext";
 import CommentsContextProvider from "./contexts/CommentsContext";
+import AllRooms from "./pages/AllRooms";
 
 const MyRoutes = () => {
   return (
@@ -27,6 +28,7 @@ const MyRoutes = () => {
                     path="/r/:roomtitle/comments/:id"
                     element={<CommentsPage />}
                   />
+                  <Route path='/rooms' element={<AllRooms />} />
                   {/* <Navigate to="/" replace={null} /> */}
                 </Routes>
               </BrowserRouter>
