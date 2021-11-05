@@ -3,15 +3,35 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [1, 2, 3, 4],
-      "roomTitles": ["firstClean", "secondClean", "thirdClean", "fourthClean"],
+      "rooms": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "thirdClean",
+        "fourthClean"
+      ],
       "id": 1
     },
     {
       "username": "atai1",
       "password": "atai",
-      "rooms": [1, 2, 4, 5],
-      "roomTitles": ["firstClean", "secondClean", "fourthClean", "fifthClean"],
+      "rooms": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "fourthClean",
+        "fifthClean"
+      ],
       "id": 2
     },
     {
@@ -86,16 +106,6 @@
   ],
   "posts": [
     {
-      "postName": "Real post - Beknazar Rabotai SK",
-      "postText": "BTC TO THE MOON!!!",
-      "roomtitle": "firstClean",
-      "owner": "atai1",
-      "CreatedAt": "2021-11-04T09:53:11.593Z",
-      "CreatedAtMs": 1636019591593,
-      "voteWeight": 4,
-      "id": 18
-    },
-    {
       "postName": "ETH TO THE MOOOOOOON!!!!",
       "postText": "",
       "roomtitle": "secondClean",
@@ -116,46 +126,6 @@
       "id": 20
     },
     {
-      "postName": "first room post",
-      "postText": "",
-      "roomtitle": "firstClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-04T10:37:26.349Z",
-      "CreatedAtMs": 1636022246349,
-      "voteWeight": 6,
-      "id": 21
-    },
-    {
-      "postName": "SecondROOM",
-      "postText": "post",
-      "roomtitle": "secondClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-04T10:37:38.311Z",
-      "CreatedAtMs": 1636022258311,
-      "voteWeight": 7,
-      "id": 22
-    },
-    {
-      "postName": "test",
-      "postText": "test",
-      "roomtitle": "thirdClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-04T13:22:59.334Z",
-      "CreatedAtMs": 1636032179334,
-      "voteWeight": 10,
-      "id": 23
-    },
-    {
-      "postName": "qwe",
-      "postText": "qweqw",
-      "roomtitle": "firstClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-05T08:44:12.016Z",
-      "CreatedAtMs": 1636101852016,
-      "voteWeight": 0,
-      "id": 25
-    },
-    {
       "postName": "fifth",
       "postText": "qwe",
       "roomtitle": "fifthClean",
@@ -164,45 +134,8 @@
       "CreatedAtMs": 1636101952418,
       "voteWeight": 0,
       "id": 26
-    },
-    {
-      "postName": "asdas",
-      "postText": "asdasdas",
-      "roomtitle": "firstClean",
-      "owner": "nurik",
-      "CreatedAt": "2021-11-05T09:41:22.092Z",
-      "CreatedAtMs": 1636105282093,
-      "voteWeight": 0,
-      "id": 27
     }
   ],
-  "comments": [
-    {
-      "comment": "sex",
-      "owner": "atai",
-      "createdAt": "2021-11-04T15:37:11.959Z",
-      "createdAtMs": 1636040231959,
-      "postId": 22,
-      "votesWeight": 0,
-      "id": 2
-    },
-    {
-      "comment": "dwdwd",
-      "owner": "atai",
-      "createdAt": "2021-11-05T07:09:46.616Z",
-      "createdAtMs": 1636096186616,
-      "postId": 23,
-      "votesWeight": 0,
-      "id": 3
-    }
-  ],
-  "votes": [
-    {
-      "value": 0,
-      "owner": "atai",
-      "createdAt": 1636104515645,
-      "postId": 25,
-      "id": 1
-    }
-  ]
+  "comments": [],
+  "votes": []
 }
