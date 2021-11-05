@@ -136,6 +136,25 @@
       "id": 26
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment": "sadfasa",
+      "owner": "atai",
+      "createdAt": "2021-11-05T11:32:03.526Z",
+      "createdAtMs": 1636111923526,
+      "postId": 20,
+      "votesWeight": 0,
+      "id": 1
+    },
+    {
+      "comment": "sadfassad",
+      "owner": "atai1",
+      "createdAt": "2021-11-05T11:32:12.275Z",
+      "createdAtMs": 1636111932275,
+      "postId": 20,
+      "votesWeight": 0,
+      "id": 2
+    }
+  ],
   "votes": []
 }
