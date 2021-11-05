@@ -17,7 +17,7 @@ const CreateComment = (props) => {
     let timeMls = Date.now();
     createComment(comment, user.username, time, props.specificPost.id, timeMls);
   }
-  return (
+  return (<>
     <InputGroup className="mb-3">
       <FormControl
         rows={2}
@@ -30,6 +30,8 @@ const CreateComment = (props) => {
         Comment
       </Button>
     </InputGroup>
+
+  </>
   );
 };
 

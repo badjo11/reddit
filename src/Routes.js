@@ -27,7 +27,7 @@ const MyRoutes = () => {
                     path="/r/:roomtitle/comments/:id"
                     element={<CommentsPage />}
                   />
-                  <Navigate to="/" replace={null} />
+                  {/* <Navigate to="/" replace={null} /> */}
                 </Routes>
               </BrowserRouter>
             </VotesContextProvider>

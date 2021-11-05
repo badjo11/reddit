@@ -50,11 +50,22 @@ const CommentsContextProvider = (props) => {
     }
   };
 
+  const deleteCommentForPost = async (id, postId) => {
+    try {
+      let tempApi = APIComments + '/' + id;
+      await axios.delete(tempApi)
+      getCommentsForRoom(postId)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   return (
     <commentsContext.Provider
       value={{
         createComment,
         getCommentsForRoom,
+        deleteCommentForPost,
         commentsForPost: state.commentsForPost,
       }}
     >

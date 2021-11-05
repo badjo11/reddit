@@ -20,11 +20,15 @@
       "password": "atai",
       "rooms": [
         1,
-        2
+        2,
+        4,
+        5
       ],
       "roomTitles": [
         "firstClean",
-        "secondClean"
+        "secondClean",
+        "fourthClean",
+        "fifthClean"
       ],
       "id": 2
     },
@@ -34,6 +38,24 @@
       "rooms": [],
       "roomTitles": [],
       "id": 3
+    },
+    {
+      "username": "gdf",
+      "password": "qweqwe123",
+      "email": "wearwe@wer.rwe",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 4
+    },
+    {
+      "username": "nurik",
+      "password": "qweqwe123",
+      "email": "werw@wer.wer",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 5
     }
   ],
   "rooms": [
@@ -72,7 +94,7 @@
       "category": "storts",
       "about": "dwad",
       "avaURl": "dwad",
-      "memberCount": 0,
+      "memberCount": 1,
       "owner": "atai213",
       "CreatedAt": "2021-10-29T11:59:10.667Z",
       "id": 4
@@ -82,7 +104,7 @@
       "category": "storts",
       "about": "dwad",
       "avaURl": "dwad",
-      "memberCount": 0,
+      "memberCount": 1,
       "owner": "atai213",
       "CreatedAt": "2021-10-29T11:59:10.667Z",
       "id": 5
@@ -158,16 +180,49 @@
       "CreatedAtMs": 1636032179334,
       "voteWeight": 8,
       "id": 23
+    },
+    {
+      "postName": "qweqwe",
+      "postText": "asdasd",
+      "roomtitle": "fourthClean",
+      "owner": "atai1",
+      "CreatedAt": "2021-11-05T08:30:22.371Z",
+      "CreatedAtMs": 1636101022371,
+      "voteWeight": 0,
+      "id": 24
+    },
+    {
+      "postName": "qwe",
+      "postText": "qweqw",
+      "roomtitle": "firstClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-05T08:44:12.016Z",
+      "CreatedAtMs": 1636101852016,
+      "voteWeight": 0,
+      "id": 25
+    },
+    {
+      "postName": "fifth",
+      "postText": "qwe",
+      "roomtitle": "fifthClean",
+      "owner": "atai1",
+      "CreatedAt": "2021-11-05T08:45:52.417Z",
+      "CreatedAtMs": 1636101952418,
+      "voteWeight": 0,
+      "id": 26
+    },
+    {
+      "postName": "asdas",
+      "postText": "asdasdas",
+      "roomtitle": "firstClean",
+      "owner": "nurik",
+      "CreatedAt": "2021-11-05T09:41:22.092Z",
+      "CreatedAtMs": 1636105282093,
+      "voteWeight": 0,
+      "id": 27
     }
   ],
   "comments": [
-    {
-      "comment": "lalalalala",
-      "owner": "atai",
-      "postId": 8,
-      "voteWeight": 10,
-      "id": 1
-    },
     {
       "comment": "sex",
       "owner": "atai",
@@ -176,6 +231,105 @@
       "postId": 22,
       "votesWeight": 0,
       "id": 2
+    },
+    {
+      "comment": "qweqasd",
+      "owner": "gdf",
+      "createdAt": "2021-11-05T08:17:37.957Z",
+      "createdAtMs": 1636100257957,
+      "postId": 21,
+      "votesWeight": 0,
+      "id": 3
+    },
+    {
+      "comment": "qweasd",
+      "owner": "gdf",
+      "createdAt": "2021-11-05T08:17:47.072Z",
+      "createdAtMs": 1636100267072,
+      "postId": 21,
+      "votesWeight": 0,
+      "id": 4
+    },
+    {
+      "comment": "asdasd",
+      "owner": "atai1",
+      "createdAt": "2021-11-05T08:52:48.662Z",
+      "createdAtMs": 1636102368662,
+      "postId": 26,
+      "votesWeight": 0,
+      "id": 5
+    },
+    {
+      "comment": "qwesdasd",
+      "owner": "atai1",
+      "createdAt": "2021-11-05T09:07:27.063Z",
+      "createdAtMs": 1636103247063,
+      "postId": 26,
+      "votesWeight": 0,
+      "id": 6
+    },
+    {
+      "comment": "qwesdasdsadfasd",
+      "owner": "atai",
+      "createdAt": "2021-11-05T09:10:34.490Z",
+      "createdAtMs": 1636103434490,
+      "postId": 26,
+      "votesWeight": 0,
+      "id": 7
+    },
+    {
+      "comment": "asda",
+      "owner": "atai",
+      "createdAt": "2021-11-05T09:14:34.014Z",
+      "createdAtMs": 1636103674014,
+      "postId": 26,
+      "votesWeight": 0,
+      "id": 8
+    },
+    {
+      "comment": "asdas",
+      "owner": "atai",
+      "createdAt": "2021-11-05T09:14:50.915Z",
+      "createdAtMs": 1636103690915,
+      "postId": 26,
+      "votesWeight": 0,
+      "id": 9
+    },
+    {
+      "comment": "qwrasdfa",
+      "owner": "atai",
+      "createdAt": "2021-11-05T09:25:29.025Z",
+      "createdAtMs": 1636104329025,
+      "postId": 23,
+      "votesWeight": 0,
+      "id": 10
+    },
+    {
+      "comment": "qwrasdfa",
+      "owner": "atai",
+      "createdAt": "2021-11-05T09:25:39.849Z",
+      "createdAtMs": 1636104339849,
+      "postId": 23,
+      "votesWeight": 0,
+      "id": 11
+    },
+    {
+      "comment": "qwrasdfa",
+      "owner": "atai",
+      "createdAt": "2021-11-05T09:25:47.338Z",
+      "createdAtMs": 1636104347338,
+      "postId": 23,
+      "votesWeight": 0,
+      "id": 12
+    },
+    {
+      "comment": "qwedasfsas",
+      "owner": "nurik",
+      "createdAt": "2021-11-05T09:41:29.466Z",
+      "createdAtMs": 1636105289466,
+      "postId": 27,
+      "votesWeight": 0,
+      "id": 15
     }
   ],
   "votes": [

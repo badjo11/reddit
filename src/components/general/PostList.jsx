@@ -1,13 +1,20 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { postsContext } from "../../contexts/PostsContext";
 import Post from "./Post";
 import { useParams } from "react-router-dom";
 import { votesContext } from "../../contexts/VoteContext";
 
 const PostList = (props) => {
-  const { roomposts, mainFeedPosts } = useContext(postsContext);
+  let { roomposts, mainFeedPosts } = useContext(postsContext);
   const { getVotesForUserPosts, votesForUser } = useContext(votesContext);
-  //const { user } = useContext(mainContext);
+  const [posts, setPosts] = useState(mainFeedPosts)
+
+  useEffect(() => {
+    let arr = [...mainFeedPosts]
+    arr.sort((a, b) => b.CreatedAtMs - a.CreatedAtMs)
+    setPosts(arr)
+  }, [mainFeedPosts])
+
   const { roomtitle } = useParams();
 
   useEffect(() => {
@@ -33,7 +40,7 @@ const PostList = (props) => {
     } else {
       return (
         <div>
-          {mainFeedPosts.reverse().map((item) => (
+          {posts.map((item) => (
             <Post
               key={item.id + count + 1}
               item={item}
@@ -62,7 +69,7 @@ const PostList = (props) => {
     } else {
       return (
         <div>
-          {mainFeedPosts.reverse().map((item) => (
+          {posts.map((item) => (
             <Post
               key={item.id + count + 1}
               item={item}
