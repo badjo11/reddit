@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { Card, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroupItem, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { roomsContext } from "../../contexts/RoomsContext";
 
 const RoomsListSideBar = () => {
@@ -20,6 +21,7 @@ const RoomsListSideBar = () => {
             </ListGroupItem>
           </Card.Link>
         ))}
+        <Link to='/rooms'> <Button variant="primary" className="mt-2" style={{ borderRadius: "10px", marginLeft: '40%', fontSize: '20px' }}>View all</Button></Link>
       </Card.Body>
     </Card>
   );
