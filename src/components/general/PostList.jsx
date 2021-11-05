@@ -7,13 +7,13 @@ import { votesContext } from "../../contexts/VoteContext";
 const PostList = (props) => {
   let { roomposts, mainFeedPosts } = useContext(postsContext);
   const { getVotesForUserPosts, votesForUser } = useContext(votesContext);
-  const [posts, setPosts] = useState(mainFeedPosts)
+  const [posts, setPosts] = useState(mainFeedPosts);
 
   useEffect(() => {
-    let arr = [...mainFeedPosts]
-    arr.sort((a, b) => b.CreatedAtMs - a.CreatedAtMs)
-    setPosts(arr)
-  }, [mainFeedPosts])
+    let arr = [...mainFeedPosts];
+    arr.sort((a, b) => b.CreatedAtMs - a.CreatedAtMs);
+    setPosts(arr);
+  }, [mainFeedPosts]);
 
   const { roomtitle } = useParams();
 
@@ -40,7 +40,7 @@ const PostList = (props) => {
     } else {
       return (
         <div>
-          {posts.map((item) => (
+          {mainFeedPosts.reverse().map((item) => (
             <Post
               key={item.id + count + 1}
               item={item}
@@ -69,7 +69,7 @@ const PostList = (props) => {
     } else {
       return (
         <div>
-          {posts.map((item) => (
+          {mainFeedPosts.map((item) => (
             <Post
               key={item.id + count + 1}
               item={item}
