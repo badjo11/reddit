@@ -18,13 +18,13 @@ const reducer = (state = INIT_STATE, action) => {
 const VotesContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createAVoteForAPost = async (value, username, roomId) => {
+  const createAVoteForAPost = async (value, username, postId) => {
     let time = Date.now();
     let vote = {
       value: value,
       owner: username,
       createdAt: time,
-      roomId,
+      postId,
     };
     try {
       let res = await axios.post(APIvotes, vote);
@@ -39,7 +39,6 @@ const VotesContextProvider = (props) => {
   //const createAVoteForAComment = async () => {};
 
   const getVotesForUserPosts = async (username) => {
-    console.log(username);
     try {
       let res = await axios(APIvotes + "?owner=" + username);
       dispatch({

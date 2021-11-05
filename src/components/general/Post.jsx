@@ -32,15 +32,10 @@ export function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
-const Post = ({ item, roomtitle, roomTitles }) => {
+const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   const [timeLeft, setTimeLeft] = useState(0);
   const { downVoteAPost, upVoteAPost } = useContext(postsContext);
-  const {
-    createAVoteForAPost,
-    updateAVoteForAPost,
-    getVotesForUserPosts,
-    votesForUser,
-  } = useContext(votesContext);
+  const { createAVoteForAPost, updateAVoteForAPost } = useContext(votesContext);
   const { user } = useContext(mainContext);
 
   useEffect(() => {
@@ -50,16 +45,29 @@ const Post = ({ item, roomtitle, roomTitles }) => {
   function handleUpVote(e) {
     e.preventDefault();
     if (user) {
-      upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle);
-      createAVoteForAPost(1, user.username, item.id);
+      console.log(votesForUser);
+      let index = votesForUser.findIndex((post) => post.postId === item.id);
+      console.log(index, "hhaha");
+      if (index > -1) {
+        updateAVoteForAPost();
+      } else {
+        upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle);
+        createAVoteForAPost(1, user.username, item.id);
+      }
     }
   }
 
   function handleDownVote(e) {
     e.preventDefault();
     if (user) {
-      downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle);
-      createAVoteForAPost(-1, user.username, item.id);
+      console.log(votesForUser);
+      let index = votesForUser.findIndex((post) => post.postId === item.id);
+      console.log(index, "hhaha");
+      if (index > -1) {
+      } else {
+        downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle);
+        createAVoteForAPost(-1, user.username, item.id);
+      }
     }
   }
 

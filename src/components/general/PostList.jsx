@@ -3,42 +3,77 @@ import { postsContext } from "../../contexts/PostsContext";
 import Post from "./Post";
 import { useParams } from "react-router-dom";
 import { votesContext } from "../../contexts/VoteContext";
-import { mainContext } from "../../contexts/MainContext";
 
 const PostList = (props) => {
   const { roomposts, mainFeedPosts } = useContext(postsContext);
   const { getVotesForUserPosts, votesForUser } = useContext(votesContext);
-  const { user } = useContext(mainContext);
+  //const { user } = useContext(mainContext);
   const { roomtitle } = useParams();
 
   useEffect(() => {
-    getVotesForUserPosts(props.usr);
+    getVotesForUserPosts(props.usr.username);
   }, []);
 
   useEffect(() => null, [roomposts]);
   let count = 0;
-
-  if (props.feedFor === "roomfeed") {
-    return (
-      <div>
-        {roomposts.reverse().map((item) => (
-          <Post key={item.id + count + 1} item={item} roomtitle={roomtitle} />
-        ))}
-      </div>
-    );
+  if (votesForUser.length > 0) {
+    if (props.feedFor === "roomfeed") {
+      return (
+        <div>
+          {roomposts.reverse().map((item) => (
+            <Post
+              key={item.id + count + 1}
+              item={item}
+              roomtitle={roomtitle}
+              votesForUser={votesForUser}
+            />
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {mainFeedPosts.reverse().map((item) => (
+            <Post
+              key={item.id + count + 1}
+              item={item}
+              roomTitles={props.roomTitles}
+              roomtitle={roomtitle}
+              votesForUser={votesForUser}
+            />
+          ))}
+        </div>
+      );
+    }
   } else {
-    return (
-      <div>
-        {mainFeedPosts.reverse().map((item) => (
-          <Post
-            key={item.id + count + 1}
-            item={item}
-            roomTitles={props.roomTitles}
-            roomtitle={roomtitle}
-          />
-        ))}
-      </div>
-    );
+    if (props.feedFor === "roomfeed") {
+      return (
+        <div>
+          {roomposts.reverse().map((item) => (
+            <Post
+              key={item.id + count + 1}
+              item={item}
+              roomtitle={roomtitle}
+              votesForUser={votesForUser}
+            />
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {mainFeedPosts.reverse().map((item) => (
+            <Post
+              key={item.id + count + 1}
+              item={item}
+              roomTitles={props.roomTitles}
+              roomtitle={roomtitle}
+              votesForUser={votesForUser}
+            />
+          ))}
+        </div>
+      );
+    }
   }
 };
 

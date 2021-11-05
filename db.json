@@ -126,7 +126,7 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T10:37:01.515Z",
       "CreatedAtMs": 1636022221515,
-      "voteWeight": 2,
+      "voteWeight": 3,
       "id": 20
     },
     {
@@ -156,7 +156,7 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T13:22:59.334Z",
       "CreatedAtMs": 1636032179334,
-      "voteWeight": 10,
+      "voteWeight": 8,
       "id": 23
     }
   ],
@@ -182,93 +182,37 @@
     {
       "value": 1,
       "owner": "atai",
-      "createdAt": 1636050196458,
-      "roomId": 22,
+      "createdAt": 1636093517495,
+      "postId": 23,
       "id": 1
     },
     {
       "value": -1,
       "owner": "atai",
-      "createdAt": 1636050200747,
-      "roomId": 22,
+      "createdAt": 1636093522207,
+      "postId": 23,
       "id": 2
-    },
-    {
-      "value": -1,
-      "owner": "atai",
-      "createdAt": 1636050329805,
-      "roomId": 22,
-      "id": 3
     },
     {
       "value": 1,
       "owner": "atai",
-      "createdAt": 1636050400272,
-      "roomId": 23,
+      "createdAt": 1636093529993,
+      "postId": 23,
+      "id": 3
+    },
+    {
+      "value": -1,
+      "owner": "atai",
+      "createdAt": 1636093574124,
+      "postId": 23,
       "id": 4
     },
     {
       "value": 1,
       "owner": "atai",
-      "createdAt": 1636051961916,
-      "roomId": 23,
+      "createdAt": 1636094777901,
+      "postId": 21,
       "id": 5
-    },
-    {
-      "value": -1,
-      "owner": "atai",
-      "createdAt": 1636051964682,
-      "roomId": 19,
-      "id": 6
-    },
-    {
-      "value": 1,
-      "owner": "atai",
-      "createdAt": 1636051968597,
-      "roomId": 23,
-      "id": 7
-    },
-    {
-      "value": 1,
-      "owner": "atai",
-      "createdAt": 1636051969951,
-      "roomId": 23,
-      "id": 8
-    },
-    {
-      "value": 1,
-      "owner": "atai",
-      "createdAt": 1636051970975,
-      "roomId": 22,
-      "id": 9
-    },
-    {
-      "value": 1,
-      "owner": "atai",
-      "createdAt": 1636052358893,
-      "roomId": 23,
-      "id": 10
-    },
-    {
-      "value": -1,
-      "owner": "atai",
-      "createdAt": 1636052380247,
-      "roomId": 21,
-      "id": 11
-    },
-    {
-      "value": -1,
-      "owner": "atai",
-      "createdAt": 1636052382141,
-      "roomId": 21,
-      "id": 12
-    },
-    {
-      "value": 1,
-      "owner": "atai",
-      "createdAt": 1636052384602,
-      "roomId": 21,
-      "id": 13
     }
   ]
 }

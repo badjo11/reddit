@@ -18,9 +18,9 @@ const RoomBody = () => {
   }, []);
 
   let usr = "";
-  if (state.user) {
-    let user = localStorage.getItem("user");
-    user = JSON.parse(user);
+  let user = localStorage.getItem("user");
+  user = JSON.parse(user);
+  if (user) {
     usr = user;
   }
 

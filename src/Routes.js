@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import MainContextProvider from "./contexts/MainContext";
 import RoomsPage from "./pages/RoomsPage";
@@ -10,7 +10,7 @@ import CommentsPage from "./pages/CommentsPage";
 import VotesContextProvider from "./contexts/VoteContext";
 import CommentsContextProvider from "./contexts/CommentsContext";
 
-const Routes = () => {
+const MyRoutes = () => {
   return (
     <MainContextProvider>
       <RoomsContextProvider>
@@ -19,16 +19,16 @@ const Routes = () => {
             <VotesContextProvider>
               <BrowserRouter>
                 <Navibar />
-                <Switch>
-                  <Route exact path="/" component={MainPage} />
-                  <Route exact path="/r/:roomtitle" component={RoomsPage} />
+                <Routes>
+                  <Route exact path="/" element={<MainPage />} />
+                  <Route exact path="/r/:roomtitle" element={<RoomsPage />} />
                   <Route
                     exact
                     path="/r/:roomtitle/comments/:id"
-                    component={CommentsPage}
+                    element={<CommentsPage />}
                   />
-                  <Redirect to="/" />
-                </Switch>
+                  <Navigate to="/" replace={null} />
+                </Routes>
               </BrowserRouter>
             </VotesContextProvider>
           </CommentsContextProvider>
@@ -38,4 +38,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default MyRoutes;
