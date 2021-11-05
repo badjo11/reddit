@@ -48,11 +48,11 @@ const Navibar = () => {
   } else {
     button = (
       <>
-        <Button className="me-2" variant="primary" onClick={handleShowLogin}>
-          LogIn
+        <Button className="me-2 text-success" variant="outline-dark" onClick={handleShowLogin}>
+          Log In
         </Button>
-        <Button variant="outline-primary" onClick={handleShow}>
-          SignUp
+        <Button className="me-2 text-success" variant="outline-dark" onClick={handleShow}>
+          Sign Up
         </Button>
       </>
     );
@@ -87,9 +87,9 @@ const Navibar = () => {
           <FormControl
             type="search"
             placeholder="Search"
-            className="mx-auto "
+            className="mx-auto  "
             aria-label="Search"
-            style={{ maxWidth: "700px", textAlign: "center" }}
+            style={{ maxWidth: "700px", textAlign: "center", }}
           />
           {button}
         </Navbar.Collapse>
