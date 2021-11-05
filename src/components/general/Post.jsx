@@ -5,6 +5,8 @@ import downvote from "../../images/downvote.png";
 import { postsContext } from "../../contexts/PostsContext";
 import { votesContext } from "../../contexts/VoteContext";
 import { mainContext } from "../../contexts/MainContext";
+import "./general.css"
+// import { Link } from 'react-router-dom'
 
 export function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -82,12 +84,13 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
           <img alt="fuckoff" className="downvoteIMG" src={downvote}></img>
         </a>
       </div>
-      <Card.Link
-        className="mainPostCard"
-        key={item.id + "card"}
-        href={"/r/" + item.roomtitle + "/comments/" + item.id}
-      >
-        <Card key={item.id} style={{ width: "95%", marginTop: "10px" }}>
+
+      <Card key={item.id} style={{ width: "95%", marginTop: "10px" }}>
+        <Card.Link
+          className="mainPostCard"
+          key={item.id + "card"}
+          href={"/r/" + item.roomtitle + "/comments/" + item.id}
+        >
           <Card.Body>
             <Card.Subtitle
               style={{ fontSize: "12px" }}
@@ -105,11 +108,23 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
             </Card.Title>
             <Card.Text>{item.postText}</Card.Text>
           </Card.Body>
-          <Card.Footer></Card.Footer>
-        </Card>
-      </Card.Link>
-    </div>
+        </Card.Link>
+        <Card.Footer className="d-flex justify-content-start p-2">
+          <img className="m-2" width="15px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Comment_alt_font_awesome.svg/512px-Comment_alt_font_awesome.svg.png" alt="" />
+          <img className="m-2" width="15px" src="https://www.vhv.rs/dpng/d/520-5207678_viewing-svg-share-shared-icon-hd-png-download.png" alt="" />
+          {/* <img className="points" width="15px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Simple_icon_ellipsis.svg/1280px-Simple_icon_ellipsis.svg.png" alt="" />*/}
+          <div className="dropdown">
+            <button className="dropbtn">...</button>
+            <div className="dropdown-content">
+              <a href="#">Delete</a>
+            </div>
+          </div>
+        </Card.Footer>
+      </Card>
+    </div >
   );
 };
 
 export default Post;
+
+
