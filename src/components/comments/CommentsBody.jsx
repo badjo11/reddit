@@ -6,35 +6,56 @@ import "./comments.css";
 import CommentsView from "./CommentsView";
 import CreateComment from "./CreateComment";
 import SubheaderComments from "./SubheaderComments";
+import { votesContext } from "../../contexts/VoteContext";
 
 const CommentsBody = () => {
-  const hz = useParams()
-  const { getSpecificPost, specificPost } = useContext(postsContext)
+  const hz = useParams();
+  const { getSpecificPost, specificPost } = useContext(postsContext);
+  const { getVotesForUserPosts, votesForUser } = useContext(votesContext);
+
   useEffect(() => {
-    getSpecificPost(hz.id)
-  }, [])
-  let post;
-  if (specificPost) {
-    post = <Post item={specificPost} roomtitle={hz.roomtitle} />
-  } else {
-    post = (<div>suka</div>)
+    getSpecificPost(hz.id);
+  }, []);
+
+  let usr = "";
+  let user = localStorage.getItem("user");
+  user = JSON.parse(user);
+  if (user) {
+    usr = user;
   }
-  let commentView
+
+  useEffect(() => {
+    getVotesForUserPosts(usr);
+  }, []);
+
+  let post;
+  if (specificPost && votesForUser) {
+    post = (
+      <Post
+        item={specificPost}
+        roomtitle={hz.roomtitle}
+        votesForUser={votesForUser}
+      />
+    );
+  } else {
+    post = <div>suka</div>;
+  }
+  let commentView;
   if (specificPost) {
-    commentView =
+    commentView = (
       <>
         <CreateComment specificPost={specificPost} />
         <CommentsView specificPost={specificPost} />
       </>
+    );
   } else {
-    <></>
+    <></>;
   }
   return (
     <div className="roomBody">
       <SubheaderComments />
       {post}
       {commentView}
-
     </div>
   );
 };

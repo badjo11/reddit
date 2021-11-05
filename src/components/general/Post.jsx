@@ -6,7 +6,6 @@ import { postsContext } from "../../contexts/PostsContext";
 import { votesContext } from "../../contexts/VoteContext";
 import { mainContext } from "../../contexts/MainContext";
 import "./general.css";
-// import { Link } from 'react-router-dom'
 
 export function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -45,25 +44,25 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   }, []);
 
   let vote = <h3 className="VoteWeightNum">{item.voteWeight}</h3>;
-  // if (user) {
-  //   let index = votesForUser.findIndex((post) => post.postId === item.id);
-  //   if (index !== -1) {
-  //     let voteWeight = votesForUser[index].value;
-  //     if (voteWeight === -1) {
-  //       vote = (
-  //         <h3 style={{ color: "purple" }} className="VoteWeightNum">
-  //           {item.voteWeight}
-  //         </h3>
-  //       );
-  //     } else if (voteWeight === 1) {
-  //       vote = (
-  //         <h3 style={{ color: "orange" }} className="VoteWeightNum">
-  //           {item.voteWeight}
-  //         </h3>
-  //       );
-  //     }
-  //   }
-  // }
+  if (user) {
+    let index = votesForUser.findIndex((post) => post.postId === item.id);
+    if (index !== -1) {
+      let voteWeight = votesForUser[index].value;
+      if (voteWeight === -1) {
+        vote = (
+          <h3 style={{ color: "purple" }} className="VoteWeightNum">
+            {item.voteWeight}
+          </h3>
+        );
+      } else if (voteWeight === 1) {
+        vote = (
+          <h3 style={{ color: "orange" }} className="VoteWeightNum">
+            {item.voteWeight}
+          </h3>
+        );
+      }
+    }
+  }
 
   function handleUpVote(e) {
     e.preventDefault();

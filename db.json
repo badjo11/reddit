@@ -3,15 +3,35 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [1, 2, 3, 4],
-      "roomTitles": ["firstClean", "secondClean", "thirdClean", "fourthClean"],
+      "rooms": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "thirdClean",
+        "fourthClean"
+      ],
       "id": 1
     },
     {
       "username": "atai1",
       "password": "atai",
-      "rooms": [1, 2, 4, 5],
-      "roomTitles": ["firstClean", "secondClean", "fourthClean", "fifthClean"],
+      "rooms": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "fourthClean",
+        "fifthClean"
+      ],
       "id": 2
     },
     {
@@ -20,6 +40,15 @@
       "rooms": [],
       "roomTitles": [],
       "id": 3
+    },
+    {
+      "username": "atai123",
+      "password": "qwertyuiop123",
+      "email": "achynaliev@gmail.com",
+      "gender": "male",
+      "rooms": [],
+      "roomTitles": [],
+      "id": 4
     }
   ],
   "rooms": [
@@ -92,7 +121,7 @@
       "owner": "atai1",
       "CreatedAt": "2021-11-04T09:53:11.593Z",
       "CreatedAtMs": 1636019591593,
-      "voteWeight": 4,
+      "voteWeight": 5,
       "id": 18
     },
     {
@@ -132,7 +161,7 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T10:37:38.311Z",
       "CreatedAtMs": 1636022258311,
-      "voteWeight": 7,
+      "voteWeight": 8,
       "id": 22
     },
     {
@@ -142,7 +171,7 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T13:22:59.334Z",
       "CreatedAtMs": 1636032179334,
-      "voteWeight": 10,
+      "voteWeight": 11,
       "id": 23
     },
     {
@@ -172,8 +201,18 @@
       "owner": "nurik",
       "CreatedAt": "2021-11-05T09:41:22.092Z",
       "CreatedAtMs": 1636105282093,
-      "voteWeight": 0,
+      "voteWeight": 1,
       "id": 27
+    },
+    {
+      "postName": "dawd",
+      "postText": "daw",
+      "roomtitle": "fourthClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-05T10:31:50.059Z",
+      "CreatedAtMs": 1636108310059,
+      "voteWeight": 1,
+      "id": 28
     }
   ],
   "comments": [
@@ -194,6 +233,15 @@
       "postId": 23,
       "votesWeight": 0,
       "id": 3
+    },
+    {
+      "comment": "dwadawd",
+      "owner": "atai",
+      "createdAt": "2021-11-05T10:32:09.691Z",
+      "createdAtMs": 1636108329691,
+      "postId": 28,
+      "votesWeight": 0,
+      "id": 4
     }
   ],
   "votes": [
@@ -203,6 +251,104 @@
       "createdAt": 1636104515645,
       "postId": 25,
       "id": 1
+    },
+    {
+      "value": 0,
+      "owner": "atai",
+      "createdAt": 1636108311356,
+      "postId": 28,
+      "id": 2
+    },
+    {
+      "value": 0,
+      "owner": "atai123",
+      "createdAt": 1636110240413,
+      "postId": 27,
+      "id": 3
+    },
+    {
+      "value": 0,
+      "owner": "atai123",
+      "createdAt": 1636110243406,
+      "postId": 25,
+      "id": 4
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636110285538,
+      "postId": 23,
+      "id": 5
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636110289876,
+      "postId": 18,
+      "id": 6
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636110292555,
+      "postId": 27,
+      "id": 7
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636110293668,
+      "postId": 22,
+      "id": 8
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636112294597,
+      "postId": 28,
+      "id": 9
+    },
+    {
+      "value": -1,
+      "owner": "atai",
+      "createdAt": 1636112301944,
+      "postId": 28,
+      "id": 10
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636112311515,
+      "postId": 28,
+      "id": 11
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636112340312,
+      "postId": 28,
+      "id": 12
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636112344461,
+      "postId": 28,
+      "id": 13
+    },
+    {
+      "value": -1,
+      "owner": "atai",
+      "createdAt": 1636112347628,
+      "postId": 28,
+      "id": 14
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636112352981,
+      "postId": 28,
+      "id": 15
     }
   ]
 }

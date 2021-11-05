@@ -40,7 +40,7 @@ const PostList = (props) => {
     } else {
       return (
         <div>
-          {mainFeedPosts.reverse().map((item) => (
+          {posts.map((item) => (
             <Post
               key={item.id + count + 1}
               item={item}
@@ -69,7 +69,7 @@ const PostList = (props) => {
     } else {
       return (
         <div>
-          {mainFeedPosts.map((item) => (
+          {posts.map((item) => (
             <Post
               key={item.id + count + 1}
               item={item}
