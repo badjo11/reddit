@@ -3,31 +3,15 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "roomTitles": [
-        "firstClean",
-        "secondClean",
-        "thirdClean",
-        "fourthClean"
-      ],
+      "rooms": [1, 2, 3, 4],
+      "roomTitles": ["firstClean", "secondClean", "thirdClean", "fourthClean"],
       "id": 1
     },
     {
       "username": "atai1",
       "password": "atai",
-      "rooms": [
-        1,
-        2
-      ],
-      "roomTitles": [
-        "firstClean",
-        "secondClean"
-      ],
+      "rooms": [1, 2, 4, 5],
+      "roomTitles": ["firstClean", "secondClean", "fourthClean", "fifthClean"],
       "id": 2
     },
     {
@@ -36,15 +20,6 @@
       "rooms": [],
       "roomTitles": [],
       "id": 3
-    },
-    {
-      "username": "zxc",
-      "password": "qweqwe123",
-      "email": "chynaliev.ae@gmail.com",
-      "gender": "female",
-      "rooms": [],
-      "roomTitles": [],
-      "id": 4
     }
   ],
   "rooms": [
@@ -93,7 +68,7 @@
       "category": "storts",
       "about": "dwad",
       "avaURl": "dwad",
-      "memberCount": 0,
+      "memberCount": 1,
       "owner": "atai213",
       "CreatedAt": "2021-10-29T11:59:10.667Z",
       "id": 5
@@ -171,34 +146,37 @@
       "id": 23
     },
     {
-      "postName": "dw",
-      "postText": "dwdw",
-      "roomtitle": "thirdClean",
+      "postName": "qwe",
+      "postText": "qweqw",
+      "roomtitle": "firstClean",
       "owner": "atai",
-      "CreatedAt": "2021-11-05T07:09:26.129Z",
-      "CreatedAtMs": 1636096166130,
-      "voteWeight": 38,
-      "id": 24
+      "CreatedAt": "2021-11-05T08:44:12.016Z",
+      "CreatedAtMs": 1636101852016,
+      "voteWeight": 0,
+      "id": 25
     },
     {
-      "postName": "test",
-      "postText": "test",
-      "roomtitle": "fourthClean",
-      "owner": "atai",
-      "CreatedAt": "2021-11-05T09:28:34.153Z",
-      "CreatedAtMs": 1636104514153,
-      "voteWeight": 4,
-      "id": 25
+      "postName": "fifth",
+      "postText": "qwe",
+      "roomtitle": "fifthClean",
+      "owner": "atai1",
+      "CreatedAt": "2021-11-05T08:45:52.417Z",
+      "CreatedAtMs": 1636101952418,
+      "voteWeight": 0,
+      "id": 26
+    },
+    {
+      "postName": "asdas",
+      "postText": "asdasdas",
+      "roomtitle": "firstClean",
+      "owner": "nurik",
+      "CreatedAt": "2021-11-05T09:41:22.092Z",
+      "CreatedAtMs": 1636105282093,
+      "voteWeight": 0,
+      "id": 27
     }
   ],
   "comments": [
-    {
-      "comment": "lalalalala",
-      "owner": "atai",
-      "postId": 8,
-      "voteWeight": 10,
-      "id": 1
-    },
     {
       "comment": "sex",
       "owner": "atai",
