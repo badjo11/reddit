@@ -131,7 +131,7 @@
       "owner": "atai1",
       "CreatedAt": "2021-11-04T09:55:05.452Z",
       "CreatedAtMs": 1636019705452,
-      "voteWeight": 5,
+      "voteWeight": 6,
       "id": 19
     },
     {
@@ -141,7 +141,7 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T10:37:01.515Z",
       "CreatedAtMs": 1636022221515,
-      "voteWeight": 5,
+      "voteWeight": 7,
       "id": 20
     }
   ],
@@ -165,11 +165,32 @@
       "id": 1
     },
     {
-      "value": -1,
+      "value": 0,
       "owner": "atai",
       "createdAt": 1636355215391,
       "postId": 19,
       "id": 2
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636359059497,
+      "postId": 20,
+      "id": 3
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636359071943,
+      "postId": 20,
+      "id": 4
+    },
+    {
+      "value": 0,
+      "owner": "atai",
+      "createdAt": 1636360915581,
+      "postId": 18,
+      "id": 5
     }
   ]
 }

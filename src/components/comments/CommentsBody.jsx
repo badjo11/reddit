@@ -24,9 +24,7 @@ const CommentsBody = () => {
     usr = user;
   }
 
-  useEffect(() => {
-    getVotesForUserPosts(usr);
-  }, []);
+  useEffect(() => (usr !== "" ? getVotesForUserPosts(usr.username) : null), []);
 
   let post;
   if (specificPost && votesForUser) {

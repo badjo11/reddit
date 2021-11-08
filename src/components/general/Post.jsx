@@ -42,7 +42,6 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   const { user } = useContext(mainContext);
 
   const { deletePost } = useContext(postsContext);
-  // console.log(item)
   function deletedPost() {
     deletePost(item.id, roomtitle);
   }
@@ -65,7 +64,6 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   useEffect(() => {
     setTimeLeft(timeSince(item.CreatedAtMs));
   }, []);
-  // console.log(val)
 
   let vote = <h3 className="VoteWeightNum">{vtWeight}</h3>;
   if (user) {
@@ -73,14 +71,12 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
     if (index !== -1) {
       let voteWeight = votesForUser[index].value;
       if (voteWeight === -1) {
-        //setvoteVal(-1);
         vote = (
           <h3 style={{ color: "purple" }} className="VoteWeightNum">
             {vtWeight}
           </h3>
         );
       } else if (voteWeight === 1) {
-        //setvoteVal(1);
         vote = (
           <h3 style={{ color: "orange" }} className="VoteWeightNum">
             {vtWeight}
@@ -90,7 +86,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
     }
   }
 
-  function handleUpVote1(e) {
+  function handleUpVote(e) {
     e.preventDefault();
     if (user) {
       let index = votesForUser.findIndex((post) => post.postId === item.id);
@@ -121,7 +117,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
     }
   }
 
-  function handleDownVote1(e) {
+  function handleDownVote(e) {
     e.preventDefault();
     if (user) {
       let index = votesForUser.findIndex((post) => post.postId === item.id);
@@ -152,60 +148,14 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
     }
   }
 
-  function handleUpVote(e) {
-    e.preventDefault();
-    if (user) {
-      let index = votesForUser.findIndex((post) => post.postId === item.id);
-      if (index > -1) {
-        let voteWeight = votesForUser[index].value;
-        if (voteWeight === 0) {
-          updateAVoteForAPost(votesForUser[index].id, 1, user.username);
-          upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
-        } else if (voteWeight === -1) {
-          updateAVoteForAPost(votesForUser[index].id, 1, user.username);
-          upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 2);
-        } else {
-          updateAVoteForAPost(votesForUser[index].id, 0, user.username);
-          downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
-        }
-      } else {
-        upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
-        createAVoteForAPost(1, user.username, item.id);
-      }
-    }
-  }
-
-  function handleDownVote(e) {
-    e.preventDefault();
-    if (user) {
-      let index = votesForUser.findIndex((post) => post.postId === item.id);
-      if (index > -1) {
-        let voteWeight = votesForUser[index].value;
-        if (voteWeight === 0) {
-          updateAVoteForAPost(votesForUser[index].id, -1, user.username);
-          downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
-        } else if (voteWeight === 1) {
-          updateAVoteForAPost(votesForUser[index].id, -1, user.username);
-          downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 2);
-        } else {
-          updateAVoteForAPost(votesForUser[index].id, 0, user.username);
-          upVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
-        }
-      } else {
-        downVoteAPost(item.id, item.voteWeight, roomTitles, roomtitle, 1);
-        createAVoteForAPost(-1, user.username, item.id);
-      }
-    }
-  }
-
   return (
     <div className="postCard">
       <div className="likedislike">
-        <a href="" onClick={(e) => handleUpVote1(e)}>
+        <a href="" onClick={(e) => handleUpVote(e)}>
           <img alt="fuckoff" className="upvoteIMG" src={upvote}></img>
         </a>
         {vote}
-        <a href="" onClick={(e) => handleDownVote1(e)}>
+        <a href="" onClick={(e) => handleDownVote(e)}>
           <img alt="fuckoff" className="downvoteIMG" src={downvote}></img>
         </a>
       </div>

@@ -35,7 +35,6 @@ const VotesContextProvider = (props) => {
   };
 
   const updateAVoteForAPost = async (id, value, username, roomId) => {
-    console.log(id, value, username);
     try {
       let res = await axios.patch(APIvotes + id, { value });
       getVotesForUserPosts(username);

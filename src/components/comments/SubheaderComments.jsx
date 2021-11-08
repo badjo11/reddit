@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const SubheaderComments = () => {
   const { specificRoom } = useContext(roomsContext);
-  console.log(specificRoom);
   const hz = useParams();
 
   const navigate = useNavigate();

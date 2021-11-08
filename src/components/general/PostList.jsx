@@ -8,6 +8,7 @@ const PostList = (props) => {
   let { roomposts, mainFeedPosts } = useContext(postsContext);
   const { getVotesForUserPosts, votesForUser } = useContext(votesContext);
   const [posts, setPosts] = useState(mainFeedPosts);
+  const [roomPosts, setRoomPosts] = useState(roomposts);
 
   useEffect(() => {
     let arr = [...mainFeedPosts];
@@ -21,13 +22,18 @@ const PostList = (props) => {
     getVotesForUserPosts(props.usr.username);
   }, []);
 
-  useEffect(() => null, [roomposts]);
+  useEffect(() => {
+    let arr = [...roomposts];
+    arr.sort((a, b) => b.CreatedAtMs - a.CreatedAtMs);
+    setRoomPosts(arr);
+  }, [roomposts]);
+
   let count = 0;
   if (votesForUser.length > 0) {
     if (props.feedFor === "roomfeed") {
       return (
         <div>
-          {roomposts.reverse().map((item) => (
+          {roomPosts.map((item) => (
             <Post
               key={item.id + count + 1}
               item={item}
@@ -56,7 +62,7 @@ const PostList = (props) => {
     if (props.feedFor === "roomfeed") {
       return (
         <div>
-          {roomposts.reverse().map((item) => (
+          {roomPosts.map((item) => (
             <Post
               key={item.id + count + 1}
               item={item}
