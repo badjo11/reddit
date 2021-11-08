@@ -64,6 +64,7 @@ const CreatePost = ({ roomtitle }) => {
           onChange={(e) => setRoomTitle(e.target.value)}
           value={roomTitle}
         >
+          <option>please select a room</option>
           {user.roomTitles.map((item) => (
             <option key={item + 1} value={item}>
               {item}
