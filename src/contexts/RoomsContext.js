@@ -9,6 +9,7 @@ const INIT_STATE = {
   specificRoom: null,
   room_exist: null,
   memberCount: 0,
+  searchRoom: [],
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -23,6 +24,8 @@ const reducer = (state = INIT_STATE, action) => {
       return { ...state, specificRoom: action.payload };
     case "MEMBER_COUNT":
       return { ...state, memberCount: action.payload };
+    case "SEARCH_ROOMS":
+      return { ...state, searchRoom: action.payload }
     default:
       return state;
   }
@@ -83,6 +86,18 @@ const RoomsContextProvider = (props) => {
     }
   };
 
+  const getRoomSearching = async (val) => {
+    try {
+      let res = await axios(APIrooms + '?q=' + val)
+      // console.log(res.data)
+      dispatch({
+        type: "SEARCH_ROOMS",
+        payload: res.data,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
   const getRoomByTitle = async (title) => {
     try {
       let apiii = APIsrooms + "?roomtitle=" + title;
@@ -103,7 +118,7 @@ const RoomsContextProvider = (props) => {
           payload: "error",
         });
       }
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const createRoom = async (room, user, createdAt) => {
@@ -144,10 +159,12 @@ const RoomsContextProvider = (props) => {
         getRoomByTitle,
         addMemberToARoom,
         removeMemberFromARoom,
+        getRoomSearching,
         memberCount: state.memberCount,
         rooms: state.rooms,
         rooms5: state.rooms5,
         specificRoom: state.specificRoom,
+        searchRoom: state.searchRoom,
       }}
     >
       {props.children}

@@ -8,6 +8,7 @@ const INIT_STATE = {
   roomposts: [],
   specificPost: null,
   mainFeedPosts: [],
+  searchResPost: [],
 };
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
@@ -28,6 +29,10 @@ const reducer = (state = INIT_STATE, action) => {
         ...state,
         specificPost: action.payload,
       };
+    case "SEARCH_POSTS":
+      return {
+        ...state, searchResPost: action.payload,
+      }
     default:
       return state;
   }
@@ -50,6 +55,17 @@ const PostsContextProvider = (props) => {
     }
   };
 
+  const getPostSearching = async (val) => {
+    try {
+      let res = await axios(APIposts + '?q=' + val)
+      dispatch({
+        type: "SEARCH_POSTS",
+        payload: res.data,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
   const getSpecificPost = async (id) => {
     try {
       let res = await axios(APIposts + id);
@@ -75,7 +91,7 @@ const PostsContextProvider = (props) => {
           type: "MAIN_FEED_POSTS",
           payload: result.data,
         });
-      } catch (e) {}
+      } catch (e) { }
     });
   };
 
@@ -150,9 +166,11 @@ const PostsContextProvider = (props) => {
         upVoteAPost,
         downVoteAPost,
         deletePost,
+        getPostSearching,
         specificPost: state.specificPost,
         roomposts: state.roomposts,
         mainFeedPosts: state.mainFeedPosts,
+        searchResPost: state.searchResPost,
       }}
     >
       {props.children}
