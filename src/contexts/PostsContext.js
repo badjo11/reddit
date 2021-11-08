@@ -57,10 +57,18 @@ const PostsContextProvider = (props) => {
 
   const getPostSearching = async (val) => {
     try {
-      let res = await axios(APIposts + '?q=' + val)
+      let { data } = await axios(APIposts + '?q=' + val)
+      let reg = new RegExp(val)
+      let result = data.filter((term) => {
+        if ('postName' in term) {
+          if (term.postName.toLowerCase().match(reg)) {
+            return term.postName;
+          }
+        }
+      })
       dispatch({
         type: "SEARCH_POSTS",
-        payload: res.data,
+        payload: result,
       })
     } catch (e) {
       console.log(e)

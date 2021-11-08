@@ -88,11 +88,18 @@ const RoomsContextProvider = (props) => {
 
   const getRoomSearching = async (val) => {
     try {
-      let res = await axios(APIrooms + '?q=' + val)
-      // console.log(res.data)
+      let { data } = await axios(APIrooms + '?q=' + val)
+      let reg = new RegExp(val)
+      let result = data.filter((term) => {
+        if ('roomtitle' in term) {
+          if (term.roomtitle.toLowerCase().match(reg)) {
+            return term.roomtitle;
+          }
+        }
+      })
       dispatch({
         type: "SEARCH_ROOMS",
-        payload: res.data,
+        payload: result,
       })
     } catch (e) {
       console.log(e)
