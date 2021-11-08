@@ -10,6 +10,7 @@ import CommentsPage from "./pages/CommentsPage";
 import VotesContextProvider from "./contexts/VoteContext";
 import CommentsContextProvider from "./contexts/CommentsContext";
 import AllRooms from "./pages/AllRooms";
+import NoMatch from "./pages/NoMatch";
 
 const MyRoutes = () => {
   return (
@@ -29,7 +30,7 @@ const MyRoutes = () => {
                     element={<CommentsPage />}
                   />
                   <Route path="/rooms" element={<AllRooms />} />
-                  {/* <Navigate to="/" replace={null} /> */}
+                  <Route path="*" element={<NoMatch />} />
                 </Routes>
               </BrowserRouter>
             </VotesContextProvider>
