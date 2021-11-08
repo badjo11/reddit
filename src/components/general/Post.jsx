@@ -35,30 +35,31 @@ export function timeSince(date) {
 
 const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   const [timeLeft, setTimeLeft] = useState(0);
+  const [voteVal, setvoteVal] = useState(null);
+  const [vtWeight, setvtWeight] = useState(item.voteWeight);
   const { downVoteAPost, upVoteAPost } = useContext(postsContext);
   const { createAVoteForAPost, updateAVoteForAPost } = useContext(votesContext);
   const { user } = useContext(mainContext);
 
-
-  const { deletePost } = useContext(postsContext)
+  const { deletePost } = useContext(postsContext);
   // console.log(item)
   function deletedPost() {
-    deletePost(item.id, roomtitle)
+    deletePost(item.id, roomtitle);
   }
-  let user1 = localStorage.getItem("user")
-  user1 = JSON.parse(user1)
-  let delbtn
+  let user1 = localStorage.getItem("user");
+  user1 = JSON.parse(user1);
+  let delbtn;
   if (user1) {
     if (user1.username === item.owner) {
-      delbtn = <div className="dropdown">
-        <button className="dropbtn">...</button>
-        <div className="dropdown-content">
-          <button onClick={deletedPost}>Delete</button>
-
+      delbtn = (
+        <div className="dropdown">
+          <button className="dropbtn">...</button>
+          <div className="dropdown-content">
+            <button onClick={deletedPost}>Delete</button>
+          </div>
         </div>
-      </div>
+      );
     }
-
   }
 
   useEffect(() => {
@@ -66,26 +67,87 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   }, []);
   // console.log(val)
 
-
-
-
-  let vote = <h3 className="VoteWeightNum">{item.voteWeight}</h3>;
+  let vote = <h3 className="VoteWeightNum">{vtWeight}</h3>;
   if (user) {
     let index = votesForUser.findIndex((post) => post.postId === item.id);
     if (index !== -1) {
       let voteWeight = votesForUser[index].value;
       if (voteWeight === -1) {
+        //setvoteVal(-1);
         vote = (
           <h3 style={{ color: "purple" }} className="VoteWeightNum">
-            {item.voteWeight}
+            {vtWeight}
           </h3>
         );
       } else if (voteWeight === 1) {
+        //setvoteVal(1);
         vote = (
           <h3 style={{ color: "orange" }} className="VoteWeightNum">
-            {item.voteWeight}
+            {vtWeight}
           </h3>
         );
+      }
+    }
+  }
+
+  function handleUpVote1(e) {
+    e.preventDefault();
+    if (user) {
+      let index = votesForUser.findIndex((post) => post.postId === item.id);
+      if (index > -1) {
+        let voteWeight = votesForUser[index].value;
+        if (voteWeight === 0) {
+          updateAVoteForAPost(votesForUser[index].id, 1, user.username);
+          upVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
+          setvoteVal(1);
+          setvtWeight(vtWeight + 1);
+        } else if (voteWeight === -1) {
+          updateAVoteForAPost(votesForUser[index].id, 1, user.username);
+          upVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 2);
+          setvoteVal(1);
+          setvtWeight(vtWeight + 2);
+        } else {
+          updateAVoteForAPost(votesForUser[index].id, 0, user.username);
+          downVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
+          setvoteVal(0);
+          setvtWeight(vtWeight - 1);
+        }
+      } else {
+        upVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
+        createAVoteForAPost(1, user.username, item.id);
+        setvoteVal(1);
+        setvtWeight(vtWeight + 1);
+      }
+    }
+  }
+
+  function handleDownVote1(e) {
+    e.preventDefault();
+    if (user) {
+      let index = votesForUser.findIndex((post) => post.postId === item.id);
+      if (index > -1) {
+        let voteWeight = votesForUser[index].value;
+        if (voteWeight === 0) {
+          updateAVoteForAPost(votesForUser[index].id, -1, user.username);
+          downVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
+          setvtWeight(vtWeight - 1);
+          setvoteVal(-1);
+        } else if (voteWeight === 1) {
+          updateAVoteForAPost(votesForUser[index].id, -1, user.username);
+          downVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 2);
+          setvtWeight(vtWeight - 2);
+          setvoteVal(-1);
+        } else {
+          updateAVoteForAPost(votesForUser[index].id, 0, user.username);
+          upVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
+          setvtWeight(vtWeight + 1);
+          setvoteVal(0);
+        }
+      } else {
+        downVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
+        createAVoteForAPost(-1, user.username, item.id);
+        setvtWeight(vtWeight - 1);
+        setvoteVal(-1);
       }
     }
   }
@@ -136,20 +198,14 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
     }
   }
 
-  if (user) {
-
-  }
-
-
-
   return (
     <div className="postCard">
       <div className="likedislike">
-        <a href="" onClick={(e) => handleUpVote(e)}>
+        <a href="" onClick={(e) => handleUpVote1(e)}>
           <img alt="fuckoff" className="upvoteIMG" src={upvote}></img>
         </a>
         {vote}
-        <a href="" onClick={(e) => handleDownVote(e)}>
+        <a href="" onClick={(e) => handleDownVote1(e)}>
           <img alt="fuckoff" className="downvoteIMG" src={downvote}></img>
         </a>
       </div>

@@ -3,15 +3,35 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [1, 2, 3, 4],
-      "roomTitles": ["firstClean", "secondClean", "thirdClean", "fourthClean"],
+      "rooms": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "thirdClean",
+        "fourthClean"
+      ],
       "id": 1
     },
     {
       "username": "atai1",
       "password": "atai",
-      "rooms": [1, 2, 4, 5],
-      "roomTitles": ["firstClean", "secondClean", "fourthClean", "fifthClean"],
+      "rooms": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "fourthClean",
+        "fifthClean"
+      ],
       "id": 2
     },
     {
@@ -111,7 +131,7 @@
       "owner": "atai1",
       "CreatedAt": "2021-11-04T09:55:05.452Z",
       "CreatedAtMs": 1636019705452,
-      "voteWeight": 6,
+      "voteWeight": 5,
       "id": 19
     },
     {
@@ -121,7 +141,7 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T10:37:01.515Z",
       "CreatedAtMs": 1636022221515,
-      "voteWeight": 3,
+      "voteWeight": 5,
       "id": 20
     }
   ],
@@ -136,5 +156,20 @@
       "id": 1
     }
   ],
-  "votes": []
+  "votes": [
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636352142264,
+      "postId": 20,
+      "id": 1
+    },
+    {
+      "value": -1,
+      "owner": "atai",
+      "createdAt": 1636355215391,
+      "postId": 19,
+      "id": 2
+    }
+  ]
 }

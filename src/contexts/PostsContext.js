@@ -75,7 +75,7 @@ const PostsContextProvider = (props) => {
           type: "MAIN_FEED_POSTS",
           payload: result.data,
         });
-      } catch (e) { }
+      } catch (e) {}
     });
   };
 
@@ -99,11 +99,11 @@ const PostsContextProvider = (props) => {
       let res = await axios.patch(APIposts + postId, {
         voteWeight: weight + value,
       });
-      if (roomTitles) {
-        getPostsForMainUserFeed(roomTitles);
-      } else {
-        getPostsByRoom(roomTitle);
-      }
+      // if (roomTitles) {
+      //   getPostsForMainUserFeed(roomTitles);
+      // } else {
+      //   getPostsByRoom(roomTitle);
+      // }
     } catch (e) {
       console.log(e);
     }
@@ -120,11 +120,11 @@ const PostsContextProvider = (props) => {
       let res = await axios.patch(APIposts + postId, {
         voteWeight: weight - value,
       });
-      if (roomTitles) {
-        getPostsForMainUserFeed(roomTitles);
-      } else {
-        getPostsByRoom(roomTitle);
-      }
+      // if (roomTitles) {
+      //   getPostsForMainUserFeed(roomTitles);
+      // } else {
+      //   getPostsByRoom(roomTitle);
+      // }
     } catch (e) {
       console.log(e);
     }
@@ -133,13 +133,12 @@ const PostsContextProvider = (props) => {
   const deletePost = async (id, roomtitle) => {
     try {
       let tempApi = APIposts + id;
-      await axios.delete(tempApi)
+      await axios.delete(tempApi);
       getPostsByRoom(roomtitle);
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
-
+  };
 
   return (
     <postsContext.Provider
