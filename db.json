@@ -3,15 +3,35 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [1, 2, 3, 4],
-      "roomTitles": ["firstClean", "secondClean", "thirdClean", "fourthClean"],
+      "rooms": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "thirdClean",
+        "fourthClean"
+      ],
       "id": 1
     },
     {
       "username": "atai1",
       "password": "atai",
-      "rooms": [1, 2, 4, 5],
-      "roomTitles": ["firstClean", "secondClean", "fourthClean", "fifthClean"],
+      "rooms": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "fourthClean",
+        "fifthClean"
+      ],
       "id": 2
     },
     {
@@ -111,7 +131,7 @@
       "owner": "atai1",
       "CreatedAt": "2021-11-04T09:55:05.452Z",
       "CreatedAtMs": 1636019705452,
-      "voteWeight": 6,
+      "voteWeight": 5,
       "id": 19
     },
     {
@@ -121,20 +141,113 @@
       "owner": "atai",
       "CreatedAt": "2021-11-04T10:37:01.515Z",
       "CreatedAtMs": 1636022221515,
-      "voteWeight": 3,
+      "voteWeight": 5,
       "id": 20
     }
   ],
   "comments": [
     {
-      "comment": "sadfasa",
+      "comment": "asdasdas",
       "owner": "atai",
-      "createdAt": "2021-11-05T11:32:03.526Z",
-      "createdAtMs": 1636111923526,
+      "createdAt": "2021-11-08T09:22:01.124Z",
+      "createdAtMs": 1636363321124,
       "postId": 20,
       "votesWeight": 0,
+      "edited": true,
       "id": 1
+    },
+    {
+      "comment": "sadfasas",
+      "owner": "atai",
+      "createdAt": "2021-11-08T09:35:28.793Z",
+      "createdAtMs": 1636364128793,
+      "postId": 20,
+      "votesWeight": 0,
+      "edited": true,
+      "id": 2
+    },
+    {
+      "comment": "werweqrw",
+      "owner": "atai",
+      "createdAt": "2021-11-08T09:36:13.213Z",
+      "createdAtMs": 1636364173213,
+      "postId": 20,
+      "votesWeight": 0,
+      "edited": true,
+      "id": 3
+    },
+    {
+      "comment": "sdfsadf",
+      "owner": "atai",
+      "createdAt": "2021-11-08T09:37:00.009Z",
+      "createdAtMs": 1636364220009,
+      "postId": 20,
+      "votesWeight": 0,
+      "edited": true,
+      "id": 4
+    },
+    {
+      "comment": "bael",
+      "owner": "atai",
+      "createdAt": "2021-11-08T09:38:22.776Z",
+      "createdAtMs": 1636364302776,
+      "postId": 20,
+      "votesWeight": 0,
+      "edited": true,
+      "id": 5
+    },
+    {
+      "comment": "q",
+      "owner": "atai1",
+      "createdAt": "2021-11-08T09:38:50.686Z",
+      "createdAtMs": 1636364330686,
+      "postId": 20,
+      "votesWeight": 0,
+      "edited": true,
+      "id": 6
+    },
+    {
+      "comment": "dwe",
+      "owner": "atai1",
+      "createdAt": "2021-11-08T09:59:49.310Z",
+      "createdAtMs": 1636365589310,
+      "postId": 20,
+      "votesWeight": 0,
+      "edited": true,
+      "id": 7
+    },
+    {
+      "comment": "werwerwewrwere",
+      "owner": "atai1",
+      "createdAt": "2021-11-08T10:00:58.063Z",
+      "createdAtMs": 1636365658063,
+      "postId": 20,
+      "votesWeight": 0,
+      "edited": true,
+      "id": 8
     }
   ],
-  "votes": []
+  "votes": [
+    {
+      "value": 0,
+      "owner": "atai",
+      "createdAt": 1636352142264,
+      "postId": 20,
+      "id": 1
+    },
+    {
+      "value": -1,
+      "owner": "atai",
+      "createdAt": 1636355215391,
+      "postId": 19,
+      "id": 2
+    },
+    {
+      "value": 1,
+      "owner": "atai",
+      "createdAt": 1636357397605,
+      "postId": 20,
+      "id": 3
+    }
+  ]
 }

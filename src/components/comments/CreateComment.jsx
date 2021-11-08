@@ -16,7 +16,9 @@ const CreateComment = (props) => {
     let time = new Date();
     let timeMls = Date.now();
     createComment(comment, user.username, time, props.specificPost.id, timeMls);
+    setComment('')
   }
+
   return (<>
     <InputGroup className="mb-3">
       <FormControl
@@ -25,6 +27,7 @@ const CreateComment = (props) => {
         placeholder="Your comment"
         maxLength="140"
         onChange={handleChange}
+        value={comment}
       />
       <Button onClick={creatingComment} variant="info">
         Comment
