@@ -143,6 +143,66 @@
       "CreatedAtMs": 1636022221515,
       "voteWeight": 5,
       "id": 20
+    },
+    {
+      "postText": "hahaha",
+      "postImgURL": "",
+      "roomtitle": "secondClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-08T11:57:26.148Z",
+      "CreatedAtMs": 1636372646148,
+      "voteWeight": 0,
+      "id": 23
+    },
+    {
+      "postText": "testing",
+      "postImgURL": "",
+      "roomtitle": "",
+      "owner": "atai",
+      "CreatedAt": "2021-11-08T11:59:16.719Z",
+      "CreatedAtMs": 1636372756719,
+      "voteWeight": 0,
+      "id": 24
+    },
+    {
+      "postText": "sqsq",
+      "postImgURL": "",
+      "roomtitle": "",
+      "owner": "atai",
+      "CreatedAt": "2021-11-08T12:03:36.786Z",
+      "CreatedAtMs": 1636373016786,
+      "voteWeight": 0,
+      "id": 25
+    },
+    {
+      "postText": "23123",
+      "postImgURL": "",
+      "roomtitle": "thirdClean",
+      "owner": "atai",
+      "CreatedAt": "2021-11-08T12:05:30.099Z",
+      "CreatedAtMs": 1636373130099,
+      "voteWeight": 0,
+      "id": 26
+    },
+    {
+      "postText": "first",
+      "postImgURL": "",
+      "roomtitle": "",
+      "owner": "atai",
+      "CreatedAt": "2021-11-08T12:05:46.636Z",
+      "CreatedAtMs": 1636373146636,
+      "voteWeight": 0,
+      "id": 27
+    },
+    {
+      "postText": "lolololol",
+      "postImgURL": "",
+      "roomtitle": "",
+      "owner": "atai",
+      "CreatedAt": "2021-11-08T12:08:38.048Z",
+      "CreatedAtMs": 1636373318048,
+      "voteWeight": 0,
+      "id": 28
     }
   ],
   "comments": [
@@ -229,7 +289,7 @@
   ],
   "votes": [
     {
-      "value": -1,
+      "value": 1,
       "owner": "atai",
       "createdAt": 1636352142264,
       "postId": 20,
