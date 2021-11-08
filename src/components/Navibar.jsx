@@ -6,13 +6,18 @@ import {
   Nav,
   Container,
   Badge,
+  NavDropdown,
 } from "react-bootstrap";
 import SignUpModal from "./auth/SignUpModal";
 import LogInModal from "./auth/LogInModal";
 import { mainContext } from "../contexts/MainContext";
+import { postsContext } from "../contexts/PostsContext";
+import { roomsContext } from "../contexts/RoomsContext";
 
 const Navibar = () => {
   const { state, logoutUser, setUser } = useContext(mainContext);
+  const { getPostSearching, searchResPost } = useContext(postsContext)
+  const { getRoomSearching, searchRoom } = useContext(roomsContext)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -20,7 +25,34 @@ const Navibar = () => {
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
   let button;
-
+  const [dropdowndiv, setdropdowndiv] = useState()
+  function hanldeChange(e) {
+    if (e.target.value.length > 2) {
+      getPostSearching(e.target.value)
+      getRoomSearching(e.target.value)
+      setdropdowndiv(<div className="dropdown-div" style={{ display: 'block' }}>
+        <h2>Rooms</h2>
+        <ul>
+          {
+            searchRoom.map((item) => (
+              <li key={item.id}>{item.roomtitle}</li>
+            ))
+          }
+        </ul>
+        <h2>Posts</h2>
+        <ul>
+          {
+            searchResPost.map((item) => (
+              <li key={item.id}>{item.postName}</li>
+            ))
+          }
+        </ul>
+      </div>)
+    } else {
+      setdropdowndiv(<div className="dropdown-div" style={{ display: 'none' }}>
+      </div>)
+    }
+  }
   function logout() {
     logoutUser();
     localStorage.clear();
@@ -82,20 +114,25 @@ const Navibar = () => {
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
             navbarScroll
-          ></Nav>
+          >
+          </Nav>
+          {dropdowndiv}
+
           <FormControl
             type="search"
             placeholder="Search"
             className="mx-auto  "
             aria-label="Search"
             style={{ maxWidth: "700px", textAlign: "center", }}
+            onChange={hanldeChange}
+
           />
           {button}
         </Navbar.Collapse>
       </Container>
       <SignUpModal handleClose={handleClose} show={show} />
       <LogInModal handleCloseLogin={handleCloseLogin} showLogin={showLogin} />
-    </Navbar>
+    </Navbar >
   );
 };
 

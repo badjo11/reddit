@@ -3,35 +3,15 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [
-        2,
-        3,
-        4,
-        1
-      ],
-      "roomTitles": [
-        "secondClean",
-        "thirdClean",
-        "fourthClean",
-        "firstClean"
-      ],
+      "rooms": [2, 3, 4, 1],
+      "roomTitles": ["secondClean", "thirdClean", "fourthClean", "firstClean"],
       "id": 1
     },
     {
       "username": "atai1",
       "password": "atai",
-      "rooms": [
-        1,
-        2,
-        4,
-        5
-      ],
-      "roomTitles": [
-        "firstClean",
-        "secondClean",
-        "fourthClean",
-        "fifthClean"
-      ],
+      "rooms": [1, 2, 4, 5],
+      "roomTitles": ["firstClean", "secondClean", "fourthClean", "fifthClean"],
       "id": 2
     },
     {
