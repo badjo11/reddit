@@ -9,12 +9,12 @@ import SubheaderComments from "./SubheaderComments";
 import { votesContext } from "../../contexts/VoteContext";
 
 const CommentsBody = () => {
-  const hz = useParams();
+  const params = useParams();
   const { getSpecificPost, specificPost } = useContext(postsContext);
   const { getVotesForUserPosts, votesForUser } = useContext(votesContext);
 
   useEffect(() => {
-    getSpecificPost(hz.id);
+    getSpecificPost(params.commentId);
   }, []);
 
   let usr = "";
@@ -31,7 +31,7 @@ const CommentsBody = () => {
     post = (
       <Post
         item={specificPost}
-        roomtitle={hz.roomtitle}
+        roomtitle={params.roomtitle}
         votesForUser={votesForUser}
       />
     );

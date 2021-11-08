@@ -25,10 +25,10 @@ const MyRoutes = () => {
                   <Route exact path="/r/:roomtitle" element={<RoomsPage />} />
                   <Route
                     exact
-                    path="/r/:roomtitle/comments/:id"
+                    path="/r/:roomtitle/comments/:commentId"
                     element={<CommentsPage />}
                   />
-                  <Route path='/rooms' element={<AllRooms />} />
+                  <Route path="/rooms" element={<AllRooms />} />
                   {/* <Navigate to="/" replace={null} /> */}
                 </Routes>
               </BrowserRouter>

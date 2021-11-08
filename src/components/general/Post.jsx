@@ -5,6 +5,8 @@ import downvote from "../../images/downvote.png";
 import { postsContext } from "../../contexts/PostsContext";
 import { votesContext } from "../../contexts/VoteContext";
 import { mainContext } from "../../contexts/MainContext";
+import { useParams } from "react-router-dom";
+
 import "./general.css";
 
 export function timeSince(date) {
@@ -40,8 +42,9 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   const { downVoteAPost, upVoteAPost } = useContext(postsContext);
   const { createAVoteForAPost, updateAVoteForAPost } = useContext(votesContext);
   const { user } = useContext(mainContext);
-
   const { deletePost } = useContext(postsContext);
+  const params = useParams();
+
   function deletedPost() {
     deletePost(item.id, roomtitle);
   }
@@ -148,6 +151,29 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
     }
   }
 
+  let isCommentPageLink;
+  if (params.commentId) {
+    isCommentPageLink = (
+      <img
+        className="m-2"
+        width="15px"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Comment_alt_font_awesome.svg/512px-Comment_alt_font_awesome.svg.png"
+        alt=""
+      />
+    );
+  } else {
+    isCommentPageLink = (
+      <a href={"/r/" + item.roomtitle + "/comments/" + item.id}>
+        <img
+          className="m-2"
+          width="15px"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Comment_alt_font_awesome.svg/512px-Comment_alt_font_awesome.svg.png"
+          alt=""
+        />
+      </a>
+    );
+  }
+
   return (
     <div className="postCard">
       <div className="likedislike">
@@ -185,12 +211,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
           </Card.Body>
         </Card.Link>
         <Card.Footer className="d-flex justify-content-start p-2">
-          <img
-            className="m-2"
-            width="15px"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Comment_alt_font_awesome.svg/512px-Comment_alt_font_awesome.svg.png"
-            alt=""
-          />
+          {isCommentPageLink}
           <img
             className="m-2"
             width="15px"
