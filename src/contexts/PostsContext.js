@@ -57,18 +57,18 @@ const PostsContextProvider = (props) => {
   };
 
   const getPostSearching = async (val) => {
-    console.log(val);
+    // console.log(val);
     try {
       let { data } = await axios(APIposts + "?q=" + val);
       let reg = new RegExp(val);
       let result = data.filter((term) => {
-        if ("postName" in term) {
-          if (term.postName.toLowerCase().match(reg)) {
-            return term.postName;
+        if ("postText" in term) {
+          if (term.postText.toLowerCase().match(reg)) {
+            return term.postText;
           }
         }
       });
-      console.log(result);
+      // console.log(result);
       dispatch({
         type: "SEARCH_POSTS",
         payload: result,
@@ -77,6 +77,12 @@ const PostsContextProvider = (props) => {
       console.log(e);
     }
   };
+  const wipeCleanSearchResults = () => {
+    dispatch({
+      type: "SEARCH_POSTS",
+      payload: [],
+    });
+  }
   const getSpecificPost = async (id) => {
     try {
       let res = await axios(APIposts + id);
@@ -102,7 +108,7 @@ const PostsContextProvider = (props) => {
           type: "MAIN_FEED_POSTS",
           payload: result.data,
         });
-      } catch (e) {}
+      } catch (e) { }
     });
   };
 
@@ -178,6 +184,7 @@ const PostsContextProvider = (props) => {
         downVoteAPost,
         deletePost,
         getPostSearching,
+        wipeCleanSearchResults,
         specificPost: state.specificPost,
         roomposts: state.roomposts,
         mainFeedPosts: state.mainFeedPosts,

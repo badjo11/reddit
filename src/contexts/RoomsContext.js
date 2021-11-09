@@ -105,6 +105,13 @@ const RoomsContextProvider = (props) => {
       console.log(e);
     }
   };
+
+  const wipeCleanSearchResultsRoom = () => {
+    dispatch({
+      type: "SEARCH_ROOMS",
+      payload: [],
+    });
+  }
   const getRoomByTitle = async (title) => {
     try {
       let apiii = APIsrooms + "?roomtitle=" + title;
@@ -124,13 +131,15 @@ const RoomsContextProvider = (props) => {
           payload: "error",
         });
       }
-    } catch (e) {}
+    } catch (e) { }
   };
+
+
 
   const createRoom = async (room, user, createdAt) => {
     room["owner"] = user.username;
     room["CreatedAt"] = createdAt;
-    console.log(room);
+    // console.log(room);
     try {
       let res = await axios(APIrooms);
       let rooms = res.data.find((rooms) => rooms.roomtitle === room.roomtitle);
@@ -166,6 +175,7 @@ const RoomsContextProvider = (props) => {
         addMemberToARoom,
         removeMemberFromARoom,
         getRoomSearching,
+        wipeCleanSearchResultsRoom,
         memberCount: state.memberCount,
         rooms: state.rooms,
         rooms5: state.rooms5,

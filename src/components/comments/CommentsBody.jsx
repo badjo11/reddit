@@ -36,7 +36,7 @@ const CommentsBody = () => {
       />
     );
   } else {
-    post = <div>suka</div>;
+    post = <div>Loading</div>;
   }
   let commentView;
   if (specificPost) {
