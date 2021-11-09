@@ -9,6 +9,7 @@
 .mainFeed {
   width: 70%;
   margin-right: 20px;
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
 }

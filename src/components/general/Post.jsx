@@ -48,6 +48,9 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   function deletedPost() {
     deletePost(item.id, roomtitle);
   }
+
+  function editPost() {}
+
   let user1 = localStorage.getItem("user");
   user1 = JSON.parse(user1);
   let delbtn;
@@ -58,6 +61,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
           <button className="dropbtn">...</button>
           <div className="dropdown-content">
             <button onClick={deletedPost}>Delete</button>
+            <button onClick={editPost}>Edit</button>
           </div>
         </div>
       );
@@ -205,9 +209,9 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
               {item.CreatedAt[15]} {timeLeft} ago
             </Card.Subtitle>
             <Card.Title style={{ paddingTop: "5px", paddingBottom: "5px" }}>
-              {item.postName}
+              {item.postText}
             </Card.Title>
-            <Card.Text>{item.postText}</Card.Text>
+            <img className="postImage" src={item.postImgURL}></img>
           </Card.Body>
         </Card.Link>
         <Card.Footer className="d-flex justify-content-start p-2">
@@ -218,7 +222,6 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
             src="https://www.vhv.rs/dpng/d/520-5207678_viewing-svg-share-shared-icon-hd-png-download.png"
             alt=""
           />
-          {/* <img className="points" width="15px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Simple_icon_ellipsis.svg/1280px-Simple_icon_ellipsis.svg.png" alt="" />*/}
           {delbtn}
         </Card.Footer>
       </Card>
@@ -227,3 +230,5 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
 };
 
 export default Post;
+
+//<Card.Img>{item.postImgURL}</Card.Img>

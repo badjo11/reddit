@@ -43,12 +43,12 @@
 
 .postCard {
   display: flex;
-  width: 100%;
+  width: 95%;
   margin-top: 15px;
 }
 
 .mainPostCard {
-  width: 100%;
+  width: 90%;
   text-decoration: none;
 }
 
@@ -102,6 +102,35 @@
   background-color: #f1f1f1;
 }
 
+.postImage {
+  width: 650px;
+  height: auto;
+  object-fit: contain;
+}
 /* .dropdown:hover {
   opacity: 0.5;
 } */
+
+@media screen and (max-width: 1200px) {
+  .postImage {
+    width: 340px;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 1028px) {
+  .postImage {
+    width: 280px;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .postImage {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+  }
+}
