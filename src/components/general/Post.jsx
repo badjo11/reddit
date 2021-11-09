@@ -39,7 +39,12 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [voteVal, setvoteVal] = useState(null);
   const [vtWeight, setvtWeight] = useState(item.voteWeight);
-  const { downVoteAPost, upVoteAPost } = useContext(postsContext);
+  const {
+    downVoteAPost,
+    upVoteAPost,
+    getPostsForMainUserFeed,
+    getPostsByRoom,
+  } = useContext(postsContext);
   const { createAVoteForAPost, updateAVoteForAPost } = useContext(votesContext);
   const { user } = useContext(mainContext);
   const { deletePost } = useContext(postsContext);
@@ -47,6 +52,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
 
   function deletedPost() {
     deletePost(item.id, roomtitle);
+    console.log(params);
   }
 
   function editPost() {}

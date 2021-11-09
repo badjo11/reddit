@@ -17,57 +17,43 @@ import { Link } from "react-router-dom";
 
 const Navibar = () => {
   const { state, logoutUser, setUser } = useContext(mainContext);
-  const { getPostSearching, searchResPost } = useContext(postsContext)
-  const { getRoomSearching, searchRoom } = useContext(roomsContext)
+  const { getPostSearching, searchResPost } = useContext(postsContext);
+  const { getRoomSearching, searchRoom } = useContext(roomsContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [showLogin, setShowLogin] = useState(false);
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
-  let button;
-  const [dropdowndiv, setdropdowndiv] = useState()
-  function hanldeChange(e) {
-    if (e.target.value.length > 2) {
-      getPostSearching(e.target.value)
-      getRoomSearching(e.target.value)
-      setdropdowndiv(<div className="dropdown-div" style={{ display: 'block' }}>
-        <h2 style={{ color: 'white', background: '#373940' }}>Rooms</h2>
-        <ul>
-          {
-            searchRoom.map((item) => {
-              // console.log(item.roomtitle)
-              let index = item.roomtitle.toLowerCase().indexOf(e.target.value)
-              let temp = item.roomtitle.slice(0, index)
-              let temp1 = <span style={{ backgroundColor: 'yellow' }}>{e.target.value}</span>
-              let temp2 = item.roomtitle.slice(index + e.target.value.length)
-              return <Link key={item.id} to={'/r/' + item.roomtitle}>
-                <li >{temp}{temp1}{temp2}</li>
-              </Link>
-            })
-          }
-        </ul>
-        <h2 style={{ color: 'white', background: '#373940' }}>Posts</h2>
-        <ul>
-          {
-            searchResPost.map((item) => {
 
-              let index = item.postName.toLowerCase().indexOf(e.target.value)
-              let temp = item.postName.slice(0, index)
-              let temp1 = <span style={{ backgroundColor: 'yellow' }}>{e.target.value}</span>
-              let temp2 = item.postName.slice(index + e.target.value.length)
-              return <Link key={item.id} to={'/r/' + item.postName}>
-                <li >{temp}{temp1}{temp2}</li>
-              </Link>
-            })
-          }
-        </ul>
-      </div>)
-    } else {
-      setdropdowndiv(<div className="dropdown-div" style={{ display: 'none' }}>
-      </div>)
+  let button;
+  function hanldeChange(e) {
+    if (e.target.value.length >= 2) {
+      //getPostSearching(e.target.value);
+      getRoomSearching(e.target.value);
     }
   }
+
+  let searchResList;
+  if (searchRoom.length > 0) {
+    searchResList = (
+      <div className="dropdown-div" style={{ display: "block" }}>
+        <h2 style={{ color: "white", background: "#373940" }}>Rooms</h2>
+        <ul>
+          {searchRoom.map((item) => (
+            <Link key={item.id} to={"/r/" + item.roomtitle}>
+              <li>{item.roomtitle}</li>
+            </Link>
+          ))}
+        </ul>
+      </div>
+    );
+  } else {
+    searchResList = (
+      <div className="dropdown-div" style={{ display: "none" }}></div>
+    );
+  }
+
   function logout() {
     logoutUser();
     localStorage.clear();
@@ -95,10 +81,18 @@ const Navibar = () => {
   } else {
     button = (
       <>
-        <Button className="me-2 text-success" variant="outline-dark" onClick={handleShowLogin}>
+        <Button
+          className="me-2 text-success"
+          variant="outline-dark"
+          onClick={handleShowLogin}
+        >
           Log In
         </Button>
-        <Button className="me-2 text-success" variant="outline-dark" onClick={handleShow}>
+        <Button
+          className="me-2 text-success"
+          variant="outline-dark"
+          onClick={handleShow}
+        >
           Sign Up
         </Button>
       </>
@@ -129,25 +123,22 @@ const Navibar = () => {
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
             navbarScroll
-          >
-          </Nav>
-          {dropdowndiv}
-
+          ></Nav>
+          {searchResList}
           <FormControl
             type="search"
             placeholder="Search"
             className="mx-auto  "
             aria-label="Search"
-            style={{ maxWidth: "700px", textAlign: "center", }}
+            style={{ maxWidth: "700px", textAlign: "center" }}
             onChange={hanldeChange}
-
           />
           {button}
         </Navbar.Collapse>
       </Container>
       <SignUpModal handleClose={handleClose} show={show} />
       <LogInModal handleCloseLogin={handleCloseLogin} showLogin={showLogin} />
-    </Navbar >
+    </Navbar>
   );
 };
 

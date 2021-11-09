@@ -31,8 +31,9 @@ const reducer = (state = INIT_STATE, action) => {
       };
     case "SEARCH_POSTS":
       return {
-        ...state, searchResPost: action.payload,
-      }
+        ...state,
+        searchResPost: action.payload,
+      };
     default:
       return state;
   }
@@ -56,24 +57,26 @@ const PostsContextProvider = (props) => {
   };
 
   const getPostSearching = async (val) => {
+    console.log(val);
     try {
-      let { data } = await axios(APIposts + '?q=' + val)
-      let reg = new RegExp(val)
+      let { data } = await axios(APIposts + "?q=" + val);
+      let reg = new RegExp(val);
       let result = data.filter((term) => {
-        if ('postName' in term) {
+        if ("postName" in term) {
           if (term.postName.toLowerCase().match(reg)) {
             return term.postName;
           }
         }
-      })
+      });
+      console.log(result);
       dispatch({
         type: "SEARCH_POSTS",
         payload: result,
-      })
+      });
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
   const getSpecificPost = async (id) => {
     try {
       let res = await axios(APIposts + id);
@@ -99,7 +102,7 @@ const PostsContextProvider = (props) => {
           type: "MAIN_FEED_POSTS",
           payload: result.data,
         });
-      } catch (e) { }
+      } catch (e) {}
     });
   };
 

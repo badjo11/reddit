@@ -25,7 +25,7 @@ const reducer = (state = INIT_STATE, action) => {
     case "MEMBER_COUNT":
       return { ...state, memberCount: action.payload };
     case "SEARCH_ROOMS":
-      return { ...state, searchRoom: action.payload }
+      return { ...state, searchRoom: action.payload };
     default:
       return state;
   }
@@ -88,27 +88,26 @@ const RoomsContextProvider = (props) => {
 
   const getRoomSearching = async (val) => {
     try {
-      let { data } = await axios(APIrooms + '?q=' + val)
-      let reg = new RegExp(val)
+      let { data } = await axios(APIrooms + "?q=" + val);
+      let reg = new RegExp(val);
       let result = data.filter((term) => {
-        if ('roomtitle' in term) {
+        if ("roomtitle" in term) {
           if (term.roomtitle.toLowerCase().match(reg)) {
             return term.roomtitle;
           }
         }
-      })
+      });
       dispatch({
         type: "SEARCH_ROOMS",
         payload: result,
-      })
+      });
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
   const getRoomByTitle = async (title) => {
     try {
       let apiii = APIsrooms + "?roomtitle=" + title;
-      console.log(apiii);
       let res = await axios.get(apiii);
       if (res.data.length > 0) {
         dispatch({
@@ -125,7 +124,7 @@ const RoomsContextProvider = (props) => {
           payload: "error",
         });
       }
-    } catch (e) { }
+    } catch (e) {}
   };
 
   const createRoom = async (room, user, createdAt) => {
