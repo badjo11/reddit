@@ -59,6 +59,7 @@ const PostsContextProvider = (props) => {
     try {
       let { data } = await axios(APIposts + '?q=' + val)
       let reg = new RegExp(val)
+      //qweqw
       let result = data.filter((term) => {
         if ('postName' in term) {
           if (term.postName.toLowerCase().match(reg)) {
