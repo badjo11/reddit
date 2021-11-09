@@ -49,16 +49,20 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   const { user } = useContext(mainContext);
   const { deletePost } = useContext(postsContext);
   const params = useParams();
+  let user1 = localStorage.getItem("user");
+  user1 = JSON.parse(user1);
 
   function deletedPost() {
     deletePost(item.id, roomtitle);
-    console.log(params);
+    if (params.roomtitle) {
+      getPostsByRoom(params.roomtitle);
+    } else {
+      getPostsForMainUserFeed(user1.roomTitles);
+    }
   }
 
   function editPost() {}
 
-  let user1 = localStorage.getItem("user");
-  user1 = JSON.parse(user1);
   let delbtn;
   if (user1) {
     if (user1.username === item.owner) {
@@ -236,5 +240,3 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
 };
 
 export default Post;
-
-//<Card.Img>{item.postImgURL}</Card.Img>
