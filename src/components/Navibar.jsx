@@ -17,8 +17,8 @@ import { Link } from "react-router-dom";
 
 const Navibar = () => {
   const { state, logoutUser, setUser } = useContext(mainContext);
-  const { getPostSearching, searchResPost } = useContext(postsContext);
-  const { getRoomSearching, searchRoom } = useContext(roomsContext);
+  const { getPostSearching, wipeCleanSearchResults, searchResPost } = useContext(postsContext);
+  const { getRoomSearching, searchRoom, wipeCleanSearchResultsRoom } = useContext(roomsContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,24 +27,68 @@ const Navibar = () => {
   const handleShowLogin = () => setShowLogin(true);
 
   let button;
+  const [event, setEvent] = useState()
+
+  let searchResList;
   function hanldeChange(e) {
     if (e.target.value.length >= 2) {
-      //getPostSearching(e.target.value);
+      getPostSearching(e.target.value);
       getRoomSearching(e.target.value);
+      setEvent(e.target.value)
+    }
+    else {
+      wipeCleanSearchResults()
+      wipeCleanSearchResultsRoom()
     }
   }
 
-  let searchResList;
-  if (searchRoom.length > 0) {
+  function handleDispayDropDown() {
+    wipeCleanSearchResults()
+    wipeCleanSearchResultsRoom()
+  }
+
+  if (searchRoom.length > 0 || searchResPost.length > 0) {
     searchResList = (
       <div className="dropdown-div" style={{ display: "block" }}>
         <h2 style={{ color: "white", background: "#373940" }}>Rooms</h2>
         <ul>
-          {searchRoom.map((item) => (
-            <Link key={item.id} to={"/r/" + item.roomtitle}>
-              <li>{item.roomtitle}</li>
-            </Link>
-          ))}
+          {
+            searchRoom ? (
+              searchRoom.map((item) => {
+                let index = item.roomtitle.toLowerCase().indexOf(event)
+                let temp = item.roomtitle.slice(0, index)
+                let temp1 = <span style={{ backgroundColor: 'yellow' }}>{event}</span>
+                let temp2 = item.roomtitle.slice(index + event.length)
+                return <Link key={item.id} to={'/r/' + item.roomtitle}>
+                  <li >{temp}{temp1}{temp2}</li>
+                </Link>
+              })
+            ) : (
+              null
+            )
+          }
+        </ul>
+
+        <h2 style={{ color: "white", background: "#373940" }}>Posts</h2>
+        <ul>
+          {
+            // console.log(searchResPost)
+          }
+          {
+            searchResPost ? (
+              searchResPost.map((item) => {
+                let index = item.postText.toLowerCase().indexOf(event)
+                let temp = item.postText.slice(0, index)
+                let temp1 = <span style={{ backgroundColor: 'yellow' }}>{event}</span>
+                let temp2 = item.postText.slice(index + event.length)
+                return <Link key={item.id} to={'/r/' + item.roomtitle + '/comments/' + item.id}>
+                  <li >{temp}{temp1}{temp2}</li>
+                </Link>
+              })
+            ) : (
+              null
+            )
+          }
         </ul>
       </div>
     );
@@ -128,10 +172,13 @@ const Navibar = () => {
           <FormControl
             type="search"
             placeholder="Search"
-            className="mx-auto  "
+            className="mx-auto"
             aria-label="Search"
             style={{ maxWidth: "700px", textAlign: "center" }}
             onChange={hanldeChange}
+            onBlur={() => {
+              handleDispayDropDown()
+            }}
           />
           {button}
         </Navbar.Collapse>
