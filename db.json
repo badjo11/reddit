@@ -3,15 +3,35 @@
     {
       "username": "atai",
       "password": "atai",
-      "rooms": [2, 3, 4, 1],
-      "roomTitles": ["secondClean", "thirdClean", "fourthClean", "firstClean"],
+      "rooms": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "roomTitles": [
+        "secondClean",
+        "thirdClean",
+        "fourthClean",
+        "firstClean"
+      ],
       "id": 1
     },
     {
       "username": "atai1",
       "password": "atai",
-      "rooms": [1, 2, 4, 5],
-      "roomTitles": ["firstClean", "secondClean", "fourthClean", "fifthClean"],
+      "rooms": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "roomTitles": [
+        "firstClean",
+        "secondClean",
+        "fourthClean",
+        "fifthClean"
+      ],
       "id": 2
     },
     {
@@ -183,6 +203,26 @@
       "CreatedAtMs": 1636373318048,
       "voteWeight": 0,
       "id": 28
+    },
+    {
+      "postText": "qwe",
+      "postImgURL": "asdasd",
+      "roomtitle": "",
+      "owner": "atai1",
+      "CreatedAt": "2021-11-08T12:32:48.157Z",
+      "CreatedAtMs": 1636374768157,
+      "voteWeight": 0,
+      "id": 29
+    },
+    {
+      "postText": "werq",
+      "postImgURL": "qwr",
+      "roomtitle": "secondClean",
+      "owner": "atai1",
+      "CreatedAt": "2021-11-08T12:33:03.098Z",
+      "CreatedAtMs": 1636374783098,
+      "voteWeight": 0,
+      "id": 30
     }
   ],
   "comments": [
@@ -265,6 +305,16 @@
       "votesWeight": 0,
       "edited": true,
       "id": 8
+    },
+    {
+      "comment": "safasdfaswerqwer",
+      "owner": "atai1",
+      "createdAt": "2021-11-08T12:33:17.894Z",
+      "createdAtMs": 1636374797894,
+      "postId": 30,
+      "votesWeight": 0,
+      "edited": true,
+      "id": 9
     }
   ],
   "votes": [

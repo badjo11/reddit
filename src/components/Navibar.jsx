@@ -13,6 +13,7 @@ import LogInModal from "./auth/LogInModal";
 import { mainContext } from "../contexts/MainContext";
 import { postsContext } from "../contexts/PostsContext";
 import { roomsContext } from "../contexts/RoomsContext";
+import { Link } from "react-router-dom";
 
 const Navibar = () => {
   const { state, logoutUser, setUser } = useContext(mainContext);
@@ -31,20 +32,34 @@ const Navibar = () => {
       getPostSearching(e.target.value)
       getRoomSearching(e.target.value)
       setdropdowndiv(<div className="dropdown-div" style={{ display: 'block' }}>
-        <h2>Rooms</h2>
+        <h2 style={{ color: 'white', background: '#373940' }}>Rooms</h2>
         <ul>
           {
-            searchRoom.map((item) => (
-              <li key={item.id}>{item.roomtitle}</li>
-            ))
+            searchRoom.map((item) => {
+              // console.log(item.roomtitle)
+              let index = item.roomtitle.toLowerCase().indexOf(e.target.value)
+              let temp = item.roomtitle.slice(0, index)
+              let temp1 = <span style={{ backgroundColor: 'yellow' }}>{e.target.value}</span>
+              let temp2 = item.roomtitle.slice(index + e.target.value.length)
+              return <Link key={item.id} to={'/r/' + item.roomtitle}>
+                <li >{temp}{temp1}{temp2}</li>
+              </Link>
+            })
           }
         </ul>
-        <h2>Posts</h2>
+        <h2 style={{ color: 'white', background: '#373940' }}>Posts</h2>
         <ul>
           {
-            searchResPost.map((item) => (
-              <li key={item.id}>{item.postName}</li>
-            ))
+            searchResPost.map((item) => {
+
+              let index = item.postName.toLowerCase().indexOf(e.target.value)
+              let temp = item.postName.slice(0, index)
+              let temp1 = <span style={{ backgroundColor: 'yellow' }}>{e.target.value}</span>
+              let temp2 = item.postName.slice(index + e.target.value.length)
+              return <Link key={item.id} to={'/r/' + item.postName}>
+                <li >{temp}{temp1}{temp2}</li>
+              </Link>
+            })
           }
         </ul>
       </div>)
