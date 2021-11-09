@@ -6,7 +6,8 @@ import { postsContext } from "../../contexts/PostsContext";
 import { useParams } from "react-router";
 
 const CreatePost = ({ roomtitle }) => {
-  const { createPost } = useContext(postsContext);
+  const { createPost, getPostsForMainUserFeed, getPostsByRoom } =
+    useContext(postsContext);
   const [show, setShow] = useState(false);
   const linkParams = useParams();
 
@@ -38,15 +39,11 @@ const CreatePost = ({ roomtitle }) => {
     let timeMls = Date.now();
     if (roomtitle) {
       createPost(post, user, time, roomtitle, timeMls);
+      getPostsByRoom(roomtitle);
       handleClose();
     } else {
-      if (roomTitle === "") {
-        console.log("here");
-        setRoomTitle(user.roomTitles[0]);
-      }
-      setTimeout(() => {
-        createPost(post, user, time, roomTitle, timeMls);
-      }, 100);
+      createPost(post, user, time, roomTitle, timeMls);
+      getPostsForMainUserFeed(user.roomTitles);
       handleClose();
     }
   }
