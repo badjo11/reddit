@@ -39,3 +39,26 @@ code {
   top: 0;
   z-index: 100;
 }
+
+.rooms-sidebar {
+  width: 200px;
+  height: 500px;
+  background-color: white;
+}
+
+.all_rooms {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rooms-sidebar ul li {
+  list-style-type: none;
+  margin-bottom: 3px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.rooms-sidebar ul li:hover {
+  opacity: 1;
+  font-weight: bold;
+}

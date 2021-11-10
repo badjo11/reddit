@@ -54,7 +54,7 @@ const AddRoomModal = (props) => {
                 <option disabled defaultValue>
                   select your categoty
                 </option>
-                <option value="storts">sports</option>
+                <option value="sports">sports</option>
                 <option value="gaming">gaming</option>
                 <option value="news">news</option>
               </Form.Select>

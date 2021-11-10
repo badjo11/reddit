@@ -45,7 +45,14 @@ const RoomsContextProvider = (props) => {
       console.log(e);
     }
   };
+  const getRoomByCategories = async () => {
+    try {
+      let { data } = await axios(APIrooms)
 
+    } catch (e) {
+      console.log(e)
+    }
+  }
   const get5rooms = async () => {
     try {
       let res = await axios(APIsrooms + "?_page=1&_limit=5");
