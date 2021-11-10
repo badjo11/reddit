@@ -56,9 +56,35 @@ code {
   margin-bottom: 3px;
   cursor: pointer;
   opacity: 0.8;
+  font-size: 20px;
 }
 
 .rooms-sidebar ul li:hover {
   opacity: 1;
   font-weight: bold;
 }
+
+.category_rooms {
+  background-color: white;
+  max-width: 100%;
+  width: 60%;
+}
+
+.category_rooms a {
+  text-decoration: none;
+  color: unset;
+}
+
+.category_rooms h2 {
+  background-color: #F5F5DC;
+  padding: 3px;
+  color: #A52A2A;
+}
+
+.category_rooms h3 {
+  margin-left: 10px;
+  border-bottom: 1px solid rgb(228, 225, 225);
+  padding-bottom: 5px;
+}
+
+.category_rooms h3 {}
