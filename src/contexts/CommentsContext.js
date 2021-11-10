@@ -12,7 +12,7 @@ const reducer = (state = INIT_STATE, action) => {
     case "COMMENTS_FOR_POST":
       return { ...state, commentsForPost: action.payload };
     case "GET_COMMENT_BY_ID":
-      return { ...state, editedComment: action.payload }
+      return { ...state, editedComment: action.payload };
     default:
       return state;
   }
@@ -21,20 +21,26 @@ const reducer = (state = INIT_STATE, action) => {
 const CommentsContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createComment = async (commentContent, user, createdAt, postId, createdAtMs) => {
+  const createComment = async (
+    commentContent,
+    user,
+    createdAt,
+    postId,
+    createdAtMs
+  ) => {
     let comment = {
       comment: commentContent,
       owner: user,
       createdAt,
       createdAtMs,
       postId,
-      votesWeight: 0,
+      voteWeight: 0,
       edited: false,
     };
 
     try {
-      let res = await axios.post(APIComments, comment);
-      getCommentsForRoom(postId)
+      await axios.post(APIComments, comment);
+      getCommentsForRoom(postId);
     } catch (e) {
       console.log(e);
     }
@@ -43,7 +49,6 @@ const CommentsContextProvider = (props) => {
   const getCommentsForRoom = async (postId) => {
     try {
       let tempApi = APIComments + "?postId=" + postId;
-      // console.log(tempApi)
       let result = await axios(tempApi);
       dispatch({
         type: "COMMENTS_FOR_POST",
@@ -55,33 +60,53 @@ const CommentsContextProvider = (props) => {
   };
   const getCommentById = async (comment) => {
     try {
-      let response = await axios(APIComments + '/' + comment.id)
+      let response = await axios(APIComments + "/" + comment.id);
       dispatch({
         type: "GET_COMMENT_BY_ID",
-        payload: response.data
-      })
+        payload: response.data,
+      });
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
 
   const editCommentById = async (comment, postId) => {
     try {
-      let response = await axios.patch(APIComments + '/' + comment.id, comment)
-      getCommentsForRoom(postId)
+      await axios.patch(APIComments + "/" + comment.id, comment);
+      getCommentsForRoom(postId);
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
   const deleteCommentForPost = async (id, postId) => {
     try {
-      let tempApi = APIComments + '/' + id;
-      await axios.delete(tempApi)
-      getCommentsForRoom(postId)
+      let tempApi = APIComments + "/" + id;
+      await axios.delete(tempApi);
+      getCommentsForRoom(postId);
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
+
+  const upVoteAComment = async (CommentId, weight, value) => {
+    try {
+      await axios.patch(APIComments + CommentId, {
+        voteWeight: weight + value,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const downVoteAComment = async (CommentId, weight, value) => {
+    try {
+      await axios.patch(APIComments + CommentId, {
+        voteWeight: weight - value,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <commentsContext.Provider
@@ -91,6 +116,8 @@ const CommentsContextProvider = (props) => {
         deleteCommentForPost,
         editCommentById,
         getCommentById,
+        upVoteAComment,
+        downVoteAComment,
         commentsForPost: state.commentsForPost,
         editedComment: state.editedComment,
       }}

@@ -45,14 +45,7 @@ const RoomsContextProvider = (props) => {
       console.log(e);
     }
   };
-  const getRoomByCategories = async () => {
-    try {
-      let { data } = await axios(APIrooms)
 
-    } catch (e) {
-      console.log(e)
-    }
-  }
   const get5rooms = async () => {
     try {
       let res = await axios(APIsrooms + "?_page=1&_limit=5");
@@ -118,7 +111,7 @@ const RoomsContextProvider = (props) => {
       type: "SEARCH_ROOMS",
       payload: [],
     });
-  }
+  };
   const getRoomByTitle = async (title) => {
     try {
       let apiii = APIsrooms + "?roomtitle=" + title;
@@ -138,10 +131,8 @@ const RoomsContextProvider = (props) => {
           payload: "error",
         });
       }
-    } catch (e) { }
+    } catch (e) {}
   };
-
-
 
   const createRoom = async (room, user, createdAt) => {
     room["owner"] = user.username;

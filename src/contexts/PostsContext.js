@@ -57,7 +57,6 @@ const PostsContextProvider = (props) => {
   };
 
   const getPostSearching = async (val) => {
-    // console.log(val);
     try {
       let { data } = await axios(APIposts + "?q=" + val);
       let reg = new RegExp(val);
@@ -68,7 +67,6 @@ const PostsContextProvider = (props) => {
           }
         }
       });
-      // console.log(result);
       dispatch({
         type: "SEARCH_POSTS",
         payload: result,
@@ -82,7 +80,7 @@ const PostsContextProvider = (props) => {
       type: "SEARCH_POSTS",
       payload: [],
     });
-  }
+  };
   const getSpecificPost = async (id) => {
     try {
       let res = await axios(APIposts + id);
@@ -108,14 +106,13 @@ const PostsContextProvider = (props) => {
           type: "MAIN_FEED_POSTS",
           payload: result.data,
         });
-      } catch (e) { }
+      } catch (e) {}
     });
   };
 
   const getPostsByRoom = async (title) => {
     try {
       let tempApi = APIsposts + "?roomtitle=" + title;
-      // console.log(tempApi)
       let result = await axios(tempApi);
       dispatch({
         type: "ROOM_POSTS",
@@ -127,16 +124,10 @@ const PostsContextProvider = (props) => {
   };
 
   const upVoteAPost = async (postId, weight, roomTitles, roomTitle, value) => {
-    console.log(postId, weight, roomTitles, roomTitle, value);
     try {
-      let res = await axios.patch(APIposts + postId, {
+      await axios.patch(APIposts + postId, {
         voteWeight: weight + value,
       });
-      // if (roomTitles) {
-      //   getPostsForMainUserFeed(roomTitles);
-      // } else {
-      //   getPostsByRoom(roomTitle);
-      // }
     } catch (e) {
       console.log(e);
     }
@@ -150,14 +141,9 @@ const PostsContextProvider = (props) => {
     value
   ) => {
     try {
-      let res = await axios.patch(APIposts + postId, {
+      await axios.patch(APIposts + postId, {
         voteWeight: weight - value,
       });
-      // if (roomTitles) {
-      //   getPostsForMainUserFeed(roomTitles);
-      // } else {
-      //   getPostsByRoom(roomTitle);
-      // }
     } catch (e) {
       console.log(e);
     }

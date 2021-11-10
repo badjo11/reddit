@@ -107,6 +107,17 @@
   height: auto;
   object-fit: contain;
 }
+
+.voteBTN {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
 /* .dropdown:hover {
   opacity: 0.5;
 } */

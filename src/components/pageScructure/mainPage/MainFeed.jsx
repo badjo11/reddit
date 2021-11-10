@@ -1,12 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import CreatePost from "../../general/CreatePost";
 import PostList from "../../general/PostList";
 import "./mainps.css";
-import { mainContext } from "../../../contexts/MainContext";
 
 const MainFeed = () => {
-  const { state } = useContext(mainContext);
-
   let roomTitles;
   let usr = "";
   let user = localStorage.getItem("user");

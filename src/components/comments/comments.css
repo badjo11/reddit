@@ -12,9 +12,8 @@
 }
 
 .card {
-  border: none;
   box-shadow: 5px 6px 6px 2px #e9ecef;
-  border-radius: 4px
+  border-radius: 4px;
 }
 
 .dots {
@@ -23,18 +22,18 @@
   margin-bottom: 2px;
   background-color: #bbb;
   border-radius: 50%;
-  display: inline-block
+  display: inline-block;
 }
 
 .badge {
   padding: 7px;
   padding-right: 9px;
   padding-left: 16px;
-  box-shadow: 5px 6px 6px 2px #e9ecef
+  box-shadow: 5px 6px 6px 2px #e9ecef;
 }
 
 .user-img {
-  margin-top: 4px
+  margin-top: 4px;
 }
 
 .check-icon {
@@ -42,32 +41,80 @@
   color: #c3bfbf;
   top: 1px;
   position: relative;
-  margin-left: 3px
+  margin-left: 3px;
 }
 
 .form-check-input {
   margin-top: 6px;
   margin-left: -24px !important;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .form-check-input:focus {
-  box-shadow: none
+  box-shadow: none;
 }
 
 .icons i {
-  margin-left: 8px
+  margin-left: 8px;
 }
 
 .reply {
-  margin-left: 12px
+  margin-left: 12px;
 }
 
 .reply small {
-  color: #b7b4b4
+  color: #b7b4b4;
 }
 
 .reply small:hover {
   color: rgb(0, 133, 211);
-  cursor: pointer
+  cursor: pointer;
+}
+
+.commentBody {
+  display: flex;
+  width: 95%;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.upvoteIMG {
+  width: 32px;
+  height: auto;
+}
+
+.downvoteIMG {
+  width: 32px;
+  height: auto;
+}
+
+.mainCommentContainer {
+  width: 95%;
+}
+
+.likedislike {
+  margin-top: 10px;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.createComment {
+  width: 90%;
+  margin-left: 33px;
+  margin-top: 10px;
+}
+
+.commentsCount {
+  margin-left: 35px;
+}
+
+.voteBTN {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }

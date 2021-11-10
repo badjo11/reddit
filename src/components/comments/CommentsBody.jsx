@@ -11,7 +11,12 @@ import { votesContext } from "../../contexts/VoteContext";
 const CommentsBody = () => {
   const params = useParams();
   const { getSpecificPost, specificPost } = useContext(postsContext);
-  const { getVotesForUserPosts, votesForUser } = useContext(votesContext);
+  const {
+    getvotesForPosts,
+    votesForPosts,
+    getvotesForComments,
+    votesForComments,
+  } = useContext(votesContext);
 
   useEffect(() => {
     getSpecificPost(params.commentId);
@@ -24,26 +29,30 @@ const CommentsBody = () => {
     usr = user;
   }
 
-  useEffect(() => (usr !== "" ? getVotesForUserPosts(usr.username) : null), []);
+  useEffect(() => (usr !== "" ? getvotesForPosts(usr.username) : null), []);
+  useEffect(() => (usr !== "" ? getvotesForComments(usr.username) : null), []);
 
   let post;
-  if (specificPost && votesForUser) {
+  if (specificPost && votesForPosts) {
     post = (
       <Post
         item={specificPost}
         roomtitle={params.roomtitle}
-        votesForUser={votesForUser}
+        votesForPosts={votesForPosts}
       />
     );
   } else {
     post = <div>Loading</div>;
   }
   let commentView;
-  if (specificPost) {
+  if (specificPost && votesForComments) {
     commentView = (
       <>
         <CreateComment specificPost={specificPost} />
-        <CommentsView specificPost={specificPost} />
+        <CommentsView
+          specificPost={specificPost}
+          votesForComments={votesForComments}
+        />
       </>
     );
   } else {

@@ -6,7 +6,7 @@ import { votesContext } from "../../contexts/VoteContext";
 
 const PostList = (props) => {
   let { roomposts, mainFeedPosts } = useContext(postsContext);
-  const { getVotesForUserPosts, votesForUser } = useContext(votesContext);
+  const { getvotesForPosts, votesForPosts } = useContext(votesContext);
   const [posts, setPosts] = useState(mainFeedPosts);
   const [roomPosts, setRoomPosts] = useState(roomposts);
 
@@ -19,7 +19,7 @@ const PostList = (props) => {
   const { roomtitle } = useParams();
 
   useEffect(() => {
-    getVotesForUserPosts(props.usr.username);
+    getvotesForPosts(props.usr.username);
   }, []);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const PostList = (props) => {
   }, [roomposts]);
 
   let count = 0;
-  if (votesForUser.length > 0) {
+  if (votesForPosts.length > 0) {
     if (props.feedFor === "roomfeed") {
       return (
         <div>
@@ -38,7 +38,7 @@ const PostList = (props) => {
               key={item.id + count + 1}
               item={item}
               roomtitle={roomtitle}
-              votesForUser={votesForUser}
+              votesForPosts={votesForPosts}
             />
           ))}
         </div>
@@ -52,7 +52,7 @@ const PostList = (props) => {
               item={item}
               roomTitles={props.roomTitles}
               roomtitle={roomtitle}
-              votesForUser={votesForUser}
+              votesForPosts={votesForPosts}
             />
           ))}
         </div>
@@ -67,7 +67,7 @@ const PostList = (props) => {
               key={item.id + count + 1}
               item={item}
               roomtitle={roomtitle}
-              votesForUser={votesForUser}
+              votesForPosts={votesForPosts}
             />
           ))}
         </div>
@@ -81,7 +81,7 @@ const PostList = (props) => {
               item={item}
               roomTitles={props.roomTitles}
               roomtitle={roomtitle}
-              votesForUser={votesForUser}
+              votesForPosts={votesForPosts}
             />
           ))}
         </div>

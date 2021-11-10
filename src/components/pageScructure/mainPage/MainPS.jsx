@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import { mainContext } from "../../../contexts/MainContext";
 import { postsContext } from "../../../contexts/PostsContext";
 import MainFeed from "./MainFeed";
 import "./mainps.css";
@@ -7,7 +6,6 @@ import MainPSideB from "./MainPSideB";
 
 const MainPS = () => {
   const { getPostsForMainUserFeed } = useContext(postsContext);
-  const { state } = useContext(mainContext);
 
   let roomTitles;
   let user = localStorage.getItem("user");

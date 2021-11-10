@@ -4,12 +4,15 @@ import { APIvotes } from "../helpers/config";
 
 export const votesContext = React.createContext();
 const INIT_STATE = {
-  votesForUser: [],
+  votesForPosts: [],
+  votesForComments: [],
 };
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
-    case "GET_VOTES_FOR_USER":
-      return { ...state, votesForUser: action.payload };
+    case "GET_VOTES_FOR_POSTS":
+      return { ...state, votesForPosts: action.payload };
+    case "GET_VOTES_FOR_COMMENTS":
+      return { ...state, votesForComments: action.payload };
     default:
       return state;
   }
@@ -25,31 +28,68 @@ const VotesContextProvider = (props) => {
       owner: username,
       createdAt: time,
       postId,
+      commentId: "null",
     };
     try {
-      let res = await axios.post(APIvotes, vote);
-      getVotesForUserPosts(username);
+      await axios.post(APIvotes, vote);
+      getvotesForPosts(username);
     } catch (e) {
       console.log(e);
     }
   };
 
-  const updateAVoteForAPost = async (id, value, username, roomId) => {
+  const createAVoteForAComment = async (value, username, commentId) => {
+    let time = Date.now();
+    let vote = {
+      value: value,
+      owner: username,
+      createdAt: time,
+      postId: "null",
+      commentId,
+    };
     try {
-      let res = await axios.patch(APIvotes + id, { value });
-      getVotesForUserPosts(username);
+      await axios.post(APIvotes, vote);
+      getvotesForComments(username);
     } catch (e) {
       console.log(e);
     }
   };
 
-  //const createAVoteForAComment = async () => {};
-
-  const getVotesForUserPosts = async (username) => {
+  const getvotesForComments = async (username) => {
     try {
-      let res = await axios(APIvotes + "?owner=" + username);
+      let res = await axios(APIvotes + "?owner=" + username + "&postId=null");
       dispatch({
-        type: "GET_VOTES_FOR_USER",
+        type: "GET_VOTES_FOR_COMMENTS",
+        payload: res.data,
+      });
+    } catch (e) {}
+  };
+
+  const updateAVoteForAComment = async (id, value, username) => {
+    try {
+      await axios.patch(APIvotes + id, { value });
+      getvotesForComments(username);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const updateAVoteForAPost = async (id, value, username) => {
+    try {
+      await axios.patch(APIvotes + id, { value });
+      getvotesForPosts(username);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getvotesForPosts = async (username) => {
+    try {
+      let res = await axios(
+        APIvotes + "?owner=" + username + "&commentId=null"
+      );
+      dispatch({
+        type: "GET_VOTES_FOR_POSTS",
         payload: res.data,
       });
     } catch (e) {}
@@ -58,10 +98,14 @@ const VotesContextProvider = (props) => {
   return (
     <votesContext.Provider
       value={{
-        votesForUser: state.votesForUser,
+        votesForPosts: state.votesForPosts,
+        votesForComments: state.votesForComments,
         createAVoteForAPost,
         updateAVoteForAPost,
-        getVotesForUserPosts,
+        getvotesForPosts,
+        updateAVoteForAComment,
+        getvotesForComments,
+        createAVoteForAComment,
       }}
     >
       {props.children}

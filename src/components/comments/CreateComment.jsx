@@ -16,25 +16,25 @@ const CreateComment = (props) => {
     let time = new Date();
     let timeMls = Date.now();
     createComment(comment, user.username, time, props.specificPost.id, timeMls);
-    setComment('')
+    setComment("");
   }
 
-  return (<>
-    <InputGroup className="mb-3">
-      <FormControl
-        rows={2}
-        as="textarea"
-        placeholder="Your comment"
-        maxLength="140"
-        onChange={handleChange}
-        value={comment}
-      />
-      <Button onClick={creatingComment} variant="info">
-        Comment
-      </Button>
-    </InputGroup>
-
-  </>
+  return (
+    <>
+      <InputGroup className="mb-3 createComment">
+        <FormControl
+          rows={2}
+          as="textarea"
+          placeholder="Your comment"
+          maxLength="140"
+          onChange={handleChange}
+          value={comment}
+        />
+        <Button onClick={creatingComment} variant="info">
+          Comment
+        </Button>
+      </InputGroup>
+    </>
   );
 };
 

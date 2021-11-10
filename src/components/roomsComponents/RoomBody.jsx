@@ -6,13 +6,11 @@ import { postsContext } from "../../contexts/PostsContext";
 import PostList from "../general/PostList";
 import { roomsContext } from "../../contexts/RoomsContext";
 import AboutRoomCard from "./AboutRoomCard";
-import { mainContext } from "../../contexts/MainContext";
 
 const RoomBody = () => {
   const { roomtitle } = useParams();
   const { getPostsByRoom } = useContext(postsContext);
   const { specificRoom } = useContext(roomsContext);
-  const { state } = useContext(mainContext);
   useEffect(() => {
     getPostsByRoom(roomtitle);
   }, []);

@@ -6,7 +6,6 @@ import {
   Nav,
   Container,
   Badge,
-  NavDropdown,
 } from "react-bootstrap";
 import SignUpModal from "./auth/SignUpModal";
 import LogInModal from "./auth/LogInModal";
@@ -16,9 +15,11 @@ import { roomsContext } from "../contexts/RoomsContext";
 import { Link } from "react-router-dom";
 
 const Navibar = () => {
-  const { state, logoutUser, setUser } = useContext(mainContext);
-  const { getPostSearching, wipeCleanSearchResults, searchResPost } = useContext(postsContext);
-  const { getRoomSearching, searchRoom, wipeCleanSearchResultsRoom } = useContext(roomsContext);
+  const { user, logoutUser, setUser } = useContext(mainContext);
+  const { getPostSearching, wipeCleanSearchResults, searchResPost } =
+    useContext(postsContext);
+  const { getRoomSearching, searchRoom, wipeCleanSearchResultsRoom } =
+    useContext(roomsContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,24 +28,23 @@ const Navibar = () => {
   const handleShowLogin = () => setShowLogin(true);
 
   let button;
-  const [event, setEvent] = useState()
+  const [event, setEvent] = useState();
 
   let searchResList;
   function hanldeChange(e) {
     if (e.target.value.length >= 2) {
       getPostSearching(e.target.value);
       getRoomSearching(e.target.value);
-      setEvent(e.target.value)
-    }
-    else {
-      wipeCleanSearchResults()
-      wipeCleanSearchResultsRoom()
+      setEvent(e.target.value);
+    } else {
+      wipeCleanSearchResults();
+      wipeCleanSearchResultsRoom();
     }
   }
 
   function handleDispayDropDown() {
-    wipeCleanSearchResults()
-    wipeCleanSearchResultsRoom()
+    wipeCleanSearchResults();
+    wipeCleanSearchResultsRoom();
   }
 
   if (searchRoom.length > 0 || searchResPost.length > 0) {
@@ -52,43 +52,51 @@ const Navibar = () => {
       <div className="dropdown-div" style={{ display: "block" }}>
         <h2 style={{ color: "white", background: "#373940" }}>Rooms</h2>
         <ul>
-          {
-            searchRoom ? (
-              searchRoom.map((item) => {
-                let index = item.roomtitle.toLowerCase().indexOf(event)
-                let temp = item.roomtitle.slice(0, index)
-                let temp1 = <span style={{ backgroundColor: 'yellow' }}>{event}</span>
-                let temp2 = item.roomtitle.slice(index + event.length)
-                return <Link key={item.id} to={'/r/' + item.roomtitle}>
-                  <li >{temp}{temp1}{temp2}</li>
-                </Link>
+          {searchRoom
+            ? searchRoom.map((item) => {
+                let index = item.roomtitle.toLowerCase().indexOf(event);
+                let temp = item.roomtitle.slice(0, index);
+                let temp1 = (
+                  <span style={{ backgroundColor: "yellow" }}>{event}</span>
+                );
+                let temp2 = item.roomtitle.slice(index + event.length);
+                return (
+                  <Link key={item.id} to={"/r/" + item.roomtitle}>
+                    <li>
+                      {temp}
+                      {temp1}
+                      {temp2}
+                    </li>
+                  </Link>
+                );
               })
-            ) : (
-              null
-            )
-          }
+            : null}
         </ul>
 
         <h2 style={{ color: "white", background: "#373940" }}>Posts</h2>
         <ul>
-          {
-            // console.log(searchResPost)
-          }
-          {
-            searchResPost ? (
-              searchResPost.map((item) => {
-                let index = item.postText.toLowerCase().indexOf(event)
-                let temp = item.postText.slice(0, index)
-                let temp1 = <span style={{ backgroundColor: 'yellow' }}>{event}</span>
-                let temp2 = item.postText.slice(index + event.length)
-                return <Link key={item.id} to={'/r/' + item.roomtitle + '/comments/' + item.id}>
-                  <li >{temp}{temp1}{temp2}</li>
-                </Link>
+          {searchResPost
+            ? searchResPost.map((item) => {
+                let index = item.postText.toLowerCase().indexOf(event);
+                let temp = item.postText.slice(0, index);
+                let temp1 = (
+                  <span style={{ backgroundColor: "yellow" }}>{event}</span>
+                );
+                let temp2 = item.postText.slice(index + event.length);
+                return (
+                  <Link
+                    key={item.id}
+                    to={"/r/" + item.roomtitle + "/comments/" + item.id}
+                  >
+                    <li>
+                      {temp}
+                      {temp1}
+                      {temp2}
+                    </li>
+                  </Link>
+                );
               })
-            ) : (
-              null
-            )
-          }
+            : null}
         </ul>
       </div>
     );
@@ -103,9 +111,8 @@ const Navibar = () => {
     localStorage.clear();
   }
 
-  if (state.user) {
-    // console.log(state.user.username)
-    let struser = JSON.stringify(state.user);
+  if (user) {
+    let struser = JSON.stringify(user);
     localStorage.setItem("user", struser);
     button = (
       <>
@@ -114,7 +121,7 @@ const Navibar = () => {
           style={{ maxWidth: "200px" }}
         >
           <Navbar.Text>
-            Signed in as: <Badge bg="secondary">{state.user.username}</Badge>
+            Signed in as: <Badge bg="secondary">{user.username}</Badge>
           </Navbar.Text>
         </Navbar.Collapse>
         <Button className="me-2" variant="primary" onClick={() => logout()}>
@@ -177,7 +184,7 @@ const Navibar = () => {
             style={{ maxWidth: "700px", textAlign: "center" }}
             onChange={hanldeChange}
             onBlur={() => {
-              handleDispayDropDown()
+              handleDispayDropDown();
             }}
           />
           {button}

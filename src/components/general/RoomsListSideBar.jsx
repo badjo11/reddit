@@ -21,7 +21,20 @@ const RoomsListSideBar = () => {
             </ListGroupItem>
           </Card.Link>
         ))}
-        <Link to='/rooms'> <Button variant="primary" className="mt-2" style={{ borderRadius: "10px", marginLeft: '40%', fontSize: '20px' }}>View all</Button></Link>
+        <Link to="/rooms">
+          {" "}
+          <Button
+            variant="primary"
+            className="mt-2"
+            style={{
+              borderRadius: "10px",
+              marginLeft: "40%",
+              fontSize: "20px",
+            }}
+          >
+            View all
+          </Button>
+        </Link>
       </Card.Body>
     </Card>
   );

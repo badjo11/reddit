@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
-import { roomsContext } from "../../contexts/RoomsContext";
+import React from "react";
+import { useParams } from "react-router-dom";
 import "./comments.css";
 import { useNavigate } from "react-router-dom";
 
 const SubheaderComments = () => {
-  const { specificRoom } = useContext(roomsContext);
   const hz = useParams();
 
   const navigate = useNavigate();

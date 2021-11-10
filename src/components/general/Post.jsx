@@ -35,9 +35,8 @@ export function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
-const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
+const Post = ({ item, roomtitle, roomTitles, votesForPosts }) => {
   const [timeLeft, setTimeLeft] = useState(0);
-  const [voteVal, setvoteVal] = useState(null);
   const [vtWeight, setvtWeight] = useState(item.voteWeight);
   const {
     downVoteAPost,
@@ -84,9 +83,9 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
 
   let vote = <h3 className="VoteWeightNum">{vtWeight}</h3>;
   if (user) {
-    let index = votesForUser.findIndex((post) => post.postId === item.id);
+    let index = votesForPosts.findIndex((post) => post.postId === item.id);
     if (index !== -1) {
-      let voteWeight = votesForUser[index].value;
+      let voteWeight = votesForPosts[index].value;
       if (voteWeight === -1) {
         vote = (
           <h3 style={{ color: "purple" }} className="VoteWeightNum">
@@ -106,29 +105,25 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   function handleUpVote(e) {
     e.preventDefault();
     if (user) {
-      let index = votesForUser.findIndex((post) => post.postId === item.id);
+      let index = votesForPosts.findIndex((post) => post.postId === item.id);
       if (index > -1) {
-        let voteWeight = votesForUser[index].value;
+        let voteWeight = votesForPosts[index].value;
         if (voteWeight === 0) {
-          updateAVoteForAPost(votesForUser[index].id, 1, user.username);
+          updateAVoteForAPost(votesForPosts[index].id, 1, user.username);
           upVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
-          setvoteVal(1);
           setvtWeight(vtWeight + 1);
         } else if (voteWeight === -1) {
-          updateAVoteForAPost(votesForUser[index].id, 1, user.username);
+          updateAVoteForAPost(votesForPosts[index].id, 1, user.username);
           upVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 2);
-          setvoteVal(1);
           setvtWeight(vtWeight + 2);
         } else {
-          updateAVoteForAPost(votesForUser[index].id, 0, user.username);
+          updateAVoteForAPost(votesForPosts[index].id, 0, user.username);
           downVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
-          setvoteVal(0);
           setvtWeight(vtWeight - 1);
         }
       } else {
         upVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
         createAVoteForAPost(1, user.username, item.id);
-        setvoteVal(1);
         setvtWeight(vtWeight + 1);
       }
     }
@@ -137,30 +132,26 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   function handleDownVote(e) {
     e.preventDefault();
     if (user) {
-      let index = votesForUser.findIndex((post) => post.postId === item.id);
+      let index = votesForPosts.findIndex((post) => post.postId === item.id);
       if (index > -1) {
-        let voteWeight = votesForUser[index].value;
+        let voteWeight = votesForPosts[index].value;
         if (voteWeight === 0) {
-          updateAVoteForAPost(votesForUser[index].id, -1, user.username);
+          updateAVoteForAPost(votesForPosts[index].id, -1, user.username);
           downVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
           setvtWeight(vtWeight - 1);
-          setvoteVal(-1);
         } else if (voteWeight === 1) {
-          updateAVoteForAPost(votesForUser[index].id, -1, user.username);
+          updateAVoteForAPost(votesForPosts[index].id, -1, user.username);
           downVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 2);
           setvtWeight(vtWeight - 2);
-          setvoteVal(-1);
         } else {
-          updateAVoteForAPost(votesForUser[index].id, 0, user.username);
+          updateAVoteForAPost(votesForPosts[index].id, 0, user.username);
           upVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
           setvtWeight(vtWeight + 1);
-          setvoteVal(0);
         }
       } else {
         downVoteAPost(item.id, vtWeight, roomTitles, roomtitle, 1);
         createAVoteForAPost(-1, user.username, item.id);
         setvtWeight(vtWeight - 1);
-        setvoteVal(-1);
       }
     }
   }
@@ -172,7 +163,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
         className="m-2"
         width="15px"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Comment_alt_font_awesome.svg/512px-Comment_alt_font_awesome.svg.png"
-        alt=""
+        alt="fuckoff"
       />
     );
   } else {
@@ -182,7 +173,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
           className="m-2"
           width="15px"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Comment_alt_font_awesome.svg/512px-Comment_alt_font_awesome.svg.png"
-          alt=""
+          alt="fuckoff"
         />
       </a>
     );
@@ -191,13 +182,13 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
   return (
     <div className="postCard">
       <div className="likedislike">
-        <a href="" onClick={(e) => handleUpVote(e)}>
+        <button className="voteBTN" onClick={(e) => handleUpVote(e)}>
           <img alt="fuckoff" className="upvoteIMG" src={upvote}></img>
-        </a>
+        </button>
         {vote}
-        <a href="" onClick={(e) => handleDownVote(e)}>
+        <button className="voteBTN" onClick={(e) => handleDownVote(e)}>
           <img alt="fuckoff" className="downvoteIMG" src={downvote}></img>
-        </a>
+        </button>
       </div>
 
       <Card key={item.id} style={{ width: "95%", marginTop: "10px" }}>
@@ -221,7 +212,11 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
             <Card.Title style={{ paddingTop: "5px", paddingBottom: "5px" }}>
               {item.postText}
             </Card.Title>
-            <img className="postImage" src={item.postImgURL}></img>
+            <img
+              alt="fuckoff"
+              className="postImage"
+              src={item.postImgURL}
+            ></img>
           </Card.Body>
         </Card.Link>
         <Card.Footer className="d-flex justify-content-start p-2">
@@ -230,7 +225,7 @@ const Post = ({ item, roomtitle, roomTitles, votesForUser }) => {
             className="m-2"
             width="15px"
             src="https://www.vhv.rs/dpng/d/520-5207678_viewing-svg-share-shared-icon-hd-png-download.png"
-            alt=""
+            alt="fuckoff"
           />
           {delbtn}
         </Card.Footer>

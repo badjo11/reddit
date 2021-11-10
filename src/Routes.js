@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import MainContextProvider from "./contexts/MainContext";
 import RoomsPage from "./pages/RoomsPage";
