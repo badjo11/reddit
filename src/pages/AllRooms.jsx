@@ -8,27 +8,56 @@ const AllRooms = () => {
   useEffect(() => {
     getAllRooms();
   }, []);
+
   let categories = rooms.map((item) => {
     return item.category;
   });
-  const [content, setContent] = useState("");
+  const arrOfColor = ["#00BFFF", "#808080", "	#FFA000", "	#FF4364", "#32CD32"];
+
+  const [content, setContent] = useState(
+    <div className="category_rooms">
+      <h2>All rooms</h2>
+      <RoomList />
+    </div>
+  );
   function handleClick(cat) {
     let temp = rooms.filter((item, index, array) => {
       return item.category === cat;
     });
-    console.log(temp);
     if (cat === "all") {
       setContent(
-        <div>
+        <div className="category_rooms">
           <h2>All rooms</h2>
           <RoomList />
         </div>
       );
     } else {
       setContent(
-        <div>
-          <h2>{cat}</h2>
+        <div className="category_rooms ">
+          <h2>All {cat} rooms </h2>
 
+          {temp.map((item, index) => (
+            <a key={item.id} href={"/r/" + item.roomtitle}>
+              <h3>
+                {index + 1}{" "}
+                <div
+                  style={{
+                    display: "inline-block",
+                    backgroundColor: arrOfColor[index % 4],
+                    borderRadius: "50%",
+                    fontSize: "40px",
+                    width: "50px",
+                    height: "50px",
+                    textAlign: "center",
+                    color: "white",
+                  }}
+                >
+                  {item.roomtitle.charAt(0)}
+                </div>{" "}
+                {item.roomtitle}
+              </h3>
+            </a>
+          ))}
           {temp.map((item) => (
             <a key={item.id} href={"/r/" + item.roomtitle}>
               <h3>{item.roomtitle}</h3>

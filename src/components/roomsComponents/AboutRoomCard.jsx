@@ -6,7 +6,7 @@ import CreatePost from "../general/CreatePost";
 const AboutRoomCard = (props) => {
   const { specificRoom, memberCount } = useContext(roomsContext);
 
-  useEffect(() => {}, [memberCount]);
+  useEffect(() => { }, [memberCount]);
 
   return (
     <Card style={{ width: "18rem" }}>
@@ -17,6 +17,7 @@ const AboutRoomCard = (props) => {
         About comunity
       </Card.Header>
       <Card.Body>
+        <Card.Img variant="top" src={specificRoom ? specificRoom[0].avaURl : 'image'} />
         <Card.Title>{props.roomtitle}</Card.Title>
         <Card.Text>
           {specificRoom ? specificRoom[0].about : "About community"}
