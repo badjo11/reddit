@@ -122,6 +122,14 @@
   opacity: 0.5;
 } */
 
+@media screen and (max-width: 1400px) {
+  .postImage {
+    width: 400px;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .postImage {
     width: 340px;

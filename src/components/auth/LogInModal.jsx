@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import { authContext } from "../../contexts/AuthContext";
 import { mainContext } from "../../contexts/MainContext";
 
 const LogInModal = (props) => {
-  const { loginUser } = useContext(mainContext);
-  const [user, setUser] = useState({ username: "", password: "" });
+  const { loginUserWithEmail } = useContext(authContext);
+  const [user, setUser] = useState({ email: "", password: "" });
   // console.log(state)
   function handleChange(e) {
     let userr = { ...user, [e.target.name]: e.target.value };
@@ -13,7 +14,7 @@ const LogInModal = (props) => {
 
   function handleLogIn(e) {
     e.preventDefault();
-    loginUser(user.username, user.password);
+    loginUserWithEmail(user.email, user.password);
     props.handleCloseLogin();
   }
 
@@ -31,11 +32,11 @@ const LogInModal = (props) => {
         <Modal.Body>
           <Form onSubmit={handleLogIn}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>User name</Form.Label>
+              <Form.Label>Email</Form.Label>
               <Form.Control
                 onChange={handleChange}
-                name="username"
-                type="text"
+                name="email"
+                type="email"
                 placeholder="Enter user name"
               />
               <Form.Text className="text-muted">

@@ -13,9 +13,11 @@ import { mainContext } from "../contexts/MainContext";
 import { postsContext } from "../contexts/PostsContext";
 import { roomsContext } from "../contexts/RoomsContext";
 import { Link } from "react-router-dom";
+import { authContext } from "../contexts/AuthContext";
 
 const Navibar = () => {
-  const { user, logoutUser, setUser } = useContext(mainContext);
+  const { user, logOut } = useContext(authContext);
+  console.log(user);
   const { getPostSearching, wipeCleanSearchResults, searchResPost } =
     useContext(postsContext);
   const { getRoomSearching, searchRoom, wipeCleanSearchResultsRoom } =
@@ -106,14 +108,17 @@ const Navibar = () => {
     );
   }
 
+  searchResList = (
+    <div className="dropdown-div" style={{ display: "none" }}></div>
+  );
+
   function logout() {
-    logoutUser();
+    logOut();
     localStorage.clear();
   }
 
   if (user) {
-    let struser = JSON.stringify(user);
-    localStorage.setItem("user", struser);
+    localStorage.setItem("uid", user.uid);
     button = (
       <>
         <Navbar.Collapse
@@ -121,7 +126,7 @@ const Navibar = () => {
           style={{ maxWidth: "200px" }}
         >
           <Navbar.Text>
-            Signed in as: <Badge bg="secondary">{user.username}</Badge>
+            <Badge bg="secondary">{user.email}</Badge>
           </Navbar.Text>
         </Navbar.Collapse>
         <Button className="me-2" variant="primary" onClick={() => logout()}>
@@ -150,24 +155,18 @@ const Navibar = () => {
     );
   }
 
-  let struser = localStorage.getItem("user");
-  function setuser() {
-    if (struser) {
-      setUser(JSON.parse(struser));
-    }
-  }
-  useEffect(() => setuser(), [struser]);
-
   return (
     <Navbar className="nav" bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/">
+        <Link className="navbar-brand" to="/">
           <img
             width="80px"
             src="https://www.logo.wine/a/logo/Reddit/Reddit-Logo.wine.svg"
             alt="logo"
           />
-        </Navbar.Brand>
+        </Link>
+        {/* <Navbar.Brand href="/">
+        </Navbar.Brand> */}
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

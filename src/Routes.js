@@ -11,6 +11,7 @@ import VotesContextProvider from "./contexts/VoteContext";
 import CommentsContextProvider from "./contexts/CommentsContext";
 import AllRooms from "./pages/AllRooms";
 import NoMatch from "./pages/NoMatch";
+import AuthContextProvider from "./contexts/AuthContext";
 
 const MyRoutes = () => {
   return (
@@ -19,26 +20,57 @@ const MyRoutes = () => {
         <PostsContextProvider>
           <CommentsContextProvider>
             <VotesContextProvider>
-              <BrowserRouter>
-                <Navibar />
-                <Routes>
-                  <Route exact path="/" element={<MainPage />} />
-                  <Route exact path="/r/:roomtitle" element={<RoomsPage />} />
-                  <Route
-                    exact
-                    path="/r/:roomtitle/comments/:commentId"
-                    element={<CommentsPage />}
-                  />
-                  <Route path="/rooms" element={<AllRooms />} />
-                  <Route path="*" element={<NoMatch />} />
-                </Routes>
-              </BrowserRouter>
+              <AuthContextProvider>
+                <BrowserRouter>
+                  <Navibar />
+                  <Routes>
+                    <Route exact path="/" element={<MainPage />} />
+                    <Route exact path="/r/:roomtitle" element={<RoomsPage />} />
+                    <Route
+                      exact
+                      path="/r/:roomtitle/comments/:commentId"
+                      element={<CommentsPage />}
+                    />
+                    <Route path="/rooms" element={<AllRooms />} />
+                    <Route path="*" element={<NoMatch />} />
+                  </Routes>
+                </BrowserRouter>
+              </AuthContextProvider>
             </VotesContextProvider>
           </CommentsContextProvider>
         </PostsContextProvider>
       </RoomsContextProvider>
     </MainContextProvider>
   );
+
+  // return (
+  //   <AuthContextProvider>
+  //     <MainContextProvider>
+  //       <RoomsContextProvider>
+  //         <PostsContextProvider>
+  //           <CommentsContextProvider>
+  //             <VotesContextProvider>
+  //               <BrowserRouter>
+  //                 <Navibar />
+  //                 <Routes>
+  //                   <Route exact path="/" element={<MainPage />} />
+  //                   <Route exact path="/r/:roomtitle" element={<RoomsPage />} />
+  //                   <Route
+  //                     exact
+  //                     path="/r/:roomtitle/comments/:commentId"
+  //                     element={<CommentsPage />}
+  //                   />
+  //                   <Route path="/rooms" element={<AllRooms />} />
+  //                   <Route path="*" element={<NoMatch />} />
+  //                 </Routes>
+  //               </BrowserRouter>
+  //             </VotesContextProvider>
+  //           </CommentsContextProvider>
+  //         </PostsContextProvider>
+  //       </RoomsContextProvider>
+  //     </MainContextProvider>
+  //   </AuthContextProvider>
+  // );
 };
 
 export default MyRoutes;

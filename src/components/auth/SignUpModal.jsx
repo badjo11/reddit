@@ -1,10 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import { mainContext } from "../../contexts/MainContext";
+import { authContext } from "../../contexts/AuthContext";
 import * as yup from "yup";
 import { Formik } from "formik";
+//import { Link } from "@reach/router";
+
 const SignUpModal = (props) => {
-  const { signUpUser } = useContext(mainContext);
+  const { createUserWithEmailAndPasswordHandler } = useContext(authContext);
+
+  function handleSignUp({ username, email, gender, password }) {
+    try {
+      createUserWithEmailAndPasswordHandler(username, email, gender, password);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   const schema = yup.object().shape({
     username: yup.string().min(2).max(30).required("Required"),
@@ -22,12 +32,6 @@ const SignUpModal = (props) => {
       .required("Required"),
   });
 
-  function handleSignup(data) {
-    // e.preventDefault();
-    signUpUser(data.username, data.password, data.email, data.gender);
-    props.handleClose();
-  }
-
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
@@ -38,8 +42,7 @@ const SignUpModal = (props) => {
           <Formik
             validationSchema={schema}
             onSubmit={(data) => {
-              // console.log(data)
-              handleSignup(data);
+              handleSignUp(data);
             }}
             initialValues={{
               username: "",
